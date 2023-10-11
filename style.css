@@ -575,7 +575,7 @@ section#contact{
     margin: .5rem 0;
     border: 2.5px solid var(--main-color);
     background: none;
-    color: var(--black);
+    color: var(--text-color);
 }
 .contact-info form .input-box{
     display: flex;
@@ -585,7 +585,7 @@ section#contact{
     width: 48%;
 }
 form input:focus, form textarea:focus{
-    filter: brightness(98%);
+    filter: brightness(88%);
     background: var(--main-color);
     border: 2px solid var(--main-color);
 }
@@ -651,13 +651,13 @@ footer{
 }
 @keyframes floatImage{
     0%{
-        transform: translateY(0);
+        transform: translateY(-25px);
     }
     50%{
-        transform: translateY(-24px);
+        transform: translateY(-43px);
     }
     100%{
-        transform: translateY(0);
+        transform: translateY(-25px);
     }
 }
 
@@ -762,7 +762,7 @@ footer{
         font-size: 22px;
     }
 }
-@media(max-width: 552px){
+@media(max-width: 532px){
     .rotate span {
         width: 240px;
         height: 240px;
@@ -800,5 +800,14 @@ footer{
     .filter-buttons button{
         width: 100%;
         padding: 1rem;
+    }
+}
+@media(max-width: 501px){
+    .rotate span {
+        width: 160px;
+        height: 160px;
+    }
+    .hero-img img{
+        width: 8.2rem;
     }
 }
