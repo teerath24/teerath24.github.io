@@ -1,9 +1,19 @@
 // ACTIVE HAMBURGER MENU
 let menuIcon = document.querySelector('.menu-icon');
+let navbar = document.querySelector('.navbar');
 
 menuIcon.addEventListener('click', () => {
     menuIcon.classList.toggle('active'); // toggle -  assigning or removing a class directly from an element 
-})
+    navbar.classList.toggle('active');
+    document.body.classList/toggle('open');
+});
+
+//REMOVE NAVBAR TOGGLE
+navbar.addEventListener('click', () => {
+    menuIcon.classList.remove('active'); 
+    navbar.classList.remove('active');
+    document.body.classList/remove('open');
+});
 
 //ACTIVE NAV MENU
 let menuLi = document.querySelectorAll('header ul li a');
@@ -90,3 +100,17 @@ window.onload = calcScrollValue;
 //It calculates the scroll value as a percentage of the total scrollable height based on the current scroll position (pos) and the total scrollable height of the page (calcHeight).
 //The scroll value is calculated as (pos * 100) / calcHeight.
 //It rounds the scroll value using Math.round().
+
+//SCROLL REVEAL 
+
+ScrollReveal({ 
+    distance: "90px",
+    duration: 2000,
+    delay: 200,
+    reset: true,
+});
+
+ScrollReveal().reveal('.hero-info,.main-text,.proposal', { origin: 'top' });
+ScrollReveal().reveal('.about-img,.filter-buttons,.contact-info', { origin: 'left' });
+ScrollReveal().reveal('.about-img,.filter-buttons,.contact-info', { origin: 'right' });
+ScrollReveal().reveal('.all-services,.portfolio-gallery,.hero-img img,.rotate span i,.rotate,footer', { origin: 'bottom' });

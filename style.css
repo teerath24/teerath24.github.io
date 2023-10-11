@@ -86,13 +86,13 @@ ul.navbar{
     display: none;
     width: 100%;
     height: 4px;
-    margin: 6px 0;
+    margin: 5px 0;
     border-radius: 3px;
     background: var(--text-color);
     transition: var(--transition);
 }
 .menu-icon.active::before{
-    transform: rotate(-45deg) translate(-6px , 6px);
+    transform: rotate(-45deg) translate(-5px , 5px);
 }
 .menu-icon.active::after{
     transform: rotate(45deg) translate(-8px , -8px);
@@ -128,6 +128,8 @@ section{
 }
 .hero-img{
     position: relative;
+    animation: floatImage 4s ease-in-out infinite;
+    animation-delay: 3s;
 }
 .hero-img img{
     position: relative;
@@ -647,6 +649,17 @@ footer{
         left: 0%;
     }
 }
+@keyframes floatImage{
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-24px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
 
 /*RESPONSIVNESS*/
 @media(max-width: 1266px){
@@ -707,13 +720,85 @@ footer{
     }
     ul.navbar{
         position: absolute;
-        top: 100%;
+        top: -1000px;
         transition: var(--transition);
         width: 100%;
         text-align: center;
         display: block;
         background: var(--gradient-two-color);
         left: 0;
-        border-top: 2px solid var(--black);
+        border-top: 2px solid var( --gradient-two-color);
+    }
+    ul.navbar a{
+        font-size: 1.5rem;
+        margin: 1rem 0;
+    }
+    .navbar.active{
+        top: 100%;
+    }
+   .btn{
+    padding: 10px;
+   }
+   .home{
+    grid-gap: 0;
+   }
+   .filter-buttons buttons{
+    padding: 10px;
+    font-size: .8rem;
+   }
+}
+@media(max-width: 712px){
+    .rotate span {
+        width: 285px;
+        height: 285px;
+    }
+    .hero-img img{
+        width: 15.8rem;
+    }
+    .hero-info h1{
+        font-size: 2rem;
+    }
+    .animate-container .text{
+        font-size: 22px;
+    }
+}
+@media(max-width: 552px){
+    .rotate span {
+        width: 240px;
+        height: 240px;
+    }
+    .hero-img img{
+        width: 14.1rem;
+    }
+    .hero-info h1{
+        font-size: 1.8rem;
+    }
+    .animate-container .text{
+        font-size: 18px;
+    }
+}
+@media(max-width: 531px){
+    html{
+        font-size: 85%;
+    }
+    .contact-info form .input-box{
+        display: block;
+    }
+    section{
+        padding: 50px 3%;
+    }
+    .input-box input{
+        width: 100%;
+    }
+    .about-btn button{
+        padding: 10px 15px;
+    }
+    .filter-buttons{
+        display: grid;
+        grid-gap: 1rem;
+    }
+    .filter-buttons button{
+        width: 100%;
+        padding: 1rem;
     }
 }
