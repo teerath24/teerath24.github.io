@@ -1,14 +1,370 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-</head>
-<body>
-    <h1>Portfolio</h1>
-    <a href="https://teerath24.github.io/photogallery">gallerydoe</a>
-    <a href="https://teerath24.github.io/pokedex">pokedex</a>
-</body>
+  <head>
+    <!-- <a href="https://teerath24.github.io/pokedex">pokedex</a> -->
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My_Portfolio</title>
+    <!-- CSS link -->
+    <link rel="stylesheet" href="style.css" />
+    
+    <!-- JS link -->
+    <script defer src="script.js"></script>
+   
+    <!-- mixitup cdn JS -->
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"
+    ></script>
+
+    <!-- icon link-->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <a href="#" class="logo"><img src="/images/my_logo.png" alt="" /></a>
+      <ul class="navbar">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#drums">Drums</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="right-header">
+        <a href="mailto:teerath.bajaj24@gmail.com" class="btn"
+          >Let's Chat<i class="bx bx-message-rounded-dots"></i
+        ></a>
+        <div class="menu-icon active">
+          <div class="bar"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- HOME -->
+    <section class="home" id="home">
+      <div class="hero-info">
+        <h1>Hi, I'm Teerath</h1>
+        <div class="animate-container">
+          <span class="text first-text">I'm a</span>
+          <span class="text sec-text"></span>
+        </div>
+        <p>
+          I’m passionate about improving the lives of others by developing,
+          design, and music. I am constantly looking to learn new things daily
+          and be better than I was yesterday.
+        </p>
+        <div class="btn-box">
+          <a href="mailto:teerath.bajaj24@gmail.com" class="btn"
+            >Hire Me Now!</a
+          >
+          <a href="/images/teerath_cv.pdf" target="blank" class="btn"
+            >My Resume</a
+          >
+        </div>
+        <div class="social-media">
+          <div class="bg-icon">
+            <a href="https://www.instagram.com/teerathbajaj/"><i class="bx bxl-instagram"></i></a>
+            <span></span>
+          </div>
+
+          <div class="bg-icon">
+            <a href="https://www.linkedin.com/in/teerath-bajaj-82358b1a7/"><i class="bx bxl-linkedin"></i></a>
+            <span></span>
+          </div>
+
+          <div class="bg-icon">
+            <a href="https://github.com/teerath24/teerath24.github.io"><i class="bx bxl-github"></i></a>
+            <span></span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="/images/aus.png" alt="" />
+        <div class="rotate">
+          <span><i></i></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+      <div class="about-img">
+        <img src="/images/meeee.jpg" alt="" class="about-hero" />
+      </div>
+      <div class="about-content">
+        <h2 class="heading">About Me</h2>
+        <h3>Developer. Designer. Drummer.</h3>
+        <p>
+          I am a versatile individual with a passion for blending creativity and
+          technology. As a designer developer and a drummer. With a keen eye for
+          design aesthetics and a deep understanding of development, I craft
+          captivating digital experiences that seamlessly fuse form and
+          function.
+        </p>
+        <div class="about-btn">
+          <button class="active">Main Skills</button>
+          <button>Education</button>
+        </div>
+        <div class="content-btn">
+          <div class="content">
+            <div class="text-box">
+              <p>Programming.</p>
+              <span class="info">HTML. CSS. JavaScript. PHP. SQL.</span>
+            </div>
+            <div class="text-box">
+              <p>UI/UX Design.</p>
+              <span class="info"
+                >User Research. Mockup. Usability Testing. User flow.
+                Wireframing. Prototyping.</span
+              >
+            </div>
+          </div>
+
+          <div class="content">
+            <div class="text-box">
+              <p>Wcoding Fullstack Bootcamp.</p>
+              <span class="dates">March - October 2023</span>
+            </div>
+            <div class="text-box">
+              <p>Google UX Design Professional Certificate.</p>
+              <span class="dates">January - July 2021</span>
+            </div>
+            <div class="text-box">
+              <p>Bachelors in Sports Marketing</p>
+              <span class="dates">June - September 2014</span>
+            </div>
+          </div>
+        </div>
+        <div class="resume-content">
+          <a href="/images/teerath_cv.pdf" target="blank" class="btn"
+            >My Resume</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+      <div class="main-text">
+        <h2 class="heading">My Services</h2>
+        <span>What I will do for you</span>
+      </div>
+
+      <div class="all-services">
+        <div class="service-item">
+          <div class="icon-services">
+            <i class='bx bx-code-alt' ></i>
+            <span></span>
+          </div>
+          <h3>Web Development</h3>
+          <p>
+            Need a stunning, user-friendly website that boosts your online
+            presence and drives results? Let me craft a tailored web solution
+            that showcases your brand and captivates your audience. Elevate your
+            digital experience with my expertise in web development.
+          </p>
+        </div>
+
+        <div class="service-item">
+          <div class="icon-services">
+            <i class='bx bx-palette'></i>
+            <span></span>
+          </div>
+          <h3>UI Design</h3>
+          <p>
+            Elevate your brand's visual appeal and user engagement. I craft
+            striking, intuitive interfaces that leave a lasting impression.
+            Let's design a captivating digital experience that sets your
+            business apart.
+          </p>
+        </div>
+
+        <div class="service-item">
+          <div class="icon-services">
+            <i class="bx bx-desktop"></i>
+            <span></span>
+          </div>
+          <h3>UX Design</h3>
+          <p>
+            Transform your user experience into a masterpiece. I design
+            intuitive interfaces that delight users and drive engagement,
+            ensuring your product stands out in today's competitive landscape.
+            Let's create an exceptional journey for your audience.
+          </p>
+        </div>
+      </div>
+      <div class="proposal">
+        <div class="text-box">
+          <span>Get In Touch</span>
+          <h3>Have A Project In Mind?</h3>
+          <a href="#contact" class="btn">Contact Me</a>
+        </div>
+        <img src="/images/callme.png" />
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section class="portfolio" id="portfolio">
+      <div class="main-text">
+        <h2>My Work</h2>
+      </div>
+      <div class="filter-buttons">
+        <button class="btn mixitup-control-active" data-filter="all">
+          All
+        </button>
+        <button class="btn" data-filter=".web">Web Development</button>
+        <button class="btn" data-filter=".ux">UX</button>
+        <button class="btn" data-filter=".ui3d">UI / 3D Render</button>
+      </div>
+      <div class="portfolio-gallery">
+        <div class="portfolio-box mix web">
+          <div class="portfolio-content">
+            <h3>Web Development</h3>
+            <p>Projects</p>
+            <a href="#" class="btn btn2">See More</a>
+          </div>
+          <div class="portfolio-img">
+            <img src="/images/webdev/code.jpg" alt="" />
+            <img src="/images/webdev/lakers_ecommerce.jpg" alt="" />
+            <img src="/images/webdev/pokemon.jpg" alt="" />
+          </div>
+        </div>
+
+        <div class="portfolio-box mix ux">
+          <div class="portfolio-content">
+            <h3>UX</h3>
+            <p>Projects</p>
+            <a href="#" class="btn">See More</a>
+          </div>
+          <div class="portfolio-img">
+            <img src="images/ux/figma.jpg" alt="" />
+            <img src="images/ux/lakers.jpg" alt="" />
+            <img src="images/ux/NK.png" alt="" />
+            <img src="images/ux/seo.jpg" alt="" />
+          </div>
+        </div>
+
+        <div class="portfolio-box mix ui3d">
+          <div class="portfolio-content">
+            <h3>UI / 3D Render</h3>
+            <p>Projects</p>
+            <a href="#" class="btn">See More</a>
+          </div>
+          <div class="portfolio-img">
+            <img src="images/ui-3d/blender.jpeg" alt="" />
+            <img src="images/ui-3d/3dworld.png" alt="" />
+            <img src="images/ui-3d/bridge.png" alt="" />
+            <img src="images/ui-3d/coke.png" alt="" />
+            <img src="images/ui-3d/dexter.png" alt="" />
+            <img src="images/ui-3d/xwing.png" alt="" />
+            <img src="images/ui-3d/dodgersapp.png" alt="" />
+            <img src="images/ui-3d/icecream.png" alt="" />
+            <img src="images/ui-3d/kobe.png" alt="" />
+            <img src="images/ui-3d/lacasa.png" alt="" />
+            <img src="images/ui-3d/lakersapp.jpeg" alt="" />
+            <img src="images/ui-3d/lalogo.png" alt="" />
+            <img src="images/ui-3d/london.png" alt="" />
+            <img src="images/ui-3d/rams.png" alt="" />
+            <img src="images/ui-3d/ramslogo.png" alt="" />
+            <img src="images/ui-3d/shrooms.png" alt="" />
+            <img src="images/ui-3d/wastenot.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DRUMS -->
+    <section class="drums" id="drums">
+      <div class="main-text">
+        <h2 class="heading">DRUMS</h2>
+      </div>
+
+      <div class="all-videos">
+        <div class="drum-video">
+          <img src="/images/drums/21pilots.png" alt="">
+          <h3>RIDE | Twenty One Pilots</h3>
+          <a href="https://www.youtube.com/watch?v=3y-eoHwDTOU" class="btn">WATCH</a>
+        </div>
+
+        <div class="drum-video">
+         <img src="/images/drums/planetshakers.png" alt="">
+          <h3>COME RIGHT NOW | Planetshakers</h3>
+          <a href="https://www.youtube.com/watch?v=xpywNV_1w_I&t=4s" class="btn">WATCH</a>
+        </div>
+
+        <div class="drum-video">
+         <img src="/images/drums/paramore.png" alt="">
+          <h3>MISERY BUSINESS | Paramore</h3>
+          <a href="https://www.youtube.com/watch?v=K5PkTZhT_KI" class="btn">WATCH</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="contact-skills">
+        <div class="contact-info">
+          <div class="main-text">
+            <h2 class="heading">Contact Me</h2>
+            <span>Let's Chat</span>
+          </div>
+          <form action="#">
+            <div class="input-box">
+              <input type="text" placeholder="First Name">
+              <input type="text" placeholder="Last Name">
+            </div>
+            <input type="email" placeholder="Email">
+            <input type="text" placeholder="Subject">
+            <textarea name="#" id="" cols="30" rows="10"></textarea>
+            <div class="form-btn">
+              <a href="mailto:teerath.bajaj24@gmail.com" class="btn">Send Message</a>
+            </div>
+          </form>
+        </div>
+        <!-- <div class="skills">
+          <div class="main-text">
+            <div class="heading">My Skills</div>
+            <span>Crafting intuitive and engaging interfaces</span>
+          </div>
+          <div class="skill-wrap">
+            <div class="skill">
+              <div class="outer-circle">
+                <div class="inner-circle">
+                  <svg xmlns=“http://w3.org/2000/svg” version=“1.1” width=“180px” height=“180px”>
+                    <defs>
+                    <linearGradient id=“GradientColor”> <stop offset=“0%” stop-color=“e91e63” /> 
+                    <stop offset=“100%” stop-color=“#673ab7” /> 
+                    </linearGradient>
+                     </defs> 
+                    <circle cx=“85” cy=“85” r=“75” stroke-linecap=“round” /> 
+                    </svg>
+                    
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>Teerath.bajaj24@gmail.com <span>||</span> @teerathbajaj 🤙🏾</p>
+    </footer>
+
+    <div id="progress">
+      <span id="progress-value">
+        <i class='bx bxs-chevrons-up'></i>
+      </span>
+    </div>
+    <!-- mixitup cdn JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
+  </body>
 </html>
