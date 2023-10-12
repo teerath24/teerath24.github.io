@@ -771,7 +771,7 @@ footer{
         height: 240px;
     }
     .hero-img img{
-        width: 16.4rem;
+        width: 17.8rem;
     }
     .hero-info h1{
         font-size: 1.8rem;
@@ -779,6 +779,9 @@ footer{
     .animate-container .text{
         font-size: 18px;
     }
+    .about-img img{
+        width: 150px;
+     }
 }
 @media(max-width: 541px){
     html{
@@ -810,7 +813,5 @@ footer{
      .hero-img img{
          width: 10.2rem;
      }
-     .about-img img{
-        width: 275px;
-     }
+    
 }
