@@ -748,6 +748,9 @@ footer{
    }
 }
 @media(max-width: 712px){
+    body{
+        overflow-x: hidden;
+    }
     .rotate span {
         width: 285px;
         height: 285px;
@@ -777,7 +780,7 @@ footer{
         font-size: 18px;
     }
 }
-@media(max-width: 531px){
+@media(max-width: 541px){
     html{
         font-size: 85%;
     }
@@ -801,13 +804,13 @@ footer{
         width: 100%;
         padding: 1rem;
     }
-}
-@media(max-width: 501px){
     .rotate span {
-        width: 160px;
-        height: 160px;
-    }
-    .hero-img img{
-        width: 8.2rem;
-    }
+        display: none;
+     }
+     .hero-img img{
+         width: 10.2rem;
+     }
+     .about-img img{
+        width: 400px;
+     }
 }
