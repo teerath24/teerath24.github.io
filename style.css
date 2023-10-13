@@ -812,10 +812,11 @@ footer{
         padding: 1rem;
     }
     .rotate span {
-        display: none;
+        width: 160px;
+        height: 160px;
      }
      .hero-img img{
-         width: 10.2rem;
+         width: 8rem;
      }
     
 }
