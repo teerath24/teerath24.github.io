@@ -184,9 +184,6 @@ section{
     
     font-size: 2.5rem;
 }
-
-.animate-container{
-}
 .first-text{
     color: var(--text-color);
 }
@@ -206,7 +203,6 @@ section{
     border-left: 2px solid var(--main-color);
     animation: animate 4s steps(18) infinite;
 }
-
 .hero-info p{
     font-size: .83rem;
     line-height: 1.2rem ;
@@ -293,6 +289,7 @@ section#about.about{
 }
 .about-content{
     padding: 2rem;
+    max-height: 100vh;
 }
 .btn{
     border: none;
@@ -454,16 +451,18 @@ section#portfolio{
     margin-right: 2.5rem;
 }
 .portfolio-gallery{
-    display: flex;
-    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 1rem;
 }
 .portfolio-img img{
-    display: none;
+    display: block;
     width: 150px;
     height: 120px;
     transition: var(--transition);
 }
-.portfolio-img img:first-child{
+
+.portfolio-box.visible img {
     display: block;
 }
 .portfolio-box{

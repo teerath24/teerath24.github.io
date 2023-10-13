@@ -72,6 +72,12 @@ var mixer = mixitup('.portfolio-gallery',{
     },
     animation: {
         duration: 500
+    },
+    callbacks: {
+        onMixClick: function(state, originalEvent) {
+             console.log('State:', state);
+             this.classList.add("visible");
+        }
     }
 });
 
@@ -105,12 +111,12 @@ window.onload = calcScrollValue;
 
 ScrollReveal({ 
     distance: "90px",
-    duration: 2000,
-    delay: 200,
+    duration: 1000,
+    delay: 100,
     reset: true,
 });
 
-ScrollReveal().reveal('.hero-info,.main-text,.proposal', { origin: 'top' });
-ScrollReveal().reveal('.about-img,.filter-buttons,.contact-info', { origin: 'left' });
-ScrollReveal().reveal('.about-img,.filter-buttons,.contact-info', { origin: 'right' });
-ScrollReveal().reveal('.all-services,.portfolio-gallery,.hero-img img,.rotate span i,.rotate,footer', { origin: 'bottom' });
+ScrollReveal().reveal('.hero-info', { origin: 'top' });
+ScrollReveal().reveal('.all-videos', { origin: 'right' });
+ScrollReveal().reveal('.portfolio-gallery', { origin: 'left' });
+ScrollReveal().reveal('.hero-img img,.rotate span i,.rotate,footer', { origin: 'bottom' });
