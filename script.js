@@ -109,14 +109,14 @@ window.onload = calcScrollValue;
 
 //SCROLL REVEAL 
 
-ScrollReveal({ 
-    distance: "90px",
-    duration: 1000,
-    delay: 100,
-    reset: true,
-});
+// ScrollReveal({ 
+//     distance: "90px",
+//     duration: 1000,
+//     delay: 100,
+//     reset: true,
+// });
 
-ScrollReveal().reveal('.hero-info', { origin: 'top' });
-ScrollReveal().reveal('.all-videos', { origin: 'right' });
-ScrollReveal().reveal('.portfolio-gallery', { origin: 'left' });
-ScrollReveal().reveal('.hero-img img,.rotate span i,.rotate,footer', { origin: 'bottom' });
+// ScrollReveal().reveal('.hero-info', { origin: 'top' });
+// ScrollReveal().reveal('.all-videos', { origin: 'right' });
+// ScrollReveal().reveal('.portfolio-gallery', { origin: 'left' });
+// ScrollReveal().reveal('.hero-img img,.rotate span i,.rotate,footer', { origin: 'bottom' });
