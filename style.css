@@ -8,6 +8,10 @@
     scroll-behavior: smooth;
     list-style: none;
 }
+html{
+    overflow-x: hidden;
+    max-width: 100vw;
+}
 :root{
     --bg-color:#1f242d;
     --second-bg-color: #323946;
