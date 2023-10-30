@@ -21,8 +21,7 @@ html{
     --hover-box-shadow: 0 0 1rem #0ef;
     --gradient-bg-color: linear-gradient(to bottom, #1f242d, #0ef);
     --gradient-two-color: linear-gradient(to top, #1f242d, #0ef);
-    --transition: all .4s ease;
-    
+    --transition: all .4s ease; 
 }
 a{
     text-decoration: none;
