@@ -31,7 +31,7 @@ a {
     color: var(--text-color);
 }
 
-.btn i {
+.header-btn i {
     font-size: 1.2rem;
 }
 
@@ -79,7 +79,8 @@ li a:hover,
     grid-gap: .6rem;
 }
 
-.btn {
+.btn,
+.header-btn {
     background: var(--main-color);
     color: var(--bg-color);
     padding: .7rem 1.2rem;
@@ -89,7 +90,8 @@ li a:hover,
     transition: var(--transition);
 }
 
-.btn:hover {
+.btn:hover,
+.header-btn:hover {
     box-shadow: none;
     color: var(--text-color);
 }
