@@ -616,6 +616,7 @@ section#drums {
   flex-wrap: wrap;
   gap: 2rem;
   z-index: 1;
+  width: 100%;
 }
 
 .drum-video {
