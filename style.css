@@ -255,8 +255,9 @@ section {
 
 .btn-box {
   display: flex;
-  justify-content: space-between;
-  width: 325px;
+  justify-content: flex-start;
+  width: 250px;
+  gap: 1.5rem;
   margin-top: 2rem;
   margin-bottom: 6rem;
 }
@@ -270,8 +271,9 @@ section {
 
 .social-media {
   display: flex;
-  justify-content: space-between;
-  width: 230px;
+  justify-content: flex-start;
+  width: fit-content;
+  gap: 1.5rem;
   height: 45px;
 }
 
