@@ -836,14 +836,14 @@ footer {
   }
 
   .portfolio-gallery {
-    /* grid-template-columns: repeat(auto-fill, minmax(250, 1fr)); */
     flex-direction: column;
   }
 }
 
 @media (max-width: 787px) {
   .about .about-img {
-    width: 6rem;
+    width: 100%;
+    text-align: center;
   }
 }
 
