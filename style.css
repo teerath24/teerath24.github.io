@@ -546,6 +546,7 @@ button.mixitup-control-active {
   width: 150px;
   height: 120px;
   transition: var(--transition);
+  border-radius: 0;
 }
 
 .portfolio-box.visible img {
