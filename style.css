@@ -381,6 +381,12 @@ section#about.about {
   cursor: pointer;
 }
 
+.about-btn {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1.5rem;
+}
+
 .about-btn button.active {
   color: var(--text-color);
 }
