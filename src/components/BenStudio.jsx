@@ -96,13 +96,7 @@ const BenStudio = () => {
           </div>
 
           {/* Description */}
-          <div className="mt-8 text-center">
-            <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-              A showcase of interactive design and development work,
-              demonstrating cutting-edge web technologies and user experience
-              principles.
-            </p>
-          </div>
+          <div className="mt-8 text-center"></div>
         </div>
       </div>
     </div>
