@@ -1,0 +1,413 @@
+import React, { useState, useEffect, useRef } from "react";
+import Footer from "./Footer";
+import ausImage from "../images/aus.jpg";
+import benStudioImg from "../images/ben_studio.png";
+import benWebsiteImg from "../images/ben_website.png";
+import img3dworld from "../images/3dworld.png";
+import imgLacasa from "../images/lacasa.png";
+import imgXwing from "../images/xwing.png";
+import imgDexter from "../images/dexter.png";
+import imgDodgers from "../images/dodgersapp.png";
+import imgPokeball from "../images/pokeball.png";
+import imgLakers from "../images/lakersapp.jpeg";
+import imgShrooms from "../images/shrooms.png";
+
+// --- More Work Button ---
+const MoreWorkButton = ({ text, href }) => {
+  const [xy, setXY] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+  const ref = useRef(null);
+  const rafId = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (ref.current) {
+      if (rafId.current) cancelAnimationFrame(rafId.current);
+      rafId.current = requestAnimationFrame(() => {
+        const rect = ref.current.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        setXY({ x: (x / rect.width) * 10, y: (y / rect.height) * 10 });
+      });
+    }
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (window.navigateWithSplash) {
+      window.navigateWithSplash(href, "Work");
+    }
+  };
+
+  return (
+    <a
+      ref={ref}
+      href={href}
+      onClick={handleClick}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => {
+        setXY({ x: 0, y: 0 });
+        setIsHovered(false);
+      }}
+      className="
+        relative 
+        block 
+        w-28 h-28        
+        sm:w-32 sm:h-32 
+        md:w-30 md:h-30 
+        rounded-full 
+        overflow-hidden 
+        will-change-transform
+      "
+      style={{ transform: `translate(${xy.x}px, ${xy.y}px)` }}
+    >
+      <div className="absolute inset-0 bg-gray-900 flex items-center justify-center">
+        <div
+          className="absolute inset-0 bg-[#1E90FF] transition-all duration-700 ease-out"
+          style={{
+            transform: isHovered ? "translateY(0%)" : "translateY(100%)",
+          }}
+        />
+        <span className="relative z-10 text-lg md:text-xl font-medium text-white">
+          {text}
+        </span>
+      </div>
+    </a>
+  );
+};
+
+// --- Interactive Circle Button ---
+const InteractiveCircleButton = ({ text, href }) => {
+  const [xy, setXY] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+  const ref = useRef(null);
+  const rafId = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (ref.current) {
+      if (rafId.current) cancelAnimationFrame(rafId.current);
+      rafId.current = requestAnimationFrame(() => {
+        const rect = ref.current.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        setXY({ x: (x / rect.width) * 15, y: (y / rect.height) * 15 });
+      });
+    }
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (window.navigateWithSplash) {
+      window.navigateWithSplash(href, "About");
+    }
+  };
+
+  return (
+    <a
+      ref={ref}
+      href={href}
+      onClick={handleClick}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => {
+        setXY({ x: 0, y: 0 });
+        setIsHovered(false);
+      }}
+      className="relative block w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full overflow-hidden will-change-transform"
+      style={{ transform: `translate(${xy.x}px, ${xy.y}px)` }}
+    >
+      <div className="absolute inset-0 bg-gray-900 flex items-center justify-center">
+        <div
+          className="absolute inset-0 bg-[#1E90FF] transition-all duration-700 ease-out"
+          style={{
+            transform: isHovered ? "translateY(0%)" : "translateY(100%)",
+          }}
+        />
+        <span className="relative z-10 text-xl sm:text-2xl md:text-3xl font-light text-white">
+          {text}
+        </span>
+      </div>
+    </a>
+  );
+};
+
+// --- Project Card ---
+const ProjectCard = ({
+  title,
+  category,
+  link,
+  isHovered,
+  onHover,
+  onLeave,
+}) => {
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (window.navigateWithSplash) {
+      window.navigateWithSplash(link, title);
+    }
+  };
+
+  return (
+    <a
+      href={link}
+      onClick={handleClick}
+      className="block relative border-t border-gray-300 py-6 sm:py-8 md:py-12 cursor-pointer transition-all duration-300 hover:border-[#1E90FF] hover:scale-[1.02]"
+      onMouseEnter={onHover}
+      onMouseLeave={onLeave}
+    >
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-4 relative z-10">
+        <h3
+          className={`text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold transition-all duration-300 ${
+            isHovered ? "text-[#1E90FF] opacity-100" : "text-gray-900"
+          }`}
+        >
+          {title}
+        </h3>
+        <span
+          className={`text-sm sm:text-base md:text-lg transition-colors duration-300 ${
+            isHovered ? "text-[#1E90FF]" : "text-gray-500"
+          }`}
+        >
+          {category}
+        </span>
+      </div>
+    </a>
+  );
+};
+
+// --- Scrolling Gallery ---
+const ScrollingGallery = () => {
+  const [scrollOffset, setScrollOffset] = useState(0);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const delta = currentScrollY - lastScrollY.current;
+      setScrollOffset((prev) =>
+        Math.max(-14, Math.min(14, prev + delta * 0.05))
+      );
+      lastScrollY.current = currentScrollY;
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const row1 = [img3dworld, imgLacasa, imgXwing, imgDexter];
+  const row2 = [imgDodgers, imgPokeball, imgLakers, imgShrooms];
+
+  return (
+    <div className="w-full bg-white py-12 md:py-20">
+      <div className="max-w-[2000px] mx-auto px-2 sm:px-4">
+        {/* Row 1 */}
+        <div className="mb-6 md:mb-10 flex flex-wrap md:flex-nowrap gap-3 sm:gap-6 md:gap-10 justify-center">
+          {row1.map((img, idx) => (
+            <div
+              key={idx}
+              className="transition-transform duration-100 ease-out w-full sm:w-[calc(50%-0.75rem)] md:w-[400px] lg:w-[450px]"
+              style={{ transform: `translateX(${scrollOffset}px)` }}
+            >
+              <div className="w-full bg-gray-200 rounded-xl sm:rounded-2xl p-2 sm:p-3 shadow-lg">
+                <img
+                  src={img}
+                  alt={`Project ${idx + 1}`}
+                  className="w-full h-auto aspect-[4/3] object-contain rounded-lg sm:rounded-xl"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+        {/* Row 2 */}
+        <div className="flex flex-wrap md:flex-nowrap gap-3 sm:gap-6 md:gap-10 justify-center">
+          {row2.map((img, idx) => (
+            <div
+              key={idx}
+              className="transition-transform duration-100 ease-out w-full sm:w-[calc(50%-0.75rem)] md:w-[400px] lg:w-[450px]"
+              style={{ transform: `translateX(${-scrollOffset}px)` }}
+            >
+              <div className="w-full bg-gray-200 rounded-xl sm:rounded-2xl p-2 sm:p-3 shadow-lg">
+                <img
+                  src={img}
+                  alt={`Project ${idx + 5}`}
+                  className="w-full h-auto aspect-[4/3] object-contain rounded-lg sm:rounded-xl"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- Main Home Component ---
+const Home = () => {
+  const name = "Teerath Bajaj";
+  const [scrollDirection, setScrollDirection] = useState("down");
+  const [hoveredProject, setHoveredProject] = useState(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setScrollDirection(currentScrollY > lastScrollY.current ? "down" : "up");
+      lastScrollY.current = currentScrollY;
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [scrollDirection]);
+
+  useEffect(() => {
+    let rafId;
+    const handleMouseMove = (e) => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        setMousePosition({ x: e.clientX, y: e.clientY });
+      });
+    };
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, []);
+
+  const projects = [
+    {
+      id: 1,
+      title: "Ben Studio",
+      category: "Design & Development",
+      image: benStudioImg,
+      link: "/ben-studio",
+    },
+    {
+      id: 2,
+      title: "Ben Website",
+      category: "Design & Development",
+      image: benWebsiteImg,
+      link: "https://beninc.ai/",
+    },
+  ];
+
+  const currentProject = projects.find((p) => p.id === hoveredProject);
+
+  return (
+    <div id="home" className="relative bg-gray-900">
+      {/* Hero Section */}
+      <div className="h-screen relative flex flex-col">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(${ausImage})`,
+            filter: "brightness(0.7)",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-900/90" />
+
+        <div className="absolute top-1/3 sm:top-1/2 right-4 sm:right-8 md:right-16 transform -translate-y-1/2 z-10">
+          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white tracking-wide text-right">
+            Designer & Developer
+          </p>
+        </div>
+
+        <div className="absolute bottom-0 left-0 right-0 z-20 overflow-hidden">
+          <div className="whitespace-nowrap py-4 sm:py-6 md:py-10">
+            <div
+              className={`inline-block transition-none ${
+                scrollDirection === "down"
+                  ? "animate-marquee-left"
+                  : "animate-marquee-right"
+              }`}
+              key={scrollDirection}
+            >
+              {[...Array(10)].map((_, i) => (
+                <span
+                  key={i}
+                  className="text-5xl sm:text-7xl md:text-9xl lg:text-[11rem] font-bold tracking-tight text-white px-4 sm:px-8 md:px-16 inline-block"
+                  style={{ fontFamily: "Poppins, sans-serif" }}
+                >
+                  {name} —
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Content Section */}
+      <div className="min-h-screen bg-white relative py-12 sm:py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-16">
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12 md:mb-16 gap-8 md:gap-12">
+            <div className="flex-1">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 max-w-2xl leading-tight">
+                Building digital experiences with intention, clarity, and
+                impact. Let’s create work that resonates.
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-500 uppercase tracking-wider mb-0 md:mt-24">
+                RECENT WORK
+              </p>
+            </div>
+            <div className="flex flex-col items-start lg:items-end gap-4 md:gap-6 w-full lg:w-auto">
+              <p className="text-sm sm:text-base text-gray-700 max-w-xs text-left lg:text-right">
+                I am a versatile individual with a passion for blending
+                creativity and technology. As a designer and developer. With a
+                keen eye for design aesthetics and a deep understanding of
+                development.
+              </p>
+              <div className="self-center lg:self-end">
+                <InteractiveCircleButton text="About me" href="/about" />
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-12 md:mt-16">
+            {projects.map((project) => (
+              <ProjectCard
+                key={project.id}
+                title={project.title}
+                category={project.category}
+                link={project.link}
+                isHovered={hoveredProject === project.id}
+                onHover={() => setHoveredProject(project.id)}
+                onLeave={() => setHoveredProject(null)}
+              />
+            ))}
+            <div className="flex justify-center mt-12 md:mt-16">
+              <MoreWorkButton text="More work" href="/work" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ScrollingGallery />
+      <Footer />
+
+      {/* Image Preview */}
+      {currentProject && (
+        <div
+          className="fixed top-0 left-0 w-full h-full z-[9999]"
+          style={{ pointerEvents: "none" }}
+        >
+          <div
+            className="absolute will-change-transform"
+            style={{
+              left: `${mousePosition.x + 20}px`,
+              top: `${mousePosition.y + 20}px`,
+            }}
+          >
+            <div className="relative w-64 h-48 sm:w-80 sm:h-64 md:w-96 md:h-72 overflow-hidden rounded-lg shadow-2xl">
+              <img
+                src={currentProject.image}
+                alt={currentProject.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Home;
