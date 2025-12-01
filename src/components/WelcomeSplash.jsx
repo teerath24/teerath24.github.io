@@ -17,13 +17,11 @@ const WelcomeSplash = ({
     "你好",
     "Hola",
     "안녕하세요",
-    "Xin chào",
     "Olá",
     "السلام عليكم",
     "नमस्ते",
     "Bonjour",
     "こんにちは",
-    "Ciao",
     "สวัสดี",
   ];
 

@@ -137,18 +137,9 @@ const About = () => {
               <div className="absolute left-0 right-0 top-1/2 h-px bg-gray-300 -translate-y-1/2"></div>
               <div className="relative flex justify-end pr-16 md:pr-24 lg:pr-32">
                 <div className="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full bg-[#5A67D8] flex items-center justify-center flex-shrink-0 relative z-10">
-                  <svg
-                    className="w-16 h-16 sm:w-20 sm:h-20 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle cx="12" cy="12" r="10" strokeWidth="1.5" />
-                    <path
-                      d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
-                      strokeWidth="1.5"
-                    />
-                  </svg>
+                  <div>
+                    <p className="text-8xl">🤙🏽</p>
+                  </div>
                 </div>
               </div>
             </div>

@@ -292,7 +292,7 @@ const Contact = () => {
       {/* Footer */}
       <footer className="w-full py-4 px-4 sm:px-6 md:px-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 text-xs sm:text-sm text-gray-500">
         <div>
-          <p className="text-xs sm:text-sm">🤙🏾🤙🏾🤙🏾</p>
+          <p className="text-xs sm:text-sm">🤙🏽🤙🏽🤙🏽</p>
         </div>
         <div className="hidden sm:block">
           <p className="text-xs">LOCAL TIME</p>
