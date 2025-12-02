@@ -170,9 +170,11 @@ const Footer = () => {
         <div className="w-full h-px bg-gray-700 mb-12 lg:mb-16"></div>
 
         {/* Bottom - Contact and Socials */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 lg:gap-12">
+        {/* Changed items-start to items-center for mobile centering */}
+        <div className="flex flex-col lg:flex-row justify-between items-center lg:items-end gap-8 lg:gap-12">
           {/* Contact Info */}
-          <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
+          {/* Added justify-center for mobile centering */}
+          <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
             <a
               ref={emailRef}
               href="mailto:teerath.bajaj24@gmail.com"
@@ -228,7 +230,8 @@ const Footer = () => {
           </div>
 
           {/* Social Links - Bottom Right with SOCIALS label */}
-          <div className="flex flex-col items-start lg:items-end gap-3 lg:ml-auto">
+          {/* Changed items-start to items-center for mobile centering */}
+          <div className="flex flex-col items-center lg:items-end gap-3 lg:ml-auto">
             <p className="text-gray-500 text-sm tracking-wider">SOCIALS</p>
             <div className="flex gap-6 md:gap-10 text-base md:text-xl">
               <a
