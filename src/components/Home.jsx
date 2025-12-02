@@ -142,7 +142,10 @@ const ProjectCard = ({
 }) => {
   const handleClick = (e) => {
     e.preventDefault();
-    if (window.navigateWithSplash) {
+    // Check if it's an external link
+    if (link.startsWith("http")) {
+      window.open(link, "_blank", "noopener,noreferrer");
+    } else if (window.navigateWithSplash) {
       window.navigateWithSplash(link, title);
     }
   };
@@ -178,62 +181,98 @@ const ProjectCard = ({
 // --- Scrolling Gallery ---
 const ScrollingGallery = () => {
   const [scrollOffset, setScrollOffset] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const delta = currentScrollY - lastScrollY.current;
-      setScrollOffset((prev) =>
-        Math.max(-14, Math.min(14, prev + delta * 0.05))
-      );
-      lastScrollY.current = currentScrollY;
+    // Check if mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
     };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    const handleScroll = () => {
+      if (!isMobile) {
+        const currentScrollY = window.scrollY;
+        const delta = currentScrollY - lastScrollY.current;
+        // Increased multiplier from 0.05 to 0.15 for more movement
+        setScrollOffset((prev) =>
+          Math.max(-50, Math.min(50, prev + delta * 0.15))
+        );
+        lastScrollY.current = currentScrollY;
+      }
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", checkMobile);
+    };
+  }, [isMobile]);
 
   const row1 = [img3dworld, imgLacasa, imgXwing, imgDexter];
-  const row2 = [imgDodgers, imgPokeball, imgLakers, imgShrooms];
+  const row2 = [imgLakers, imgPokeball, imgDodgers, imgShrooms];
 
   return (
-    <div className="w-full bg-white py-12 md:py-20">
-      <div className="max-w-[2000px] mx-auto px-2 sm:px-4">
-        {/* Row 1 */}
-        <div className="mb-6 md:mb-10 flex flex-wrap md:flex-nowrap gap-3 sm:gap-6 md:gap-10 justify-center">
-          {row1.map((img, idx) => (
-            <div
-              key={idx}
-              className="transition-transform duration-100 ease-out w-full sm:w-[calc(50%-0.75rem)] md:w-[400px] lg:w-[450px]"
-              style={{ transform: `translateX(${scrollOffset}px)` }}
-            >
-              <div className="w-full bg-gray-200 rounded-xl sm:rounded-2xl p-2 sm:p-3 shadow-lg">
+    <div className="w-full bg-white py-12 md:py-20 overflow-hidden">
+      {/* Mobile View - Single Column */}
+      <div className="md:hidden px-4">
+        <div className="flex flex-col gap-4 max-w-md mx-auto">
+          {[...row1, ...row2].map((img, idx) => (
+            <div key={idx} className="w-full">
+              <div className="w-full bg-gray-200 rounded-xl p-2 shadow-lg">
                 <img
                   src={img}
                   alt={`Project ${idx + 1}`}
-                  className="w-full h-auto aspect-[4/3] object-contain rounded-lg sm:rounded-xl"
+                  className="w-full h-auto aspect-[4/3] object-contain rounded-lg"
                 />
               </div>
             </div>
           ))}
         </div>
-        {/* Row 2 */}
-        <div className="flex flex-wrap md:flex-nowrap gap-3 sm:gap-6 md:gap-10 justify-center">
-          {row2.map((img, idx) => (
-            <div
-              key={idx}
-              className="transition-transform duration-100 ease-out w-full sm:w-[calc(50%-0.75rem)] md:w-[400px] lg:w-[450px]"
-              style={{ transform: `translateX(${-scrollOffset}px)` }}
-            >
-              <div className="w-full bg-gray-200 rounded-xl sm:rounded-2xl p-2 sm:p-3 shadow-lg">
-                <img
-                  src={img}
-                  alt={`Project ${idx + 5}`}
-                  className="w-full h-auto aspect-[4/3] object-contain rounded-lg sm:rounded-xl"
-                />
+      </div>
+
+      {/* Desktop View - Scrolling Gallery with wider container */}
+      <div className="hidden md:block">
+        <div className="w-[120vw] -ml-[10vw]">
+          {/* Row 1 */}
+          <div className="mb-10 flex gap-10 justify-start">
+            {row1.map((img, idx) => (
+              <div
+                key={idx}
+                className="transition-transform duration-100 ease-out w-[400px] lg:w-[450px] xl:w-[515px] flex-shrink-0"
+                style={{ transform: `translateX(${scrollOffset}px)` }}
+              >
+                <div className="w-full bg-gray-200 rounded-2xl p-3 shadow-lg">
+                  <img
+                    src={img}
+                    alt={`Project ${idx + 1}`}
+                    className="w-full h-auto aspect-[4/3] object-contain rounded-xl"
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          {/* Row 2 */}
+          <div className="flex gap-10 justify-start">
+            {row2.map((img, idx) => (
+              <div
+                key={idx}
+                className="transition-transform duration-100 ease-out w-[400px] lg:w-[450px] xl:w-[515px] flex-shrink-0"
+                style={{ transform: `translateX(${-scrollOffset}px)` }}
+              >
+                <div className="w-full bg-gray-200 rounded-2xl p-3 shadow-lg">
+                  <img
+                    src={img}
+                    alt={`Project ${idx + 5}`}
+                    className="w-full h-auto aspect-[4/3] object-contain rounded-xl"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -305,9 +344,9 @@ const Home = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-900/90" />
 
-        <div className="absolute top-1/3 sm:top-1/2 right-4 sm:right-8 md:right-16 transform -translate-y-1/2 z-10">
-          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white tracking-wide text-right">
-            Designer & Developer
+        <div className="absolute bottom-32 sm:top-1/2 right-4 sm:right-8 md:right-16 sm:transform sm:-translate-y-1/2 z-10">
+          <p className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white tracking-wide text-right leading-tight">
+            Designer &<br className="sm:hidden" /> Developer
           </p>
         </div>
 
@@ -342,7 +381,7 @@ const Home = () => {
             <div className="flex-1">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 max-w-2xl leading-tight">
                 Building digital experiences with intention, clarity, and
-                impact. Let’s create work that resonates.
+                impact. Let's create work that resonates.
               </h2>
               <p className="text-xs sm:text-sm text-gray-500 uppercase tracking-wider mb-0 md:mt-24">
                 RECENT WORK

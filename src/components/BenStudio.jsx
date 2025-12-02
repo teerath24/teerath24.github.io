@@ -32,7 +32,7 @@ const BenStudio = () => {
         <a
           href="/"
           onClick={handleBackToHome}
-          className="inline-flex items-center text-white hover:text-cyan-400 transition-colors"
+          className="inline-flex items-center text-white hover:text-[#1E90FF] transition-colors"
         >
           <svg
             className="w-6 h-6 mr-2"
