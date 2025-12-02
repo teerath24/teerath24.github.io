@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import benStudioVideo from "../images/ben_studio_demo.mov";
+import benStudioVideo from "../images/ben_studio_demo.mp4";
 
 const BenStudio = () => {
   const videoRef = useRef(null);
