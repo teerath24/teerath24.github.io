@@ -132,13 +132,13 @@ const Footer = () => {
             {/* Get in touch button - smaller size */}
             <a
               ref={ref}
-              href="/contact" // Changed from #contact to /contact
+              href="/contact"
               onClick={(e) => {
                 e.preventDefault();
                 if (window.navigateWithSplash) {
-                  window.navigateWithSplash("/contact", "Contact"); // Changed path
+                  window.navigateWithSplash("/contact", "Contact");
                 } else {
-                  window.location.href = "/contact"; // Changed fallback
+                  window.location.href = "/contact";
                 }
               }}
               onMouseMove={handleMouseMove}
@@ -170,11 +170,9 @@ const Footer = () => {
         <div className="w-full h-px bg-gray-700 mb-12 lg:mb-16"></div>
 
         {/* Bottom - Contact and Socials */}
-        {/* Changed items-start to items-center for mobile centering */}
         <div className="flex flex-col lg:flex-row justify-between items-center lg:items-end gap-8 lg:gap-12">
-          {/* Contact Info */}
-          {/* Added justify-center for mobile centering */}
-          <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
+          {/* Contact Info - Centered on mobile, left on desktop */}
+          <div className="flex flex-col items-center lg:items-start gap-4 md:gap-6 w-full lg:w-auto">
             <a
               ref={emailRef}
               href="mailto:teerath.bajaj24@gmail.com"
@@ -229,9 +227,8 @@ const Footer = () => {
             </a>
           </div>
 
-          {/* Social Links - Bottom Right with SOCIALS label */}
-          {/* Changed items-start to items-center for mobile centering */}
-          <div className="flex flex-col items-center lg:items-end gap-3 lg:ml-auto">
+          {/* Social Links - Centered on mobile, right on desktop */}
+          <div className="flex flex-col items-center lg:items-end gap-3 w-full lg:w-auto lg:ml-auto">
             <p className="text-gray-500 text-sm tracking-wider">SOCIALS</p>
             <div className="flex gap-6 md:gap-10 text-base md:text-xl">
               <a
