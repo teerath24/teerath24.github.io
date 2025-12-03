@@ -234,15 +234,15 @@ const ScrollingGallery = () => {
         </div>
       </div>
 
-      {/* Desktop View - Scrolling Gallery with wider container */}
+      {/* Desktop View - Scrolling Gallery centered */}
       <div className="hidden md:block">
-        <div className="w-[120vw] -ml-[10vw]">
+        <div className="max-w-[1900px] mx-auto px-8">
           {/* Row 1 */}
-          <div className="mb-10 flex gap-10 justify-start">
+          <div className="mb-10 flex gap-10 justify-center">
             {row1.map((img, idx) => (
               <div
                 key={idx}
-                className="transition-transform duration-100 ease-out w-[400px] lg:w-[450px] xl:w-[515px] flex-shrink-0"
+                className="transition-transform duration-100 ease-out w-[350px] lg:w-[400px] xl:w-[450px] flex-shrink-0"
                 style={{ transform: `translateX(${scrollOffset}px)` }}
               >
                 <div className="w-full bg-gray-200 rounded-2xl p-3 shadow-lg">
@@ -256,11 +256,11 @@ const ScrollingGallery = () => {
             ))}
           </div>
           {/* Row 2 */}
-          <div className="flex gap-10 justify-start">
+          <div className="flex gap-10 justify-center">
             {row2.map((img, idx) => (
               <div
                 key={idx}
-                className="transition-transform duration-100 ease-out w-[400px] lg:w-[450px] xl:w-[515px] flex-shrink-0"
+                className="transition-transform duration-100 ease-out w-[350px] lg:w-[400px] xl:w-[450px] flex-shrink-0"
                 style={{ transform: `translateX(${-scrollOffset}px)` }}
               >
                 <div className="w-full bg-gray-200 rounded-2xl p-3 shadow-lg">
