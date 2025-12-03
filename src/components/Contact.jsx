@@ -1,6 +1,42 @@
 import React, { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 import ausImage from "../images/aus.jpg";
 import Header from "./Header";
+
+// Toast Component
+const Toast = ({ message, type, onClose }) => {
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      onClose();
+    }, 3500);
+    return () => clearTimeout(timer);
+  }, [onClose]);
+
+  return (
+    <div
+      className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-50 px-6 py-4 rounded-lg shadow-lg flex items-center gap-3 animate-slide-down ${
+        type === "success" ? "bg-[#1E90FF]" : "bg-[#FF0000]"
+      }`}
+    >
+      <span className="text-white text-sm font-medium">{message}</span>
+      <button onClick={onClose} className="text-white hover:text-gray-200">
+        <svg
+          className="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+    </div>
+  );
+};
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -13,8 +49,14 @@ const Contact = () => {
 
   const [buttonXY, setButtonXY] = useState({ x: 0, y: 0 });
   const [isButtonHovered, setIsButtonHovered] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toast, setToast] = useState(null);
   const buttonRef = useRef(null);
+
+  // Replace these with your actual EmailJS credentials
+  const EMAILJS_SERVICE_ID = "service_wu0t4wm";
+  const EMAILJS_TEMPLATE_ID = "template_dlo2pyh";
+  const EMAILJS_PUBLIC_KEY = "qC84ybhIChErppYDC";
 
   const handleChange = (e) => {
     setFormData({
@@ -35,28 +77,37 @@ const Contact = () => {
     }
   };
 
-  const handleSubmit = () => {
-    // Create mailto link with form data
-    const subject = encodeURIComponent(
-      `New Contact Form Submission from ${formData.name || "Website"}`
-    );
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\n\n` +
-        `Email: ${formData.email}\n\n` +
-        `Organization: ${formData.organization}\n\n` +
-        `Services: ${formData.services}\n\n` +
-        `Message:\n${formData.message}`
-    );
+  const handleSubmit = async () => {
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.message) {
+      setToast({
+        message: "Please fill in all required fields",
+        type: "error",
+      });
+      return;
+    }
 
-    const mailtoLink = `mailto:teerath.bajaj24@gmail.com?subject=${subject}&body=${body}`;
+    setIsSubmitting(true);
 
-    // Open default email client
-    window.location.href = mailtoLink;
+    try {
+      // Send email using EmailJS
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          organization: formData.organization || "Not provided",
+          services: formData.services || "Not specified",
+          message: formData.message,
+        },
+        EMAILJS_PUBLIC_KEY
+      );
 
-    setSubmitStatus("Opening email client...");
+      // Success!
+      setToast({ message: "Your email has been sent!", type: "success" });
 
-    // Clear form after a delay
-    setTimeout(() => {
+      // Clear form fields
       setFormData({
         name: "",
         email: "",
@@ -64,13 +115,31 @@ const Contact = () => {
         services: "",
         message: "",
       });
-      setSubmitStatus("");
-    }, 2000);
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setToast({
+        message: "An error occurred. Please try again.",
+        type: "error",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <div className="min-h-screen bg-[#1a1a1a] text-white flex flex-col">
+      {/* Toast Notification */}
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
+
+      {/* Header Component */}
       <Header />
+
       {/* Main Content - Fully Centered */}
       <div className="flex-1 flex items-center justify-center w-full py-24 md:py-32">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
@@ -250,13 +319,14 @@ const Contact = () => {
                   <button
                     ref={buttonRef}
                     onClick={handleSubmit}
+                    disabled={isSubmitting}
                     onMouseMove={handleButtonMove}
                     onMouseEnter={() => setIsButtonHovered(true)}
                     onMouseLeave={() => {
                       setButtonXY({ x: 0, y: 0 });
                       setIsButtonHovered(false);
                     }}
-                    className="relative w-40 h-40 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-full overflow-hidden transition-transform duration-100"
+                    className="relative w-40 h-40 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-full overflow-hidden transition-transform duration-100 disabled:opacity-50 disabled:cursor-not-allowed"
                     style={{
                       transform: `translate(${buttonXY.x}px, ${buttonXY.y}px)`,
                     }}
@@ -271,18 +341,11 @@ const Contact = () => {
                         }}
                       />
                       <span className="relative z-10 text-lg md:text-xl font-medium text-white focus:outline-none focus:ring-0 focus-visible:ring-0">
-                        Send it!
+                        {isSubmitting ? "Sending..." : "Send it!"}
                       </span>
                     </div>
                   </button>
                 </div>
-
-                {/* Submit Status Message */}
-                {submitStatus && (
-                  <div className="text-center text-sm text-gray-400">
-                    {submitStatus}
-                  </div>
-                )}
               </div>
             </div>
           </div>
@@ -323,6 +386,22 @@ const Contact = () => {
           </a>
         </div>
       </footer>
+
+      <style>{`
+        @keyframes slide-down {
+          from {
+            transform: translate(-50%, -100%);
+            opacity: 0;
+          }
+          to {
+            transform: translate(-50%, 0);
+            opacity: 1;
+          }
+        }
+        .animate-slide-down {
+          animation: slide-down 0.3s ease-out;
+        }
+      `}</style>
     </div>
   );
 };
