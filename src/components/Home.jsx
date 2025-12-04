@@ -52,9 +52,9 @@ const MoreWorkButton = ({ text, href }) => {
       className="
         relative 
         block 
-        w-28 h-28        
-        sm:w-32 sm:h-32 
-        md:w-30 md:h-30 
+        w-40 h-14        
+        sm:w-48 sm:h-16 
+        md:w-56 md:h-16
         rounded-full 
         overflow-hidden 
         will-change-transform
@@ -373,49 +373,54 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-      {/* Content Section */}
       <div className="min-h-screen bg-white relative py-12 sm:py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-16">
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12 md:mb-16 gap-8 md:gap-12">
-            <div className="flex-1">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 max-w-2xl leading-tight">
-                Building digital experiences with intention, clarity, and
-                impact. Let's create work that resonates.
-              </h2>
-              <p className="text-xs sm:text-sm text-gray-500 uppercase tracking-wider mb-0 md:mt-24">
-                RECENT WORK
-              </p>
-            </div>
-            <div className="flex flex-col items-start lg:items-end gap-4 md:gap-6 w-full lg:w-auto">
-              <p className="text-sm sm:text-base text-gray-700 max-w-xs text-left lg:text-right">
-                I am a versatile individual with a passion for blending
-                creativity and technology. As a designer and developer. With a
-                keen eye for design aesthetics and a deep understanding of
-                development.
-              </p>
-              <div className="self-center lg:self-end">
-                <InteractiveCircleButton text="About me" href="/about" />
+          {/* Wrap the content below in a React Fragment (<> ... </>) */}
+          <>
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12 md:mb-16 gap-8 md:gap-12">
+              <div className="flex-1">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 max-w-2xl leading-tight">
+                  Building digital experiences with intention, clarity, and
+                  impact. Let's create work that resonates.
+                </h2>
+                {/* REMOVED P tag from here */}
+              </div>
+              <div className="flex flex-col items-start lg:items-end gap-4 md:gap-6 w-full lg:w-auto">
+                <p className="text-sm sm:text-base text-gray-700 max-w-xs text-left lg:text-right">
+                  I am a versatile individual with a passion for blending
+                  creativity and technology. As a designer and developer. With a
+                  keen eye for design aesthetics and a deep understanding of
+                  development.
+                </p>
+                <div className="self-center lg:self-end">
+                  <InteractiveCircleButton text="About me" href="/about" />
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="mt-12 md:mt-16">
-            {projects.map((project) => (
-              <ProjectCard
-                key={project.id}
-                title={project.title}
-                category={project.category}
-                link={project.link}
-                isHovered={hoveredProject === project.id}
-                onHover={() => setHoveredProject(project.id)}
-                onLeave={() => setHoveredProject(null)}
-              />
-            ))}
-            <div className="flex justify-center mt-12 md:mt-16">
-              <MoreWorkButton text="More work" href="/work" />
+            {/* NEW LOCATION: This P tag is now placed correctly in the document flow */}
+            <p className="text-3xl text-gray-500 uppercase tracking-wider mb-4 md:mb-6">
+              RECENT WORK
+            </p>
+
+            <div className="mt-12 md:mt-16">
+              {projects.map((project) => (
+                <ProjectCard
+                  key={project.id}
+                  title={project.title}
+                  category={project.category}
+                  link={project.link}
+                  isHovered={hoveredProject === project.id}
+                  onHover={() => setHoveredProject(project.id)}
+                  onLeave={() => setHoveredProject(null)}
+                />
+              ))}
+              <div className="flex justify-center mt-12 md:mt-16">
+                <MoreWorkButton text="See More" href="/work" />
+              </div>
             </div>
-          </div>
+          </>
+          {/* Close the React Fragment */}
         </div>
       </div>
 
