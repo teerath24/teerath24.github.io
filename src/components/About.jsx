@@ -177,7 +177,7 @@ const About = () => {
 
           {/* Services Section */}
           <div className="mb-32">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-light mb-16">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-light mb-16">
               I can help you with <AnimatedEllipsis />
             </h2>
 
