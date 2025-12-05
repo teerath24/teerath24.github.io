@@ -239,11 +239,17 @@ const Header = () => {
         onClick={toggleMenu}
       />
 
-      {/* Full-Screen Side Menu */}
+      {/* Full-Screen Side Menu with Arched Left Edge Animation */}
       <div
-        className={`fixed top-0 right-0 h-full w-full md:w-[600px] bg-gray-900 z-50 transform transition-transform duration-500 ease-in-out ${
+        className={`fixed top-0 right-0 h-full w-full md:w-[600px] bg-gray-900 z-50 transform transition-transform duration-500 ease-in-out overflow-hidden ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
+        style={{
+          borderTopLeftRadius: isMenuOpen ? "0px" : "50%",
+          borderBottomLeftRadius: isMenuOpen ? "0px" : "50%",
+          transition:
+            "transform 0.5s ease-in-out, border-radius 0.5s ease-in-out",
+        }}
       >
         <div className="flex flex-col h-full justify-between p-12 md:p-16">
           {/* Navigation */}
