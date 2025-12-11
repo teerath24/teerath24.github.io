@@ -123,10 +123,8 @@ const HamburgerButton = ({ isScrolled, isMenuOpen, onClick }) => {
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`fixed top-8 right-8 z-[60] w-20 h-20 rounded-full bg-gray-900 border border-gray-600 flex items-center justify-center transition-all duration-300 hover:scale-105 overflow-hidden focus:outline-none focus:ring-0 focus-visible:ring-0  ${
-        isScrolled
-          ? "opacity-100 pointer-events-auto"
-          : "opacity-0 pointer-events-none"
+      className={`fixed top-8 right-8 z-[60] w-20 h-20 rounded-full bg-gray-900 border border-gray-600 flex items-center justify-center transition-all duration-300 hover:scale-105 overflow-hidden focus:outline-none focus:ring-0 focus-visible:ring-0 opacity-100 pointer-events-auto ${
+        isScrolled ? "" : "md:opacity-0 md:pointer-events-none"
       }`}
       style={{
         transform: `translate(${xy.x}px, ${xy.y}px)`,
