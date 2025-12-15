@@ -247,6 +247,7 @@ const Header = () => {
           borderBottomLeftRadius: isMenuOpen ? "0px" : "50%",
           transition:
             "transform 0.5s ease-in-out, border-radius 0.5s ease-in-out",
+          backgroundColor: activeLink === "/contact" ? "#fff" : undefined,
         }}
       >
         <div className="flex flex-col h-full justify-between p-12 md:p-16">
@@ -277,6 +278,8 @@ const Header = () => {
                         className={`text-5xl md:text-6xl font-light transition-colors duration-300 block ${
                           isActive
                             ? "text-[#1E90FF]"
+                            : activeLink === "/contact"
+                            ? "text-[#222] hover:text-[#1E90FF]"
                             : "text-white hover:text-[#1E90FF]"
                         }`}
                       >
@@ -297,7 +300,9 @@ const Header = () => {
                 href="https://www.instagram.com/teerathbajaj/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-[#1E90FF] transition-colors"
+                className={`transition-colors hover:text-[#1E90FF] ${
+                  activeLink === "/contact" ? "text-[#222]" : "text-white"
+                }`}
               >
                 Instagram
               </a>
@@ -305,7 +310,9 @@ const Header = () => {
                 href="https://www.linkedin.com/in/teerath-bajaj-82358b1a7/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-[#1E90FF] transition-colors"
+                className={`transition-colors hover:text-[#1E90FF] ${
+                  activeLink === "/contact" ? "text-[#222222]" : "text-white"
+                }`}
               >
                 LinkedIn
               </a>
