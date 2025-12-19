@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import meBikeImg from "../images/me_bike.jpeg";
+import meImg from "../images/me.jpeg";
 
 // Animated Ellipses Component
 const AnimatedEllipsis = () => {
@@ -168,7 +168,7 @@ const About = () => {
             {/* Right - Image */}
             <div className="relative h-[800px] sm:h-[900px] lg:h-[1000px] rounded-3xl overflow-hidden shadow-2xl">
               <img
-                SRC={meBikeImg}
+                SRC={meImg}
                 alt="City view"
                 className="w-full h-full object-cover"
               />

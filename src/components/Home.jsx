@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import Footer from "./Footer";
-import ausImage from "../images/aus.jpg";
+import ausImage from "../images/aus.jpeg";
 import benStudioImg from "../images/ben_studio.png";
 import benWebsiteImg from "../images/ben_website.png";
 import img3dworld from "../images/3dworld.png";
-import imgLacasa from "../images/lacasa.png";
+import imgKobeShoes from "../images/kobe_shoes.png";
 import imgXwing from "../images/xwing.png";
 import imgDexter from "../images/dexter.png";
 import imgDodgers from "../images/dodgersapp.png";
 import imgPokeball from "../images/pokeball.png";
-import imgLakers from "../images/lakersapp.jpeg";
+import imgBridge from "../images/bridge.png";
 import imgShrooms from "../images/shrooms.png";
 
 // --- More Work Button ---
@@ -212,8 +212,8 @@ const ScrollingGallery = () => {
     };
   }, [isMobile]);
 
-  const row1 = [img3dworld, imgLacasa, imgXwing, imgDexter];
-  const row2 = [imgLakers, imgPokeball, imgDodgers, imgShrooms];
+  const row1 = [img3dworld, imgKobeShoes, imgXwing, imgDexter];
+  const row2 = [imgBridge, imgPokeball, imgDodgers, imgShrooms];
 
   return (
     <div className="w-full bg-white py-12 md:py-20 overflow-hidden">
@@ -339,6 +339,9 @@ const Home = () => {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `url(${ausImage})`,
+            backgroundPosition: "center 41%",
+
+            transformOrigin: "center",
             filter: "brightness(0.7)",
           }}
         />

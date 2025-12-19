@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import ausImage from "../images/aus.jpg";
+import ausImage from "../images/aus.jpeg";
 
 const Footer = () => {
   const [xy, setXY] = useState({ x: 0, y: 0 });

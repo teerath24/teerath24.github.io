@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
-import ausImage from "../images/aus.jpg";
+import ausImage from "../images/aus.jpeg";
 import Header from "./Header";
 
 // Toast Component
