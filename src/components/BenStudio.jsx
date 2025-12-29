@@ -285,18 +285,26 @@ const BenStudio = () => {
           {/* Grid Layout - 4 columns, wraps to multiple rows */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { num: "01", title: "Authentication", desc: "SSO/OAuth login" },
-              { num: "02", title: "Email/Code", desc: "Verification flow" },
-              { num: "03", title: "Gender Select", desc: "Avatar base type" },
-              { num: "04", title: "Face Presets", desc: "Facial structure" },
-              { num: "05", title: "Skin Tone", desc: "Color selection" },
+              { num: "01", title: "Authentication", desc: "SSO/OAuth Login" },
+              { num: "02", title: "Email/Code", desc: "Verification Flow" },
+              { num: "03", title: "Gender Select", desc: "Avatar Base Type" },
+              { num: "04", title: "Face Presets", desc: "Facial Structure" },
+              { num: "05", title: "Skin Tone", desc: "Color Selection" },
               { num: "06", title: "Eye Color", desc: "Color selection" },
-              { num: "07", title: "Hair Style", desc: "Select & color" },
-              { num: "08", title: "Outfit", desc: "Choose clothing" },
-              { num: "09", title: "Personality", desc: "Voice & traits" },
-              { num: "10", title: "Finish", desc: "Name & save" },
-              { num: "11", title: "General Edit", desc: "Edit Mode" },
-              { num: "12", title: "Advanced Edit", desc: "Edit Mode" },
+              { num: "07", title: "Hair Style", desc: "Style & Color" },
+              { num: "08", title: "Outfit", desc: "Choose Clothing" },
+              { num: "09", title: "Personality", desc: "Voice & Traits" },
+              { num: "10", title: "Finish", desc: "Name & Save" },
+              {
+                num: "11",
+                title: "General Edit",
+                desc: "Quick Appearance Changes",
+              },
+              {
+                num: "12",
+                title: "Advanced Edit",
+                desc: "Fine-Tune Every Detail",
+              },
             ].map((step, idx) => (
               <div
                 key={step.num}
