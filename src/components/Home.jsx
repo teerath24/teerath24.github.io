@@ -325,7 +325,7 @@ const Home = () => {
       title: "Ben Website",
       category: "Design & Development",
       image: benWebsiteImg,
-      link: "https://beninc.ai/",
+      link: "/ben-website",
     },
   ];
 

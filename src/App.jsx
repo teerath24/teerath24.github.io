@@ -8,6 +8,7 @@ import WelcomeSplash from "./components/WelcomeSplash";
 import Home from "./components/Home";
 import BenStudio from "./components/BenStudio";
 import "./index.css";
+import BenWebsite from "./components/BenWebsite";
 
 function AppContent() {
   const [showSplash, setShowSplash] = useState(true);
@@ -59,6 +60,7 @@ function AppContent() {
             }
           />
           <Route path="/ben-studio" element={<BenStudio />} />
+          <Route path="/ben-website" element={<BenWebsite />} />
           <Route path="/work" element={<Work />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />

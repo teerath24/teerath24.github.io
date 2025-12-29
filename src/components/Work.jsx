@@ -364,7 +364,7 @@ const Work = () => {
       services: "Design & Development",
       year: "2025",
       category: "both",
-      link: "https://beninc.ai/",
+      link: "/ben-website",
       image: benWebsiteImg,
     },
     {
