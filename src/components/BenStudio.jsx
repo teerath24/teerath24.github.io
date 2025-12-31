@@ -290,7 +290,7 @@ const BenStudio = () => {
               { num: "03", title: "Gender Select", desc: "Avatar Base Type" },
               { num: "04", title: "Face Presets", desc: "Facial Structure" },
               { num: "05", title: "Skin Tone", desc: "Color Selection" },
-              { num: "06", title: "Eye Color", desc: "Color selection" },
+              { num: "06", title: "Eye Color", desc: "Color Selection" },
               { num: "07", title: "Hair Style", desc: "Style & Color" },
               {
                 num: "08",
