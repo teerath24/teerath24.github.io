@@ -295,7 +295,7 @@ const BenStudio = () => {
               {
                 num: "08",
                 title: "Outfit",
-                desc: "Choose Clothing/Accessories",
+                desc: "Choose Clothing & Accessories",
               },
               { num: "09", title: "Personality", desc: "Voice & Traits" },
               { num: "10", title: "Finish", desc: "Name & Save" },
