@@ -292,7 +292,11 @@ const BenStudio = () => {
               { num: "05", title: "Skin Tone", desc: "Color Selection" },
               { num: "06", title: "Eye Color", desc: "Color selection" },
               { num: "07", title: "Hair Style", desc: "Style & Color" },
-              { num: "08", title: "Outfit", desc: "Choose Clothing" },
+              {
+                num: "08",
+                title: "Outfit",
+                desc: "Choose Clothing/Accessories",
+              },
               { num: "09", title: "Personality", desc: "Voice & Traits" },
               { num: "10", title: "Finish", desc: "Name & Save" },
               {
