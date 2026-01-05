@@ -5,6 +5,7 @@ import benweb1 from "../images/benweb1.png";
 import benweb2 from "../images/benweb2.png";
 import benweb3 from "../images/benweb3.png";
 import benweb4 from "../images/benweb4.png";
+import useScrollReveal from "../hooks/useScrollReveal";
 
 // Interactive Circle Button Component
 const LiveSiteButton = ({ text, href }) => {
@@ -83,12 +84,13 @@ const BenWebsite = () => {
   const imageContainerRef = useRef(null);
   const lastScrollY = useRef(0);
 
+  useScrollReveal();
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       const delta = currentScrollY - lastScrollY.current;
 
-      // Vertical scroll offset for the three images
       setScrollOffset((prev) =>
         Math.max(-50, Math.min(50, prev + delta * 0.15))
       );
@@ -103,20 +105,11 @@ const BenWebsite = () => {
         const offset = Math.max(-30, Math.min(0, scrollProgress * 50 - 30));
         setImageOffset(offset);
       }
-
-      // Intersection Observer for scroll animations
-      const sections = document.querySelectorAll(".animate-on-scroll");
-      sections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        const isVisible = rect.top < window.innerHeight * 0.8;
-        if (isVisible) {
-          section.classList.add("is-visible");
-        }
-      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Initial check
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -137,27 +130,16 @@ const BenWebsite = () => {
           transform: translateY(30px);
           transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        
+
         .animate-on-scroll.is-visible {
           opacity: 1;
           transform: translateY(0);
         }
 
-        .stagger-1 {
-          transition-delay: 0.1s;
-        }
-        
-        .stagger-2 {
-          transition-delay: 0.2s;
-        }
-        
-        .stagger-3 {
-          transition-delay: 0.3s;
-        }
-        
-        .stagger-4 {
-          transition-delay: 0.4s;
-        }
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
       `}</style>
 
       {/* Header */}

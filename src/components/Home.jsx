@@ -11,6 +11,7 @@ import imgDodgers from "../images/dodgersapp.png";
 import imgPokeball from "../images/pokeball.png";
 import imgBridge from "../images/bridge.png";
 import imgShrooms from "../images/shrooms.png";
+import useScrollReveal from "../hooks/useScrollReveal";
 
 // --- More Work Button ---
 const MoreWorkButton = ({ text, href }) => {
@@ -281,6 +282,8 @@ const ScrollingGallery = () => {
 
 // --- Main Home Component ---
 const Home = () => {
+  useScrollReveal();
+
   const name = "Teerath Bajaj";
   const [scrollDirection, setScrollDirection] = useState("down");
   const [hoveredProject, setHoveredProject] = useState(null);
@@ -381,7 +384,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-16">
           {/* Wrap the content below in a React Fragment (<> ... </>) */}
           <>
-            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12 md:mb-16 gap-8 md:gap-12">
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12 md:mb-16 gap-8 md:gap-12 animate-on-scroll">
               <div className="flex-1">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 max-w-2xl leading-tight">
                   Building digital experiences with intention, clarity, and
@@ -403,23 +406,28 @@ const Home = () => {
             </div>
 
             {/* NEW LOCATION: This P tag is now placed correctly in the document flow */}
-            <p className="text-3xl text-gray-500 uppercase tracking-wider mb-4 md:mb-6">
+            <p className="text-3xl text-gray-500 uppercase tracking-wider mb-4 md:mb-6 animate-on-scroll">
               RECENT WORK
             </p>
 
             <div className="mt-12 md:mt-16">
-              {projects.map((project) => (
-                <ProjectCard
+              {projects.map((project, index) => (
+                <div
                   key={project.id}
-                  title={project.title}
-                  category={project.category}
-                  link={project.link}
-                  isHovered={hoveredProject === project.id}
-                  onHover={() => setHoveredProject(project.id)}
-                  onLeave={() => setHoveredProject(null)}
-                />
+                  className={`animate-on-scroll stagger-${index + 1}`}
+                >
+                  <ProjectCard
+                    title={project.title}
+                    category={project.category}
+                    link={project.link}
+                    isHovered={hoveredProject === project.id}
+                    onHover={() => setHoveredProject(project.id)}
+                    onLeave={() => setHoveredProject(null)}
+                  />
+                </div>
               ))}
-              <div className="flex justify-center mt-12 md:mt-16">
+
+              <div className="flex justify-center mt-12 md:mt-16 animate-on-scroll">
                 <MoreWorkButton text="See More" href="/work" />
               </div>
             </div>

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import useScrollReveal from "../hooks/useScrollReveal";
 import meImg from "../images/me.jpeg";
 
 // Animated Ellipses Component
@@ -93,6 +94,8 @@ const InteractiveCircleButton = ({ text, href }) => {
 };
 
 const About = () => {
+  useScrollReveal();
+
   return (
     <div className="min-h-screen bg-[#f5f5f5] text-black">
       <Header />
@@ -125,7 +128,7 @@ const About = () => {
       <div className="pt-32 pb-20">
         <div className="max-w-[1800px] mx-auto px-4 sm:px-8 md:px-12 lg:px-20">
           {/* Title Section - Centered */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-on-scroll">
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl font-light leading-tight mb-8">
               Empowering brands to thrive
               <br />
@@ -150,14 +153,16 @@ const About = () => {
             {/* Left - Text Content */}
             <div className="flex flex-col justify-start">
               <div className="flex items-start gap-4 mb-8">
-                <div className="text-2xl sm:text-3xl mt-1 flex-shrink-0">↘</div>
+                <div className="text-2xl sm:text-3xl mt-1 flex-shrink-0 animate-on-scroll">
+                  ↘
+                </div>
                 <div>
-                  <p className="text-base sm:text-lg md:text-xl leading-relaxed mb-4">
+                  <p className="text-base sm:text-lg md:text-xl leading-relaxed mb-4 animate-on-scroll">
                     I’m passionate about improving the lives of others by
                     designing and developing. I am constantly looking to learn
                     new things daily and be better than I was yesterday.
                   </p>
-                  <p className="text-sm sm:text-base text-gray-400 italic">
+                  <p className="text-sm sm:text-base text-gray-400 italic animate-on-scroll">
                     Always learning
                     <AnimatedEllipsis />
                   </p>
@@ -166,7 +171,7 @@ const About = () => {
             </div>
 
             {/* Right - Image */}
-            <div className="relative h-[800px] sm:h-[900px] lg:h-[1000px] rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative h-[800px] sm:h-[900px] lg:h-[1000px] rounded-3xl overflow-hidden shadow-2xl animate-on-scroll">
               <img
                 SRC={meImg}
                 alt="City view"
@@ -176,7 +181,7 @@ const About = () => {
           </div>
 
           {/* Services Section */}
-          <div className="mb-32">
+          <div className="mb-32 animate-on-scroll">
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-light mb-16">
               I can help you with <AnimatedEllipsis />
             </h2>
@@ -226,7 +231,7 @@ const About = () => {
           </div>
 
           {/* CTA Section */}
-          <div className="flex flex-col items-center justify-center text-center py-20">
+          <div className="flex flex-col items-center justify-center text-center py-20 animate-on-scroll">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-12 max-w-3xl leading-tight">
               Ready to create something amazing together?
             </h2>

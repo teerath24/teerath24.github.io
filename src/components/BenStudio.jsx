@@ -12,6 +12,7 @@ import finalImg from "../images/final.png";
 import genEditImg from "../images/genedit.png";
 import advEditImg from "../images/advedit.png";
 import Footer from "./Footer";
+import useScrollReveal from "../hooks/useScrollReveal";
 
 const BenStudio = () => {
   const videoRef = useRef(null);
@@ -19,28 +20,24 @@ const BenStudio = () => {
   const [scrollOffset, setScrollOffset] = useState(0);
   const lastScrollY = useRef(0);
 
+  useScrollReveal();
+
+  // Existing scroll logic (unchanged)
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       const delta = currentScrollY - lastScrollY.current;
+
       setScrollOffset((prev) =>
         Math.max(-50, Math.min(50, prev + delta * 0.15))
       );
-      lastScrollY.current = currentScrollY;
 
-      // Intersection Observer for scroll animations
-      const sections = document.querySelectorAll(".animate-on-scroll");
-      sections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        const isVisible = rect.top < window.innerHeight * 0.8;
-        if (isVisible) {
-          section.classList.add("is-visible");
-        }
-      });
+      lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Initial check
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -64,7 +61,6 @@ const BenStudio = () => {
     }
   };
 
-  // Technology stack with colors
   const techStack = [
     { name: "React.js", color: "#61DAFB" },
     { name: "Unity WebGL", color: "#000000" },
@@ -74,7 +70,6 @@ const BenStudio = () => {
     { name: "Tailwind CSS", color: "#F7DF1E" },
   ];
 
-  // Gallery images with actual image imports
   const galleryImages = [
     { id: 1, label: "Login Flow", color: "#232323", image: loginImg },
     { id: 2, label: "Gender Select", color: "#232323", image: genderImg },
@@ -97,27 +92,16 @@ const BenStudio = () => {
           transform: translateY(30px);
           transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        
+
         .animate-on-scroll.is-visible {
           opacity: 1;
           transform: translateY(0);
         }
 
-        .stagger-1 {
-          transition-delay: 0.1s;
-        }
-        
-        .stagger-2 {
-          transition-delay: 0.2s;
-        }
-        
-        .stagger-3 {
-          transition-delay: 0.3s;
-        }
-        
-        .stagger-4 {
-          transition-delay: 0.4s;
-        }
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
       `}</style>
 
       {/* Header */}

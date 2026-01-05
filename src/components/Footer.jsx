@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import ausImage from "../images/aus.jpeg";
+import useScrollReveal from "../hooks/useScrollReveal";
 
 const Footer = () => {
   const [xy, setXY] = useState({ x: 0, y: 0 });
@@ -13,6 +14,8 @@ const Footer = () => {
   const emailRafId = useRef(null);
   const phoneRafId = useRef(null);
   const hoverThreshold = 12;
+
+  useScrollReveal();
 
   const handleMouseMove = (e) => {
     if (ref.current) {
@@ -88,7 +91,7 @@ const Footer = () => {
     <footer className="w-full bg-[#222] text-white min-h-screen relative overflow-hidden flex items-center">
       <div className="w-full max-w-[1900px] mx-auto px-8 sm:px-12 md:px-16 lg:px-24 py-16 md:py-24 lg:py-32">
         {/* Main Content */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12 lg:gap-20 mb-20 lg:mb-32">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12 lg:gap-20 mb-20 lg:mb-32 animate-on-scroll">
           {/* Left - Profile and Text */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 md:gap-10">
             <div className="w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 rounded-full overflow-hidden bg-gray-700 flex-shrink-0">
@@ -167,11 +170,11 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <div className="w-full h-px bg-gray-700 mb-12 lg:mb-16"></div>
+        <div className="w-full h-px bg-gray-700 mb-12 lg:mb-16 animate-on-scroll"></div>
 
         {/* Bottom - Contact and Socials */}
         {/* Changed items-start to items-center for mobile centering */}
-        <div className="flex flex-col lg:flex-row justify-between items-center lg:items-end gap-8 lg:gap-12">
+        <div className="flex flex-col lg:flex-row justify-between items-center lg:items-end gap-8 lg:gap-12 animate-on-scroll stagger-2">
           {/* Contact Info */}
           {/* Added justify-center for mobile centering */}
           <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import useScrollReveal from "../hooks/useScrollReveal";
 import benStudioImg from "../images/ben_studio.png";
 import benWebsiteImg from "../images/ben_website.png";
 import flickFlowImg from "../images/flick_flow.jpg";
@@ -331,6 +332,8 @@ const Work = () => {
   const [hoveredProject, setHoveredProject] = useState(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
+  useScrollReveal();
+
   useEffect(() => {
     let rafId;
     const handleMouseMove = (e) => {
@@ -446,7 +449,7 @@ const Work = () => {
       <div className="pt-32 pb-20">
         <div className="max-w-[1800px] mx-auto px-4 sm:px-8 md:px-12 lg:px-20">
           {/* Hero Section */}
-          <div className="mb-16">
+          <div className="mb-16 animate-on-scroll">
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light leading-tight mb-12">
               Elevating ideas into
               <br />
@@ -483,7 +486,7 @@ const Work = () => {
 
             {/* Column Headers - Only show in list view */}
             {view === "list" && (
-              <div className="hidden md:grid md:grid-cols-4 gap-8 border-b border-gray-300 pb-4 mb-2">
+              <div className="hidden md:grid md:grid-cols-4 gap-8 border-b border-gray-300 pb-4 mb-2 animate-on-scroll">
                 <p className="text-xs text-gray-500 uppercase tracking-wider">
                   CLIENT
                 </p>
@@ -503,7 +506,7 @@ const Work = () => {
           {/* Projects Display */}
           {view === "list" ? (
             // List View
-            <div>
+            <div className="animate-on-scroll">
               {filteredProjects.map((project) => (
                 <ProjectCard
                   key={project.id}
@@ -520,7 +523,7 @@ const Work = () => {
             </div>
           ) : (
             // Grid View
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-20 animate-on-scroll">
               {filteredProjects.map((project) => (
                 <ProjectGridCard
                   key={project.id}

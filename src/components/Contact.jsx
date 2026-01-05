@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import ausImage from "../images/aus.jpeg";
 import Header from "./Header";
+import useScrollReveal from "../hooks/useScrollReveal";
 
 // Toast Component
 const Toast = ({ message, type, onClose }) => {
@@ -52,6 +53,8 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [toast, setToast] = useState(null);
   const buttonRef = useRef(null);
+
+  useScrollReveal();
 
   // Replace these with your actual EmailJS credentials
   const EMAILJS_SERVICE_ID = "service_wu0t4wm";
@@ -141,7 +144,7 @@ const Contact = () => {
       <Header />
 
       {/* Main Content - Fully Centered */}
-      <div className="flex-1 flex items-center justify-center w-full py-24 md:py-32">
+      <div className="flex-1 flex items-center justify-center w-full py-24 md:py-32 animate-on-scroll">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 lg:gap-20 xl:gap-24">
             {/* Right Side - Contact Info (Shows first on mobile) */}
@@ -217,8 +220,8 @@ const Contact = () => {
             </div>
 
             {/* Left Side - Form (Shows second on mobile) */}
-            <div className="w-full order-2 lg:order-1">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light mb-12 md:mb-16 leading-tight">
+            <div className="w-full order-2 lg:order-1 animate-on-scroll">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light mb-12 md:mb-16 leading-tight animate-on-scroll">
                 Let's work
                 <br />t o g e t h e r
               </h1>
@@ -315,7 +318,7 @@ const Contact = () => {
                 </div>
 
                 {/* Submit Button - Dodger Blue */}
-                <div className="flex justify-center pt-6 md:pt-8">
+                <div className="flex justify-center pt-6 md:pt-8 animate-on-scroll">
                   <button
                     ref={buttonRef}
                     onClick={handleSubmit}
