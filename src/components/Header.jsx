@@ -123,7 +123,7 @@ const HamburgerButton = ({ isScrolled, isMenuOpen, onClick }) => {
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`fixed top-8 right-8 z-[60] w-20 h-20 rounded-full bg-gray-900 border border-gray-600 flex items-center justify-center transition-all duration-300 hover:scale-105 overflow-hidden focus:outline-none focus:ring-0 focus-visible:ring-0 opacity-100 pointer-events-auto ${
+      className={`fixed top-8 right-8 z-[60] w-20 h-20 rounded-full bg-[#222] border border-gray-600 flex items-center justify-center transition-all duration-300 hover:scale-105 overflow-hidden focus:outline-none focus:ring-0 focus-visible:ring-0 opacity-100 pointer-events-auto ${
         isScrolled ? "" : "md:opacity-0 md:pointer-events-none"
       }`}
       style={{
@@ -239,7 +239,7 @@ const Header = () => {
 
       {/* Full-Screen Side Menu with Arched Left Edge Animation */}
       <div
-        className={`fixed top-0 right-0 h-full w-full md:w-[600px] bg-gray-900 z-50 transform transition-transform duration-500 ease-in-out overflow-hidden ${
+        className={`fixed top-0 right-0 h-full w-full md:w-[600px] bg-[#222] z-50 transform transition-transform duration-500 ease-in-out overflow-hidden ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
         style={{
