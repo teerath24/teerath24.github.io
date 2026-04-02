@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Footer from "./Footer";
 import ausImage from "../images/aus.jpeg";
 import benStudioImg from "../images/ben_studio.png";
+import VGImg from "../images/vg.png";
 import benWebsiteImg from "../images/ben_website.png";
 import img3dworld from "../images/3dworld.png";
 import imgKobeShoes from "../images/kobe_shoes.png";
@@ -200,7 +201,7 @@ const ScrollingGallery = () => {
         const delta = currentScrollY - lastScrollY.current;
         // Increased multiplier from 0.05 to 0.15 for more movement
         setScrollOffset((prev) =>
-          Math.max(-50, Math.min(50, prev + delta * 0.15))
+          Math.max(-50, Math.min(50, prev + delta * 0.15)),
         );
         lastScrollY.current = currentScrollY;
       }
@@ -318,13 +319,20 @@ const Home = () => {
   const projects = [
     {
       id: 1,
+      title: "VirtuoGrowth",
+      category: "Design & Development",
+      image: VGImg,
+      link: "https://www.virtuogrowth.com/",
+    },
+    {
+      id: 2,
       title: "Ben Studio",
       category: "Design & Development",
       image: benStudioImg,
       link: "/ben-studio",
     },
     {
-      id: 2,
+      id: 3,
       title: "Ben Website",
       category: "Design & Development",
       image: benWebsiteImg,

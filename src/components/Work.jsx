@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import useScrollReveal from "../hooks/useScrollReveal";
+import VGImg from "../images/vg.png";
 import benStudioImg from "../images/ben_studio.png";
 import benWebsiteImg from "../images/ben_website.png";
 import flickFlowImg from "../images/flick_flow.jpg";
@@ -351,12 +352,22 @@ const Work = () => {
 
   const projects = [
     {
+      id: 0,
+      title: "VirtuoGrowth",
+      location: "United States",
+      services: "Design & Development",
+      year: "2026",
+      category: "both",
+      link: "https://www.virtuogrowth.com/",
+      image: VGImg,
+    },
+    {
       id: 1,
       title: "Ben Studio",
       location: "United States",
       services: "Design & Development",
       year: "2025",
-      category: "development",
+      category: "both",
       link: "/ben-studio",
       image: benStudioImg,
     },
@@ -400,44 +411,37 @@ const Work = () => {
       link: "https://www.figma.com/proto/LPJ1hOQCvGtd3mchw3lwFa/PSCORE?page-id=61%3A139&node-id=143-378&starting-point-node-id=143%3A378&mode=design&t=18cBmsynNFBt3FjZ-1",
       image: NKImg,
     },
-    // {
-    //   id: 6,
-    //   title: "AVVR",
-    //   location: "The Netherlands",
-    //   services: "Design & Development",
-    //   year: "2023",
-    //   category: "both",
-    //   link: "#",
-    //   image:
-    //     "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    // },
-    // {
-    //   id: 7,
-    //   title: "GraphicHunters",
-    //   location: "The Netherlands",
-    //   services: "Design & Development",
-    //   year: "2022",
-    //   category: "both",
-    //   link: "#",
-    //   image:
-    //     "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80",
-    // },
   ];
 
   const filterCounts = {
     all: projects.length,
     design: projects.filter(
-      (p) => p.category === "design" || p.category === "both"
+      (p) => p.category === "design" || p.category === "both",
     ).length,
     development: projects.filter(
-      (p) => p.category === "development" || p.category === "both"
+      (p) => p.category === "development" || p.category === "both",
     ).length,
   };
 
-  const filteredProjects = projects.filter((project) => {
-    if (activeFilter === "all") return true;
-    return project.category === activeFilter || project.category === "both";
-  });
+  const filteredProjects = projects
+    .filter((project) => {
+      if (activeFilter === "all") return true;
+      return project.category === activeFilter || project.category === "both";
+    })
+    .sort((a, b) => {
+      // If the Design filter is active, prioritize JenniAI (id: 4) and PSCORE (id: 5)
+      if (activeFilter === "design") {
+        const topPriority = [4, 5];
+        const aPriority = topPriority.indexOf(a.id);
+        const bPriority = topPriority.indexOf(b.id);
+
+        if (aPriority !== -1 && bPriority !== -1) return aPriority - bPriority;
+        if (aPriority !== -1) return -1;
+        if (bPriority !== -1) return 1;
+      }
+      // Otherwise, keep the original order (by id)
+      return a.id - b.id;
+    });
 
   const currentProject = projects.find((p) => p.id === hoveredProject);
 
