@@ -139,7 +139,7 @@ const About = () => {
             <div className="relative w-full max-w-6xl mx-auto">
               <div className="absolute left-0 right-0 top-1/2 h-px bg-gray-300 -translate-y-1/2"></div>
               <div className="relative flex justify-end pr-16 md:pr-24 lg:pr-32">
-                <div className="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full bg-[#5A67D8] flex items-center justify-center flex-shrink-0 relative z-10">
+                <div className="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full bg-[#1E90FF] flex items-center justify-center flex-shrink-0 relative z-10">
                   <div>
                     <p className="text-8xl">🤙🏽</p>
                   </div>

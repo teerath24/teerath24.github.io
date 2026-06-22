@@ -149,18 +149,21 @@ const Drums = () => {
           </div>
 
           {/* Videos Grid */}
-          {/* 2. FIXED: Added 'mt-24' here to bring the videos grid down further from the divider above it */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16 mt-24">
             {videos.map((video, i) => (
               <VideoCard key={video.id} video={video} index={i} />
             ))}
           </div>
 
-          {/* Bottom CTA */}
-          <div className="mt-32 border-t border-gray-300 pt-16 animate-on-scroll flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
-            <p className="text-3xl sm:text-4xl md:text-5xl font-light text-gray-900 max-w-lg leading-tight">
-              Design by day. Drums by night.
-            </p>
+          {/* Divider hanglooooose */}
+          <div className="mt-32 flex items-center mb-16 animate-on-scroll">
+            <div className="w-full h-px bg-gray-300 relative">
+              <div className="absolute left-8 top-1/2 -translate-y-1/2 w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full bg-[#1E90FF] flex items-center justify-center flex-shrink-0 z-10">
+                <span className="text-6xl sm:text-7xl md:text-8xl select-none">
+                  🤙🏽
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
