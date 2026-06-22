@@ -126,16 +126,15 @@ const Drums = () => {
               <br />
               the drums
             </h1>
-            <p className="text-gray-500 text-lg sm:text-xl max-w-xl">
-              A highly effective method for ensuring my neighbors never ask me
-              for favors.
+            <p className="text-gray-500 text-4xl sm:text-5xl max-w-xl font-mono mt-4">
+              {"<> 🥁 </>"}
             </p>
           </div>
 
           {/* Divider with clockedout image circle */}
           <div className="flex items-center gap-6 mb-16 animate-on-scroll">
             <p className="text-xs text-gray-400 uppercase tracking-widest whitespace-nowrap">
-              Sessions
+              drum
             </p>
             <div className="flex-1 h-px bg-gray-300 relative">
               <div className="absolute right-8 top-1/2 -translate-y-1/2 w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full overflow-hidden bg-gray-200 flex-shrink-0 z-10">
@@ -155,15 +154,18 @@ const Drums = () => {
             ))}
           </div>
 
-          {/* Divider hanglooooose */}
-          <div className="mt-32 flex items-center mb-16 animate-on-scroll">
-            <div className="w-full h-px bg-gray-300 relative">
+          {/* Divider hanglooooose with line on the left and 'drum' text on the right */}
+          <div className="mt-32 flex items-center gap-6 mb-16 animate-on-scroll">
+            <div className="flex-1 h-px bg-gray-300 relative">
               <div className="absolute left-8 top-1/2 -translate-y-1/2 w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full bg-[#1E90FF] flex items-center justify-center flex-shrink-0 z-10">
                 <span className="text-6xl sm:text-7xl md:text-8xl select-none">
                   🤙🏽
                 </span>
               </div>
             </div>
+            <p className="text-xs text-gray-400 uppercase tracking-widest whitespace-nowrap">
+              sessions
+            </p>
           </div>
         </div>
       </div>
