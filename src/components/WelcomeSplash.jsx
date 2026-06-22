@@ -9,7 +9,7 @@ const WelcomeSplash = ({
   const [index, setIndex] = useState(0);
   const [fade, setFade] = useState(true);
   const [animationPhase, setAnimationPhase] = useState(
-    isInitialLoad ? "show" : "enter"
+    isInitialLoad ? "show" : "enter",
   ); // enter, show, exit
 
   const greetings = [

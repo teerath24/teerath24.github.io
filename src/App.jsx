@@ -7,8 +7,9 @@ import Work from "./components/Work";
 import WelcomeSplash from "./components/WelcomeSplash";
 import Home from "./components/Home";
 import BenStudio from "./components/BenStudio";
-import "./index.css";
 import BenWebsite from "./components/BenWebsite";
+import Drums from "./components/Drums";
+import "./index.css";
 
 function AppContent() {
   const [showSplash, setShowSplash] = useState(true);
@@ -33,7 +34,6 @@ function AppContent() {
     }, 100);
   };
 
-  // Expose navigation function globally for components to use
   React.useEffect(() => {
     window.navigateWithSplash = handleNavigation;
   }, []);
@@ -64,6 +64,7 @@ function AppContent() {
           <Route path="/work" element={<Work />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/drums" element={<Drums />} />
         </Routes>
       )}
     </div>

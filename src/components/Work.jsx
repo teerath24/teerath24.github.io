@@ -573,7 +573,7 @@ const Work = () => {
       )}
 
       {/* View Button Circle - Only in Grid View */}
-      {view === "grid" && hoveredProject && (
+      {view === "grid" && hoveredProject !== null && (
         <div
           className="fixed top-0 left-0 w-full h-full z-[9999]"
           style={{ pointerEvents: "none" }}

@@ -28,8 +28,8 @@ const NavItemWithHoverEffect = ({ item, activeLink, onClick, isDarkMode }) => {
   const linkColorClasses = isActive
     ? "text-[#1E90FF] font-semibold"
     : isDarkMode
-    ? "text-[#000000] hover:text-[#1E90FF]"
-    : "text-white hover:text-[#1E90FF]";
+      ? "text-[#000000] hover:text-[#1E90FF]"
+      : "text-white hover:text-[#1E90FF]";
 
   const commonClasses = `
     block relative overflow-hidden group 
@@ -51,16 +51,11 @@ const NavItemWithHoverEffect = ({ item, activeLink, onClick, isDarkMode }) => {
     e.preventDefault();
     onClick(item.href);
 
-    // Determine navigation text based on href
-    let navText = "Home";
-    if (item.href === "/work") navText = "Work";
-    else if (item.href === "/about") navText = "About";
-    else if (item.href === "/contact") navText = "Contact";
+    let navText = item.name;
 
     if (window.navigateWithSplash) {
       window.navigateWithSplash(item.href, navText);
     } else {
-      // Fallback to regular navigation
       window.location.href = item.href;
     }
   };
@@ -169,14 +164,17 @@ const Header = () => {
     { name: "Home", href: "/" },
     { name: "Work", href: "/work" },
     { name: "About", href: "/about" },
+    { name: "Drums", href: "/drums" },
     { name: "Contact", href: "/contact" },
   ];
 
-  // Get current active link from location
   const activeLink = location.pathname;
 
-  // Determine if we should use dark mode (black text) based on current page
-  const isDarkMode = activeLink === "/work" || activeLink === "/about";
+  // Dark mode on these pages (light background)
+  const isDarkMode =
+    activeLink === "/work" ||
+    activeLink === "/about" ||
+    activeLink === "/drums";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -279,8 +277,8 @@ const Header = () => {
                           isActive
                             ? "text-[#1E90FF]"
                             : activeLink === "/contact"
-                            ? "text-[#222] hover:text-[#1E90FF]"
-                            : "text-white hover:text-[#1E90FF]"
+                              ? "text-[#222] hover:text-[#1E90FF]"
+                              : "text-white hover:text-[#1E90FF]"
                         }`}
                       >
                         {item.name}
