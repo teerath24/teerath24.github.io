@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import ausImage from "../images/aus.jpeg";
+import hanoiImg from "../images/hanoi.JPG";
 import useScrollReveal from "../hooks/useScrollReveal";
 
 const Footer = () => {
@@ -96,7 +96,7 @@ const Footer = () => {
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 md:gap-10">
             <div className="w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 rounded-full overflow-hidden bg-gray-700 flex-shrink-0">
               <img
-                src={ausImage}
+                src={hanoiImg}
                 alt="Profile"
                 className="w-full h-full object-cover"
               />

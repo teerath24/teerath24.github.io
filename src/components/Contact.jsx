@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
-import ausImage from "../images/aus.jpeg";
+import hanoiImg from "../images/hanoi.JPG";
 import Header from "./Header";
 import useScrollReveal from "../hooks/useScrollReveal";
 
@@ -104,7 +104,7 @@ const Contact = () => {
           services: formData.services || "Not specified",
           message: formData.message,
         },
-        EMAILJS_PUBLIC_KEY
+        EMAILJS_PUBLIC_KEY,
       );
 
       // Success!
@@ -153,7 +153,7 @@ const Contact = () => {
               <div className="mb-10 md:mb-12 flex items-center gap-6 md:gap-8">
                 <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full bg-gray-700 overflow-hidden flex-shrink-0">
                   <img
-                    src={ausImage}
+                    src={hanoiImg}
                     alt="Profile"
                     className="w-full h-full object-cover"
                   />

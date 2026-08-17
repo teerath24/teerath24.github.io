@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Footer from "./Footer";
-import hanoiImg from "../images/hanoi.JPG";
+import ausImage from "../images/aus.jpeg";
 import benStudioImg from "../images/ben_studio.png";
 import VGImg from "../images/vg.png";
 import benWebsiteImg from "../images/ben_website.png";
@@ -349,8 +349,9 @@ const Home = () => {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url(${hanoiImg})`,
-            backgroundPosition: "center 38%",
+            backgroundImage: `url(${ausImage})`,
+            backgroundPosition: "center 41%",
+
             transformOrigin: "center",
             filter: "brightness(0.7)",
           }}
