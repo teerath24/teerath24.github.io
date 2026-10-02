@@ -4,24 +4,41 @@ import Footer from "./Footer";
 import useScrollReveal from "../hooks/useScrollReveal";
 import clockedOutImg from "../images/clockedout.png";
 
-// 1. FIXED: Wrapped the times in quotes so they are valid strings
 const videos = [
   {
     id: 1,
+    youtubeId: "gWJpJ3KstTA",
+    band: "NYC Vlog",
+    time: "13:20",
+  },
+  {
+    id: 2,
+    youtubeId: "W042glN63pE",
+    band: "MANILA Vlog",
+    time: "13:31",
+  },
+  {
+    id: 3,
+    youtubeId: "zlVTNveri5A",
+    band: "PHILADEPHIA Vlog",
+    time: "07:57",
+  },
+  {
+    id: 4,
     youtubeId: "xpywNV_1w_I",
     band: "PlanetShakers",
     song: "Come Right Now",
     time: "3:27",
   },
   {
-    id: 2,
+    id: 5,
     youtubeId: "K5PkTZhT_KI",
     band: "Paramore",
     song: "Misery Business",
     time: "3:26",
   },
   {
-    id: 3,
+    id: 6,
     youtubeId: "3y-eoHwDTOU",
     band: "Twenty One Pilots",
     song: "Ride",
@@ -110,7 +127,7 @@ const VideoCard = ({ video, index }) => {
   );
 };
 
-const Drums = () => {
+const Videos = () => {
   useScrollReveal();
 
   return (
@@ -122,19 +139,19 @@ const Drums = () => {
           {/* Hero */}
           <div className="mb-8 animate-on-scroll">
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light leading-tight mb-6">
-              I also play
+              I also create
               <br />
-              the drums
+              videos
             </h1>
             <p className="text-gray-500 text-4xl sm:text-5xl max-w-xl font-mono mt-4">
-              {"<> 🥁 </>"}
+              {"<> 🎬 </>"}
             </p>
           </div>
 
           {/* Divider with clockedout image circle */}
           <div className="flex items-center gap-6 mb-16 animate-on-scroll">
             <p className="text-xs text-gray-400 uppercase tracking-widest whitespace-nowrap">
-              drum
+              clips
             </p>
             <div className="flex-1 h-px bg-gray-300 relative">
               <div className="absolute right-8 top-1/2 -translate-y-1/2 w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full overflow-hidden bg-gray-200 flex-shrink-0 z-10">
@@ -164,7 +181,7 @@ const Drums = () => {
               </div>
             </div>
             <p className="text-xs text-gray-400 uppercase tracking-widest whitespace-nowrap">
-              sessions
+              edits
             </p>
           </div>
         </div>
@@ -175,4 +192,4 @@ const Drums = () => {
   );
 };
 
-export default Drums;
+export default Videos;

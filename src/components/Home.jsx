@@ -360,8 +360,8 @@ const Home = () => {
 
         <div className="absolute top-1/2 right-4 sm:right-8 md:right-16 -translate-y-1/2 transform z-10">
           <p className="text-xl sm:text-3xl md:text-3xl lg:text-4xl font-light text-white tracking-wide text-right leading-tight">
-            <span className="block lg:inline">Designer & </span>
-            <span className="block lg:inline">Developer</span>
+            <span className="block lg:inline">Design · Develop · Create</span>
+            {/* <span className="block lg:inline">Developer</span> */}
           </p>
         </div>
 

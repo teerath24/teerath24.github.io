@@ -222,9 +222,9 @@ const About = () => {
                   <span>✦</span> The full package
                 </h3>
                 <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-                  I handle the entire process, from initial concept to full
-                  implementation. With strong design instincts and solid
-                  development skills, I deliver work that makes an impact.
+                  From concept to final cut — I design, build, and create
+                  content. Whether it's a polished website or a travel vlog, I
+                  bring the full creative vision to life.
                 </p>
               </div>
             </div>

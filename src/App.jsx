@@ -8,7 +8,7 @@ import WelcomeSplash from "./components/WelcomeSplash";
 import Home from "./components/Home";
 import BenStudio from "./components/BenStudio";
 import BenWebsite from "./components/BenWebsite";
-import Drums from "./components/Drums";
+import Videos from "./components/Videos";
 import "./index.css";
 
 function AppContent() {
@@ -64,7 +64,7 @@ function AppContent() {
           <Route path="/work" element={<Work />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/drums" element={<Drums />} />
+          <Route path="/Videos" element={<Videos />} />
         </Routes>
       )}
     </div>

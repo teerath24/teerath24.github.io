@@ -164,7 +164,7 @@ const Header = () => {
     { name: "Home", href: "/" },
     { name: "Work", href: "/work" },
     { name: "About", href: "/about" },
-    { name: "Drums", href: "/drums" },
+    { name: "Videos", href: "/videos" },
     { name: "Contact", href: "/contact" },
   ];
 
@@ -174,7 +174,7 @@ const Header = () => {
   const isDarkMode =
     activeLink === "/work" ||
     activeLink === "/about" ||
-    activeLink === "/drums";
+    activeLink === "/videos";
 
   useEffect(() => {
     const handleScroll = () => {
