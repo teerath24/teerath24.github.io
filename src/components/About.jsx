@@ -215,16 +215,16 @@ const About = () => {
                 </p>
               </div>
 
-              {/* The Full Package */}
+              {/* Video Editing */}
               <div className="border-t border-gray-300 pt-8">
                 <p className="text-sm text-gray-400 mb-4">03</p>
                 <h3 className="text-3xl sm:text-4xl font-semibold mb-6 flex items-center gap-2">
-                  <span>✦</span> The full package
+                  <span>✦</span> Video Editing
                 </h3>
                 <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-                  From concept to final cut — I design, build, and create
-                  content. Whether it's a polished website or a travel vlog, I
-                  bring the full creative vision to life.
+                  From travel vlogs to cinematic edits, I craft stories through
+                  video. Colour grading, pacing, sound design — I handle the
+                  full post-production process to make every frame count.
                 </p>
               </div>
             </div>
