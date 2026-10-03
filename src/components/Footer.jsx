@@ -238,7 +238,7 @@ const Footer = () => {
             <p className="text-gray-500 text-sm tracking-wider">SOCIALS</p>
             <div className="flex gap-6 md:gap-10 text-base md:text-xl">
               <a
-                href="https://www.instagram.com/teerathbajaj/"
+                href="https://www.instagram.com/l4tebl00mr/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-[#1E90FF] transition-colors duration-300"

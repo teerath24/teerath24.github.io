@@ -295,7 +295,7 @@ const Header = () => {
             <p className="text-gray-500 text-sm tracking-wider mb-4">SOCIALS</p>
             <div className="flex gap-6 text-white">
               <a
-                href="https://www.instagram.com/teerathbajaj/"
+                href="https://www.instagram.com/l4tebl00mr/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`transition-colors hover:text-[#1E90FF] ${

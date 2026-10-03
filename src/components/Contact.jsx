@@ -200,7 +200,7 @@ const Contact = () => {
                 </h3>
                 <div className="space-y-2">
                   <a
-                    href="https://www.instagram.com/teerathbajaj/"
+                    href="https://www.instagram.com/l4tebl00mr/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block text-sm sm:text-base md:text-lg hover:text-[#1E90FF] transition-colors"
@@ -372,7 +372,7 @@ const Contact = () => {
         </div>
         <div className="flex gap-4 sm:gap-6 md:gap-8">
           <a
-            href="https://www.instagram.com/teerathbajaj/"
+            href="https://www.instagram.com/l4tebl00mr/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#1E90FF] transition-colors text-xs sm:text-sm"
