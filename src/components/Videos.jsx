@@ -34,7 +34,7 @@ const videos = [
     youtubeId: "RMS3RHASDE8",
     band: "5 STAR HOTEL Vlog",
     song: "Living in a 5 Star Hotel in Vietnam",
-    time: "19:0",
+    time: "19:03",
   },
   {
     id: 6,
