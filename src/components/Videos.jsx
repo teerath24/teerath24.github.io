@@ -7,42 +7,48 @@ import clockedOutImg from "../images/clockedout.png";
 const videos = [
   {
     id: 1,
+    youtubeId: "RzDWJeEl8-g",
+    band: "MONTREAL Vlog",
+    time: "12:53",
+  },
+  {
+    id: 2,
     youtubeId: "gWJpJ3KstTA",
     band: "NYC Vlog",
     time: "13:20",
   },
   {
-    id: 2,
+    id: 3,
     youtubeId: "W042glN63pE",
     band: "MANILA Vlog",
     time: "13:31",
   },
   {
-    id: 3,
+    id: 4,
     youtubeId: "zlVTNveri5A",
     band: "PHILADEPHIA Vlog",
     time: "07:57",
   },
   {
-    id: 4,
+    id: 5,
+    youtubeId: "RMS3RHASDE8",
+    band: "5 STAR HOTEL Vlog",
+    song: "Living in a 5 Star Hotel in Vietnam",
+    time: "19:0",
+  },
+  {
+    id: 6,
     youtubeId: "xpywNV_1w_I",
     band: "PlanetShakers",
     song: "Come Right Now",
     time: "3:27",
   },
   {
-    id: 5,
+    id: 7,
     youtubeId: "K5PkTZhT_KI",
     band: "Paramore",
     song: "Misery Business",
     time: "3:26",
-  },
-  {
-    id: 6,
-    youtubeId: "3y-eoHwDTOU",
-    band: "Twenty One Pilots",
-    song: "Ride",
-    time: "3:38",
   },
 ];
 
