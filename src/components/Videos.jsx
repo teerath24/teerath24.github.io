@@ -145,7 +145,7 @@ const Videos = () => {
           {/* Hero */}
           <div className="mb-8 animate-on-scroll">
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light leading-tight mb-6">
-              I also create
+              I create
               <br />
               videos
             </h1>
