@@ -429,7 +429,6 @@ const Work = () => {
       return project.category === activeFilter || project.category === "both";
     })
     .sort((a, b) => {
-      // If the Design filter is active, prioritize JenniAI (id: 4) and PSCORE (id: 5)
       if (activeFilter === "design") {
         const topPriority = [4, 5];
         const aPriority = topPriority.indexOf(a.id);
@@ -439,114 +438,181 @@ const Work = () => {
         if (aPriority !== -1) return -1;
         if (bPriority !== -1) return 1;
       }
-      // Otherwise, keep the original order (by id)
       return a.id - b.id;
     });
 
   const currentProject = projects.find((p) => p.id === hoveredProject);
 
   return (
-    <div className="min-h-screen bg-[#f5f5f5] text-black">
+    <div className="min-h-screen bg-[#070709] pt-16 md:pt-20 pb-12 px-3 sm:px-6 md:px-10 flex flex-col items-center justify-center text-black">
       <Header />
 
-      {/* Main Content */}
-      <div className="pt-32 pb-20">
-        <div className="max-w-[1800px] mx-auto px-4 sm:px-8 md:px-12 lg:px-20">
-          {/* Hero Section */}
-          <div className="mb-16 animate-on-scroll">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light leading-tight mb-12">
-              Elevating ideas into
-              <br />
-              digital realities
-            </h1>
+      {/* 🎞️ MAIN FILM CANOPY CONTAINER */}
+      <div className="relative w-full max-w-[1600px] rounded-[2.5rem] bg-[#0f0f13] border border-white/15 overflow-hidden shadow-[0_0_90px_rgba(0,0,0,0.95)] flex flex-col md:flex-row items-stretch">
+        {/* 🎬 FULL HEIGHT SPROCKET HOLE STRIP */}
+        <div className="relative w-full md:w-28 bg-[#0a0a0d] border-b md:border-b-0 md:border-r border-white/20 flex md:flex-col items-center justify-between p-4 md:py-8 z-30 flex-shrink-0">
+          {/* Vertical Kodak Film Stock Stamp */}
+          <span className="hidden md:block font-mono text-[11px] font-semibold tracking-[0.35em] text-gray-400 transform -rotate-90 whitespace-nowrap my-auto opacity-80">
+            KODAK 7219 · ISO 400
+          </span>
 
-            {/* Filter and View Controls */}
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-8">
-              {/* Filter Buttons */}
-              <div className="flex flex-wrap gap-3">
-                <FilterButton
-                  text="All"
-                  count={filterCounts.all}
-                  isActive={activeFilter === "all"}
-                  onClick={() => setActiveFilter("all")}
+          {/* Slow Continuous Animated Sprocket Holes */}
+          <div className="w-full h-20 md:h-full flex md:flex-col items-center justify-around overflow-hidden py-2">
+            <div className="flex md:flex-col gap-8 items-center animate-[sprocketScroll_25s_linear_infinite]">
+              {[...Array(24)].map((_, i) => (
+                <div
+                  key={i}
+                  className="
+                    w-8 h-6 md:w-11 md:h-14 
+                    bg-[#050507] 
+                    rounded-xl 
+                    border-2 border-white/30 
+                    shadow-[inset_0_0_10px_rgba(0,0,0,1),0_0_12px_rgba(255,255,255,0.08)] 
+                    flex-shrink-0
+                  "
                 />
-                <FilterButton
-                  text="Design"
-                  count={filterCounts.design}
-                  isActive={activeFilter === "design"}
-                  onClick={() => setActiveFilter("design")}
-                />
-                <FilterButton
-                  text="Development"
-                  count={filterCounts.development}
-                  isActive={activeFilter === "development"}
-                  onClick={() => setActiveFilter("development")}
-                />
-              </div>
-
-              {/* View Toggle */}
-              <ViewToggle view={view} onToggle={setView} />
+              ))}
             </div>
-
-            {/* Column Headers - Only show in list view */}
-            {view === "list" && (
-              <div className="hidden md:grid md:grid-cols-4 gap-8 border-b border-gray-300 pb-4 mb-2 animate-on-scroll">
-                <p className="text-xs text-gray-500 uppercase tracking-wider">
-                  CLIENT
-                </p>
-                <p className="text-xs text-gray-500 uppercase tracking-wider">
-                  LOCATION
-                </p>
-                <p className="text-xs text-gray-500 uppercase tracking-wider">
-                  SERVICES
-                </p>
-                <p className="text-xs text-gray-500 uppercase tracking-wider text-right">
-                  YEAR
-                </p>
-              </div>
-            )}
           </div>
+        </div>
 
-          {/* Projects Display */}
-          {view === "list" ? (
-            // List View
-            <div className="animate-on-scroll">
-              {filteredProjects.map((project) => (
-                <ProjectCard
-                  key={project.id}
-                  title={project.title}
-                  location={project.location}
-                  services={project.services}
-                  year={project.year}
-                  link={project.link}
-                  isHovered={hoveredProject === project.id}
-                  onHover={() => setHoveredProject(project.id)}
-                  onLeave={() => setHoveredProject(null)}
-                />
-              ))}
+        {/* 🎞️ RIGHT MAIN FILM FRAME VIEWPORT */}
+        <div className="relative flex-1 bg-[#f5f5f5] overflow-hidden rounded-[2rem] m-2 md:m-3 border border-red-950/20 shadow-[inset_0_0_60px_rgba(180,30,30,0.15)] flex flex-col">
+          {/* Super 8 Lens Halation & Glow Vignette Overlay */}
+          <div className="absolute inset-0 pointer-events-none z-20 shadow-[inset_0_0_80px_rgba(40,10,10,0.4)] rounded-[2rem]" />
+
+          {/* Subtle Grain & Halation Effect */}
+          <div className="absolute inset-0 pointer-events-none z-20 mix-blend-overlay opacity-25 bg-[radial-gradient(circle_at_center,rgba(255,100,100,0.15)_0%,rgba(0,0,0,0.6)_100%)]" />
+
+          {/* 🚀 PAGE CONTENT WRAPPER */}
+          <div className="relative z-10 overflow-y-auto flex-1">
+            {/* Top Camera Status HUD Bar */}
+            <div className="bg-black/90 text-white font-mono text-xs px-6 py-4 sm:px-10 flex justify-between items-center border-b border-white/10 tracking-widest uppercase">
+              <div className="flex items-center gap-3">
+                <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse" />
+                <span className="text-red-500 font-bold">REC</span>
+                <span className="text-gray-400 font-mono hidden sm:inline">
+                  PORTFOLIO_V2.MP4
+                </span>
+              </div>
+              <div className="flex gap-4 sm:gap-8 text-gray-400 text-[11px] sm:text-xs">
+                <span className=" font-semibold">ISO 400</span>
+                <span>24.00 FPS</span>
+                <span className="hidden md:inline">WB 5600K</span>
+                <span className="hidden lg:inline">35MM ANAMORPHIC</span>
+              </div>
             </div>
-          ) : (
-            // Grid View
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-20 animate-on-scroll">
-              {filteredProjects.map((project) => (
-                <ProjectGridCard
-                  key={project.id}
-                  title={project.title}
-                  services={project.services}
-                  year={project.year}
-                  link={project.link}
-                  image={project.image}
-                  isHovered={hoveredProject === project.id}
-                  onHover={() => setHoveredProject(project.id)}
-                  onLeave={() => setHoveredProject(null)}
-                />
-              ))}
+
+            {/* Main Content */}
+            <div className="py-16 md:py-20">
+              <div className="max-w-[1800px] mx-auto px-4 sm:px-8 md:px-12 lg:px-20">
+                {/* Hero Section */}
+                <div className="mb-16 animate-on-scroll">
+                  <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light leading-tight mb-12">
+                    Elevating ideas into
+                    <br />
+                    digital realities
+                  </h1>
+
+                  {/* Filter and View Controls */}
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-8">
+                    {/* Filter Buttons */}
+                    <div className="flex flex-wrap gap-3">
+                      <FilterButton
+                        text="All"
+                        count={filterCounts.all}
+                        isActive={activeFilter === "all"}
+                        onClick={() => setActiveFilter("all")}
+                      />
+                      <FilterButton
+                        text="Design"
+                        count={filterCounts.design}
+                        isActive={activeFilter === "design"}
+                        onClick={() => setActiveFilter("design")}
+                      />
+                      <FilterButton
+                        text="Development"
+                        count={filterCounts.development}
+                        isActive={activeFilter === "development"}
+                        onClick={() => setActiveFilter("development")}
+                      />
+                    </div>
+
+                    {/* View Toggle */}
+                    <ViewToggle view={view} onToggle={setView} />
+                  </div>
+
+                  {/* Column Headers - Only show in list view */}
+                  {view === "list" && (
+                    <div className="hidden md:grid md:grid-cols-4 gap-8 border-b border-gray-300 pb-4 mb-2 animate-on-scroll">
+                      <p className="text-xs text-gray-500 uppercase tracking-wider">
+                        CLIENT
+                      </p>
+                      <p className="text-xs text-gray-500 uppercase tracking-wider">
+                        LOCATION
+                      </p>
+                      <p className="text-xs text-gray-500 uppercase tracking-wider">
+                        SERVICES
+                      </p>
+                      <p className="text-xs text-gray-500 uppercase tracking-wider text-right">
+                        YEAR
+                      </p>
+                    </div>
+                  )}
+                </div>
+
+                {/* Projects Display */}
+                {view === "list" ? (
+                  // List View
+                  <div className="animate-on-scroll">
+                    {filteredProjects.map((project) => (
+                      <ProjectCard
+                        key={project.id}
+                        title={project.title}
+                        location={project.location}
+                        services={project.services}
+                        year={project.year}
+                        link={project.link}
+                        isHovered={hoveredProject === project.id}
+                        onHover={() => setHoveredProject(project.id)}
+                        onLeave={() => setHoveredProject(null)}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  // Grid View
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-20 animate-on-scroll">
+                    {filteredProjects.map((project) => (
+                      <ProjectGridCard
+                        key={project.id}
+                        title={project.title}
+                        services={project.services}
+                        year={project.year}
+                        link={project.link}
+                        image={project.image}
+                        isHovered={hoveredProject === project.id}
+                        onHover={() => setHoveredProject(project.id)}
+                        onLeave={() => setHoveredProject(null)}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
-          )}
+
+            <Footer />
+
+            {/* Film Footer Camera HUD Bar */}
+            <div className="bg-black text-gray-400 font-mono text-xs px-6 py-4 flex flex-col sm:flex-row justify-between items-center border-t border-white/10 gap-2">
+              <span>FRAME: 01924</span>
+              <div className="flex items-center gap-4">
+                <span>AUDIO: 48KHZ STEREO</span>
+                <span className="text-emerald-400 font-semibold">SYNC: OK</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <Footer />
 
       {/* Image Preview on Hover - Only in List View */}
       {view === "list" && currentProject && (
@@ -594,6 +660,14 @@ const Work = () => {
           </div>
         </div>
       )}
+
+      {/* Keyframes for Sprocket Movement */}
+      <style>{`
+        @keyframes sprocketScroll {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(-50%); }
+        }
+      `}</style>
     </div>
   );
 };

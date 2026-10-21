@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import myLogo from "../images/my_logo.png";
 
 // --- NavItem Component ---
-const NavItemWithHoverEffect = ({ item, activeLink, onClick, isDarkMode }) => {
+const NavItemWithHoverEffect = ({ item, activeLink, onClick }) => {
   const [xy, setXY] = useState({ x: 0, y: 0 });
   const ref = useRef(null);
   const hoverThreshold = 10;
@@ -25,26 +25,17 @@ const NavItemWithHoverEffect = ({ item, activeLink, onClick, isDarkMode }) => {
   };
 
   const isActive = activeLink === item.href;
+
+  // Unselected tabs are always crisp white, active tab is #1E90FF blue
   const linkColorClasses = isActive
     ? "text-[#1E90FF] font-semibold"
-    : isDarkMode
-      ? "text-[#000000] hover:text-[#1E90FF]"
-      : "text-white hover:text-[#1E90FF]";
+    : "text-white hover:text-[#1E90FF]";
 
   const commonClasses = `
     block relative overflow-hidden group 
-    p-3 md:p-1.5 lg:p-3
+    p-2 md:p-1.5 lg:p-2
     transition-colors duration-300
     ${linkColorClasses}
-    after:content-[''] after:absolute after:bottom-[-8px] after:left-1/2 
-    after:w-[6px] after:h-[6px] after:bg-current after:rounded-full
-    after:transition-transform after:duration-300 after:opacity-0 
-    hover:after:transform-['translateX(-50%)_scale(1)'] hover:after:opacity-100
-    ${
-      isActive
-        ? "after:transform-['translateX(-50%)_scale(1)'] after:opacity-100"
-        : "after:transform-['translateX(-50%)_scale(0)']"
-    }
   `;
 
   const handleClick = (e) => {
@@ -83,7 +74,7 @@ const NavItemWithHoverEffect = ({ item, activeLink, onClick, isDarkMode }) => {
   );
 };
 
-// --- Hamburger Menu Button Component with Animated X ---
+// --- Hamburger Menu Button Component ---
 const HamburgerButton = ({ isScrolled, isMenuOpen, onClick }) => {
   const [xy, setXY] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
@@ -118,7 +109,7 @@ const HamburgerButton = ({ isScrolled, isMenuOpen, onClick }) => {
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`fixed top-8 right-8 z-[60] w-20 h-20 rounded-full bg-[#222] border border-gray-600 flex items-center justify-center transition-all duration-300 hover:scale-105 overflow-hidden focus:outline-none focus:ring-0 focus-visible:ring-0 opacity-100 pointer-events-auto ${
+      className={`fixed top-6 right-6 sm:top-8 sm:right-8 z-[60] w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#222] border border-gray-600 flex items-center justify-center transition-all duration-300 hover:scale-105 overflow-hidden focus:outline-none opacity-100 pointer-events-auto ${
         isScrolled ? "" : "md:opacity-0 md:pointer-events-none"
       }`}
       style={{
@@ -127,7 +118,6 @@ const HamburgerButton = ({ isScrolled, isMenuOpen, onClick }) => {
       }}
       aria-label="Toggle menu"
     >
-      {/* Water fill effect */}
       <div
         className="absolute inset-0 bg-[#1E90FF] transition-all duration-700 ease-out"
         style={{
@@ -135,17 +125,14 @@ const HamburgerButton = ({ isScrolled, isMenuOpen, onClick }) => {
         }}
       />
 
-      {/* Animated Hamburger/X icon */}
-      <div className="relative z-10 w-10 h-10 flex flex-col items-center justify-center">
-        {/* Top Line */}
+      <div className="relative z-10 w-8 h-8 sm:w-10 sm:h-10 flex flex-col items-center justify-center">
         <span
-          className={`block w-8 h-0.5 bg-white transition-all duration-300 ease-in-out ${
+          className={`block w-6 sm:w-8 h-0.5 bg-white transition-all duration-300 ease-in-out ${
             isMenuOpen ? "rotate-45 translate-y-[1px]" : "-translate-y-1.5"
           }`}
         />
-        {/* Bottom Line */}
         <span
-          className={`block w-8 h-0.5 bg-white transition-all duration-300 ease-in-out ${
+          className={`block w-6 sm:w-8 h-0.5 bg-white transition-all duration-300 ease-in-out ${
             isMenuOpen ? "-rotate-45 -translate-y-[1px]" : "translate-y-1.5"
           }`}
         />
@@ -169,12 +156,6 @@ const Header = () => {
   ];
 
   const activeLink = location.pathname;
-
-  // Dark mode on these pages (light background)
-  const isDarkMode =
-    activeLink === "/work" ||
-    activeLink === "/about" ||
-    activeLink === "/videos";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -202,25 +183,31 @@ const Header = () => {
 
   return (
     <>
-      {/* Desktop Navigation - Transparent, No Background */}
       <header
-        className={`p-4 md:px-20 lg:px-32 w-full fixed top-0 left-0 flex justify-between items-center z-50 transition-all duration-300 ${
+        className={`py-6 px-6 md:px-16 lg:px-24 w-full fixed top-0 left-0 flex justify-between items-center z-50 transition-all duration-300 ${
           isScrolled ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
       >
-        <a href="/" className="logo" onClick={handleLogoClick}>
-          <img src={myLogo} alt="Logo" className="w-14" />
+        <a
+          href="/"
+          className="logo flex items-center"
+          onClick={handleLogoClick}
+        >
+          <img
+            src={myLogo}
+            alt="Logo"
+            className="w-10 sm:w-12 h-auto object-contain"
+          />
         </a>
 
         <nav className="hidden md:flex md:items-center">
-          <ul className="flex flex-row gap-8">
+          <ul className="flex flex-row gap-6 lg:gap-10">
             {navItems.map((item) => (
-              <li key={item.name} className="m-0 text-base">
+              <li key={item.name} className="m-0 text-base font-medium">
                 <NavItemWithHoverEffect
                   item={item}
                   activeLink={activeLink}
                   onClick={handleNavClick}
-                  isDarkMode={isDarkMode}
                 />
               </li>
             ))}
@@ -228,14 +215,12 @@ const Header = () => {
         </nav>
       </header>
 
-      {/* Hamburger Menu Button with Animated X */}
       <HamburgerButton
         isScrolled={isScrolled}
         isMenuOpen={isMenuOpen}
         onClick={toggleMenu}
       />
 
-      {/* Full-Screen Side Menu with Arched Left Edge Animation */}
       <div
         className={`fixed top-0 right-0 h-full w-full md:w-[600px] bg-[#222] z-50 transform transition-transform duration-500 ease-in-out overflow-hidden ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
@@ -249,7 +234,6 @@ const Header = () => {
         }}
       >
         <div className="flex flex-col h-full justify-between p-12 md:p-16">
-          {/* Navigation */}
           <div className="flex-grow flex flex-col justify-center">
             <p className="text-gray-500 text-sm uppercase tracking-wider mb-8">
               Navigation
@@ -290,7 +274,6 @@ const Header = () => {
             </nav>
           </div>
 
-          {/* Social Links */}
           <div className="mt-auto">
             <p className="text-gray-500 text-sm tracking-wider mb-4">SOCIALS</p>
             <div className="flex gap-6 text-white">
@@ -319,7 +302,6 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Overlay */}
       {isMenuOpen && (
         <div className="fixed inset-0 bg-black/50 z-40" onClick={toggleMenu} />
       )}

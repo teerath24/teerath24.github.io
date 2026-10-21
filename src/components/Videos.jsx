@@ -74,7 +74,7 @@ const VideoCard = ({ video, index }) => {
         {playing ? (
           <iframe
             src={embedUrl}
-            band={video.band}
+            title={video.band}
             className="w-full h-full"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -137,63 +137,139 @@ const Videos = () => {
   useScrollReveal();
 
   return (
-    <div className="min-h-screen bg-[#f5f5f5] text-black">
+    <div className="min-h-screen bg-[#070709] pt-16 md:pt-20 pb-12 px-3 sm:px-6 md:px-10 flex flex-col items-center justify-center text-black">
       <Header />
 
-      <div className="pt-32 pb-20">
-        <div className="max-w-[1800px] mx-auto px-4 sm:px-8 md:px-12 lg:px-20">
-          {/* Hero */}
-          <div className="mb-8 animate-on-scroll">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light leading-tight mb-6">
-              I create
-              <br />
-              videos
-            </h1>
-            <p className="text-gray-500 text-4xl sm:text-5xl max-w-xl font-mono mt-4">
-              {"<> 🎬 </>"}
-            </p>
-          </div>
+      {/* 🎞️ MAIN FILM CANOPY CONTAINER */}
+      <div className="relative w-full max-w-[1600px] rounded-[2.5rem] bg-[#0f0f13] border border-white/15 overflow-hidden shadow-[0_0_90px_rgba(0,0,0,0.95)] flex flex-col md:flex-row items-stretch">
+        {/* 🎬 FULL HEIGHT SPROCKET HOLE STRIP */}
+        <div className="relative w-full md:w-28 bg-[#0a0a0d] border-b md:border-b-0 md:border-r border-white/20 flex md:flex-col items-center justify-between p-4 md:py-8 z-30 flex-shrink-0">
+          {/* Vertical Kodak Film Stock Stamp */}
+          <span className="hidden md:block font-mono text-[11px] font-semibold tracking-[0.35em] text-gray-400 transform -rotate-90 whitespace-nowrap my-auto opacity-80">
+            KODAK 7219 · ISO 400
+          </span>
 
-          {/* Divider with clockedout image circle */}
-          <div className="flex items-center gap-6 mb-16 animate-on-scroll">
-            <p className="text-xs text-gray-400 uppercase tracking-widest whitespace-nowrap">
-              clips
-            </p>
-            <div className="flex-1 h-px bg-gray-300 relative">
-              <div className="absolute right-8 top-1/2 -translate-y-1/2 w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full overflow-hidden bg-gray-200 flex-shrink-0 z-10">
-                <img
-                  src={clockedOutImg}
-                  alt="Clocked Out"
-                  className="w-full h-full object-cover"
+          {/* Slow Continuous Animated Sprocket Holes */}
+          <div className="w-full h-20 md:h-full flex md:flex-col items-center justify-around overflow-hidden py-2">
+            <div className="flex md:flex-col gap-8 items-center animate-[sprocketScroll_25s_linear_infinite]">
+              {[...Array(24)].map((_, i) => (
+                <div
+                  key={i}
+                  className="
+                    w-8 h-6 md:w-11 md:h-14 
+                    bg-[#050507] 
+                    rounded-xl 
+                    border-2 border-white/30 
+                    shadow-[inset_0_0_10px_rgba(0,0,0,1),0_0_12px_rgba(255,255,255,0.08)] 
+                    flex-shrink-0
+                  "
                 />
-              </div>
+              ))}
             </div>
           </div>
+        </div>
 
-          {/* Videos Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16 mt-24">
-            {videos.map((video, i) => (
-              <VideoCard key={video.id} video={video} index={i} />
-            ))}
-          </div>
+        {/* 🎞️ RIGHT MAIN FILM FRAME VIEWPORT */}
+        <div className="relative flex-1 bg-[#f5f5f5] overflow-hidden rounded-[2rem] m-2 md:m-3 border border-red-950/20 shadow-[inset_0_0_60px_rgba(180,30,30,0.15)] flex flex-col">
+          {/* Super 8 Lens Halation & Glow Vignette Overlay */}
+          <div className="absolute inset-0 pointer-events-none z-20 shadow-[inset_0_0_80px_rgba(40,10,10,0.4)] rounded-[2rem]" />
 
-          {/* Divider hanglooooose with line on the left and 'drum' text on the right */}
-          <div className="mt-32 flex items-center gap-6 mb-16 animate-on-scroll">
-            <div className="flex-1 h-px bg-gray-300 relative">
-              <div className="absolute left-8 top-1/2 -translate-y-1/2 w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full bg-[#1E90FF] flex items-center justify-center flex-shrink-0 z-10">
-                <span className="text-6xl sm:text-7xl md:text-8xl select-none">
-                  🤙🏽
+          {/* Subtle Grain & Halation Effect */}
+          <div className="absolute inset-0 pointer-events-none z-20 mix-blend-overlay opacity-25 bg-[radial-gradient(circle_at_center,rgba(255,100,100,0.15)_0%,rgba(0,0,0,0.6)_100%)]" />
+
+          {/* 🚀 PAGE CONTENT WRAPPER */}
+          <div className="relative z-10 overflow-y-auto flex-1">
+            {/* Top Camera Status HUD Bar */}
+            <div className="bg-black/90 text-white font-mono text-xs px-6 py-4 sm:px-10 flex justify-between items-center border-b border-white/10 tracking-widest uppercase">
+              <div className="flex items-center gap-3">
+                <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse" />
+                <span className="text-red-500 font-bold">REC</span>
+                <span className="text-gray-400 font-mono hidden sm:inline">
+                  VIDEOS_REEL.MP4
                 </span>
               </div>
+              <div className="flex gap-4 sm:gap-8 text-gray-400 text-[11px] sm:text-xs">
+                <span className=" font-semibold">ISO 400</span>
+                <span>24.00 FPS</span>
+                <span className="hidden md:inline">WB 5600K</span>
+                <span className="hidden lg:inline">35MM ANAMORPHIC</span>
+              </div>
             </div>
-            <p className="text-xs text-gray-400 uppercase tracking-widest whitespace-nowrap">
-              edits
-            </p>
+
+            <div className="py-16 md:py-20">
+              <div className="max-w-[1800px] mx-auto px-4 sm:px-8 md:px-12 lg:px-20">
+                {/* Hero */}
+                <div className="mb-8 animate-on-scroll">
+                  <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light leading-tight mb-6">
+                    I create
+                    <br />
+                    videos
+                  </h1>
+                  <p className="text-gray-500 text-4xl sm:text-5xl max-w-xl font-mono mt-4">
+                    {"<> 🎬 </>"}
+                  </p>
+                </div>
+
+                {/* Divider with clockedout image circle */}
+                <div className="flex items-center gap-6 mb-16 animate-on-scroll">
+                  <p className="text-xs text-gray-400 uppercase tracking-widest whitespace-nowrap">
+                    clips
+                  </p>
+                  <div className="flex-1 h-px bg-gray-300 relative">
+                    <div className="absolute right-8 top-1/2 -translate-y-1/2 w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full overflow-hidden bg-gray-200 flex-shrink-0 z-10">
+                      <img
+                        src={clockedOutImg}
+                        alt="Clocked Out"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Videos Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16 mt-24">
+                  {videos.map((video, i) => (
+                    <VideoCard key={video.id} video={video} index={i} />
+                  ))}
+                </div>
+
+                {/* Divider hanglooooose */}
+                <div className="mt-32 flex items-center gap-6 mb-16 animate-on-scroll">
+                  <div className="flex-1 h-px bg-gray-300 relative">
+                    <div className="absolute left-8 top-1/2 -translate-y-1/2 w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full bg-[#1E90FF] flex items-center justify-center flex-shrink-0 z-10">
+                      <span className="text-6xl sm:text-7xl md:text-8xl select-none">
+                        🤙🏽
+                      </span>
+                    </div>
+                  </div>
+                  <p className="text-xs text-gray-400 uppercase tracking-widest whitespace-nowrap">
+                    edits
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <Footer />
+
+            {/* Film Footer Camera HUD Bar */}
+            <div className="bg-black text-gray-400 font-mono text-xs px-6 py-4 flex flex-col sm:flex-row justify-between items-center border-t border-white/10 gap-2">
+              <span>FRAME: 01924</span>
+              <div className="flex items-center gap-4">
+                <span>AUDIO: 48KHZ STEREO</span>
+                <span className="text-emerald-400 font-semibold">SYNC: OK</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <Footer />
+      {/* Keyframes for Sprocket Movement */}
+      <style>{`
+        @keyframes sprocketScroll {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(-50%); }
+        }
+      `}</style>
     </div>
   );
 };

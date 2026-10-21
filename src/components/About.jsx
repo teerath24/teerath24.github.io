@@ -97,7 +97,7 @@ const About = () => {
   useScrollReveal();
 
   return (
-    <div className="min-h-screen bg-[#f5f5f5] text-black">
+    <div className="min-h-screen bg-[#070709] pt-16 md:pt-20 pb-12 px-3 sm:px-6 md:px-10 flex flex-col items-center justify-center text-black">
       <Header />
 
       <style jsx>{`
@@ -124,123 +124,206 @@ const About = () => {
         }
       `}</style>
 
-      {/* Main Content */}
-      <div className="pt-32 pb-20">
-        <div className="max-w-[1800px] mx-auto px-4 sm:px-8 md:px-12 lg:px-20">
-          {/* Title Section - Centered */}
-          <div className="text-center mb-16 animate-on-scroll">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl font-light leading-tight mb-8">
-              Empowering brands to thrive
-              <br />
-              in the digital landspace
-            </h1>
+      {/* 🎞️ MAIN FILM CANOPY CONTAINER */}
+      <div className="relative w-full max-w-[1600px] rounded-[2.5rem] bg-[#0f0f13] border border-white/15 overflow-hidden shadow-[0_0_90px_rgba(0,0,0,0.95)] flex flex-col md:flex-row items-stretch">
+        {/* 🎬 FULL HEIGHT SPROCKET HOLE STRIP */}
+        <div className="relative w-full md:w-28 bg-[#0a0a0d] border-b md:border-b-0 md:border-r border-white/20 flex md:flex-col items-center justify-between p-4 md:py-8 z-30 flex-shrink-0">
+          {/* Vertical Kodak Film Stock Stamp */}
+          <span className="hidden md:block font-mono text-[11px] font-semibold tracking-[0.35em] text-gray-400 transform -rotate-90 whitespace-nowrap my-auto opacity-80">
+            KODAK 7219 · ISO 400
+          </span>
 
-            {/* Horizontal line with circle icon - Moved to Right */}
-            <div className="relative w-full max-w-6xl mx-auto">
-              <div className="absolute left-0 right-0 top-1/2 h-px bg-gray-300 -translate-y-1/2"></div>
-              <div className="relative flex justify-end pr-16 md:pr-24 lg:pr-32">
-                <div className="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full bg-[#1E90FF] flex items-center justify-center flex-shrink-0 relative z-10">
-                  <div>
-                    <p className="text-8xl">🤙🏽</p>
+          {/* Slow Continuous Animated Sprocket Holes */}
+          <div className="w-full h-20 md:h-full flex md:flex-col items-center justify-around overflow-hidden py-2">
+            <div className="flex md:flex-col gap-8 items-center animate-[sprocketScroll_25s_linear_infinite]">
+              {[...Array(24)].map((_, i) => (
+                <div
+                  key={i}
+                  className="
+                    w-8 h-6 md:w-11 md:h-14 
+                    bg-[#050507] 
+                    rounded-xl 
+                    border-2 border-white/30 
+                    shadow-[inset_0_0_10px_rgba(0,0,0,1),0_0_12px_rgba(255,255,255,0.08)] 
+                    flex-shrink-0
+                  "
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* 🎞️ RIGHT MAIN FILM FRAME VIEWPORT */}
+        <div className="relative flex-1 bg-[#f5f5f5] overflow-hidden rounded-[2rem] m-2 md:m-3 border border-red-950/20 shadow-[inset_0_0_60px_rgba(180,30,30,0.15)] flex flex-col">
+          {/* Super 8 Lens Halation & Glow Vignette Overlay */}
+          <div className="absolute inset-0 pointer-events-none z-20 shadow-[inset_0_0_80px_rgba(40,10,10,0.4)] rounded-[2rem]" />
+
+          {/* Subtle Grain & Halation Effect */}
+          <div className="absolute inset-0 pointer-events-none z-20 mix-blend-overlay opacity-25 bg-[radial-gradient(circle_at_center,rgba(255,100,100,0.15)_0%,rgba(0,0,0,0.6)_100%)]" />
+
+          {/* 🚀 PAGE CONTENT WRAPPER */}
+          <div className="relative z-10 overflow-y-auto flex-1">
+            {/* Top Camera Status HUD Bar */}
+            <div className="bg-black/90 text-white font-mono text-xs px-6 py-4 sm:px-10 flex justify-between items-center border-b border-white/10 tracking-widest uppercase">
+              <div className="flex items-center gap-3">
+                <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse" />
+                <span className="text-red-500 font-bold">REC</span>
+                <span className="text-gray-400 font-mono hidden sm:inline">
+                  ABOUT_PROFILE.MP4
+                </span>
+              </div>
+              <div className="flex gap-4 sm:gap-8 text-gray-400 text-[11px] sm:text-xs">
+                <span className=" font-semibold">ISO 400</span>
+                <span>24.00 FPS</span>
+                <span className="hidden md:inline">WB 5600K</span>
+                <span className="hidden lg:inline">35MM ANAMORPHIC</span>
+              </div>
+            </div>
+
+            {/* Main Content */}
+            <div className="py-12 md:py-16">
+              <div className="max-w-[1800px] mx-auto px-4 sm:px-8 md:px-12 lg:px-20">
+                {/* Title Section - Centered */}
+                <div className="text-center mb-16 animate-on-scroll">
+                  <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl font-light leading-tight mb-8">
+                    Empowering brands to thrive
+                    <br />
+                    in the digital landspace
+                  </h1>
+
+                  {/* Horizontal line with circle icon */}
+                  <div className="relative w-full max-w-6xl mx-auto">
+                    <div className="absolute left-0 right-0 top-1/2 h-px bg-gray-300 -translate-y-1/2"></div>
+                    <div className="relative flex justify-end pr-16 md:pr-24 lg:pr-32">
+                      <div className="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full bg-[#1E90FF] flex items-center justify-center flex-shrink-0 relative z-10">
+                        <div>
+                          <p className="text-8xl select-none">🤙🏽</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
 
-          {/* Content Section - Text and Image Side by Side */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-32 items-start">
-            {/* Left - Text Content */}
-            <div className="flex flex-col justify-start">
-              <div className="flex items-start gap-4 mb-8">
-                <div className="text-2xl sm:text-3xl mt-1 flex-shrink-0 animate-on-scroll">
-                  ↘
+                {/* Content Section - Text and Image Side by Side */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-32 items-start">
+                  {/* Left - Text Content */}
+                  <div className="flex flex-col justify-start">
+                    <div className="flex items-start gap-4 mb-8">
+                      <div className="text-2xl sm:text-3xl mt-1 flex-shrink-0 animate-on-scroll">
+                        ↘
+                      </div>
+                      <div>
+                        <p className="text-base sm:text-lg md:text-xl leading-relaxed mb-4 animate-on-scroll">
+                          I’m passionate about improving the lives of others by
+                          designing and developing. I am constantly looking to
+                          learn new things daily and be better than I was
+                          yesterday.
+                        </p>
+                        <p className="text-sm sm:text-base text-gray-400 italic animate-on-scroll">
+                          Always learning
+                          <AnimatedEllipsis />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right - Image */}
+                  <div className="relative h-[800px] sm:h-[900px] lg:h-[1000px] rounded-3xl overflow-hidden shadow-2xl animate-on-scroll">
+                    <img
+                      src={meImg}
+                      alt="City view"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
-                <div>
-                  <p className="text-base sm:text-lg md:text-xl leading-relaxed mb-4 animate-on-scroll">
-                    I’m passionate about improving the lives of others by
-                    designing and developing. I am constantly looking to learn
-                    new things daily and be better than I was yesterday.
-                  </p>
-                  <p className="text-sm sm:text-base text-gray-400 italic animate-on-scroll">
-                    Always learning
-                    <AnimatedEllipsis />
-                  </p>
+
+                {/* Services Section */}
+                <div className="mb-32 animate-on-scroll">
+                  <h2 className="text-3xl sm:text-5xl md:text-6xl font-light mb-16">
+                    I can help you with <AnimatedEllipsis />
+                  </h2>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+                    {/* Design */}
+                    <div className="border-t border-gray-300 pt-8">
+                      <p className="text-sm text-gray-400 mb-4">01</p>
+                      <h3 className="text-3xl sm:text-4xl font-semibold mb-6">
+                        Design
+                      </h3>
+                      <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+                        Elevate your product with a user experience that feels
+                        effortless and refined. I design intuitive interfaces
+                        that captivate users and drive meaningful engagement.
+                        Together, we’ll create a standout experience in a
+                        crowded digital world.
+                      </p>
+                    </div>
+
+                    {/* Development */}
+                    <div className="border-t border-gray-300 pt-8">
+                      <p className="text-sm text-gray-400 mb-4">02</p>
+                      <h3 className="text-3xl sm:text-4xl font-semibold mb-6">
+                        Development
+                      </h3>
+                      <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+                        Looking for a beautiful, user-friendly website that
+                        strengthens your online presence? I craft custom web
+                        solutions that reflect your brand and drive real impact.
+                        Enhance your digital experience with professional,
+                        thoughtful development.
+                      </p>
+                    </div>
+
+                    {/* Video Editing */}
+                    <div className="border-t border-gray-300 pt-8">
+                      <p className="text-sm text-gray-400 mb-4">03</p>
+                      <h3 className="text-3xl sm:text-4xl font-semibold mb-6 flex items-center gap-2">
+                        <span>✦</span> Video Editing
+                      </h3>
+                      <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+                        From travel vlogs to cinematic edits, I craft stories
+                        through video. Colour grading, pacing, sound design — I
+                        handle the full post-production process to make every
+                        frame count.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* CTA Section */}
+                <div className="flex flex-col items-center justify-center text-center py-20 animate-on-scroll">
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-12 max-w-3xl leading-tight">
+                    Ready to create something amazing together?
+                  </h2>
+                  <InteractiveCircleButton
+                    text="Get in touch"
+                    href="/contact"
+                  />
                 </div>
               </div>
             </div>
 
-            {/* Right - Image */}
-            <div className="relative h-[800px] sm:h-[900px] lg:h-[1000px] rounded-3xl overflow-hidden shadow-2xl animate-on-scroll">
-              <img
-                SRC={meImg}
-                alt="City view"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
+            <Footer />
 
-          {/* Services Section */}
-          <div className="mb-32 animate-on-scroll">
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-light mb-16">
-              I can help you with <AnimatedEllipsis />
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-              {/* Design */}
-              <div className="border-t border-gray-300 pt-8">
-                <p className="text-sm text-gray-400 mb-4">01</p>
-                <h3 className="text-3xl sm:text-4xl font-semibold mb-6">
-                  Design
-                </h3>
-                <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-                  Elevate your product with a user experience that feels
-                  effortless and refined. I design intuitive interfaces that
-                  captivate users and drive meaningful engagement. Together,
-                  we’ll create a standout experience in a crowded digital world.
-                </p>
-              </div>
-
-              {/* Development */}
-              <div className="border-t border-gray-300 pt-8">
-                <p className="text-sm text-gray-400 mb-4">02</p>
-                <h3 className="text-3xl sm:text-4xl font-semibold mb-6">
-                  Development
-                </h3>
-                <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-                  Looking for a beautiful, user-friendly website that
-                  strengthens your online presence? I craft custom web solutions
-                  that reflect your brand and drive real impact. Enhance your
-                  digital experience with professional, thoughtful development.
-                </p>
-              </div>
-
-              {/* Video Editing */}
-              <div className="border-t border-gray-300 pt-8">
-                <p className="text-sm text-gray-400 mb-4">03</p>
-                <h3 className="text-3xl sm:text-4xl font-semibold mb-6 flex items-center gap-2">
-                  <span>✦</span> Video Editing
-                </h3>
-                <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-                  From travel vlogs to cinematic edits, I craft stories through
-                  video. Colour grading, pacing, sound design — I handle the
-                  full post-production process to make every frame count.
-                </p>
+            {/* Film Footer Camera HUD Bar */}
+            <div className="bg-black text-gray-400 font-mono text-xs px-6 py-4 flex flex-col sm:flex-row justify-between items-center border-t border-white/10 gap-2">
+              <span>FRAME: 01924</span>
+              <div className="flex items-center gap-4">
+                <span>AUDIO: 48KHZ STEREO</span>
+                <span className="text-emerald-400 font-semibold">SYNC: OK</span>
               </div>
             </div>
-          </div>
-
-          {/* CTA Section */}
-          <div className="flex flex-col items-center justify-center text-center py-20 animate-on-scroll">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-12 max-w-3xl leading-tight">
-              Ready to create something amazing together?
-            </h2>
-            <InteractiveCircleButton text="Get in touch" href="/contact" />
           </div>
         </div>
       </div>
 
-      <Footer />
+      {/* Keyframes for Sprocket Movement */}
+      <style>{`
+        @keyframes sprocketScroll {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(-50%); }
+        }
+      `}</style>
     </div>
   );
 };
