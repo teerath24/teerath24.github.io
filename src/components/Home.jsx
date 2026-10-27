@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Footer from "./Footer";
-import ausImage from "../images/aus.jpeg";
+import seoulVideo from "../images/seoul.mp4";
 import benStudioImg from "../images/ben_studio.png";
 import VGImg from "../images/vg.png";
 import benWebsiteImg from "../images/ben_website.png";
@@ -271,33 +271,20 @@ const ScrollingGallery = () => {
 const Home = () => {
   useScrollReveal();
 
-  const name = "Teerath Bajaj";
-  const [scrollDirection, setScrollDirection] = useState("down");
   const [hoveredProject, setHoveredProject] = useState(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const lastScrollY = useRef(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setScrollDirection(currentScrollY > lastScrollY.current ? "down" : "up");
-      lastScrollY.current = currentScrollY;
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [scrollDirection]);
 
   useEffect(() => {
     let rafId;
-    const handleMouseMove = (e) => {
+    const handleMouse = (e) => {
       if (rafId) cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(() => {
         setMousePosition({ x: e.clientX, y: e.clientY });
       });
     };
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    window.addEventListener("mousemove", handleMouse, { passive: true });
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mousemove", handleMouse);
       if (rafId) cancelAnimationFrame(rafId);
     };
   }, []);
@@ -331,31 +318,22 @@ const Home = () => {
   return (
     <div
       id="home"
-      className="min-h-screen bg-[#070709] pt-16 md:pt-20 pb-12 px-3 sm:px-6 md:px-10 flex flex-col items-center justify-center"
+      className="min-h-screen bg-[#070709] pt-16 md:pt-20 pb-12 px-3 sm:px-6 md:px-10 flex flex-col items-center justify-center select-none"
     >
       {/* 🎞️ MAIN FILM CANOPY CONTAINER */}
       <div className="relative w-full max-w-[1600px] rounded-[2.5rem] bg-[#0f0f13] border border-white/15 overflow-hidden shadow-[0_0_90px_rgba(0,0,0,0.95)] flex flex-col md:flex-row items-stretch">
         {/* 🎬 FULL HEIGHT SPROCKET HOLE STRIP */}
         <div className="relative w-full md:w-28 bg-[#0a0a0d] border-b md:border-b-0 md:border-r border-white/20 flex md:flex-col items-center justify-between p-4 md:py-8 z-30 flex-shrink-0">
-          {/* Vertical Kodak Film Stock Stamp */}
           <span className="hidden md:block font-mono text-[11px] font-semibold tracking-[0.35em] text-gray-400 transform -rotate-90 whitespace-nowrap my-auto opacity-80">
             KODAK 7219 · ISO 400
           </span>
 
-          {/* Slow Continuous Animated Sprocket Holes */}
           <div className="w-full h-20 md:h-full flex md:flex-col items-center justify-around overflow-hidden py-2">
             <div className="flex md:flex-col gap-8 items-center animate-[sprocketScroll_25s_linear_infinite]">
               {[...Array(24)].map((_, i) => (
                 <div
                   key={i}
-                  className="
-                    w-8 h-6 md:w-11 md:h-14 
-                    bg-[#050507] 
-                    rounded-xl 
-                    border-2 border-white/30 
-                    shadow-[inset_0_0_10px_rgba(0,0,0,1),0_0_12px_rgba(255,255,255,0.08)] 
-                    flex-shrink-0
-                  "
+                  className="w-8 h-6 md:w-11 md:h-14 bg-[#050507] rounded-xl border-2 border-white/30 shadow-[inset_0_0_10px_rgba(0,0,0,1),0_0_12px_rgba(255,255,255,0.08)] flex-shrink-0"
                 />
               ))}
             </div>
@@ -363,74 +341,58 @@ const Home = () => {
         </div>
 
         {/* 🎞️ RIGHT MAIN FILM FRAME VIEWPORT */}
-        <div className="relative flex-1 bg-white overflow-hidden rounded-[2rem] m-2 md:m-3 border border-red-950/20 shadow-[inset_0_0_60px_rgba(180,30,30,0.15)] flex flex-col">
-          {/* Super 8 Lens Halation & Glow Vignette Overlay */}
+        <div className="relative flex-1 bg-black overflow-hidden rounded-[2rem] m-2 md:m-3 border border-red-950/20 shadow-[inset_0_0_60px_rgba(180,30,30,0.15)] flex flex-col">
           <div className="absolute inset-0 pointer-events-none z-20 shadow-[inset_0_0_80px_rgba(40,10,10,0.4)] rounded-[2rem]" />
 
-          {/* Subtle Grain & Halation Effect */}
-          <div className="absolute inset-0 pointer-events-none z-20 mix-blend-overlay opacity-25 bg-[radial-gradient(circle_at_center,rgba(255,100,100,0.15)_0%,rgba(0,0,0,0.6)_100%)]" />
-
           {/* 🚀 PAGE CONTENT WRAPPER */}
-          <div className="relative z-10 overflow-y-auto flex-1">
-            {/* Top Camera Status HUD Bar */}
-            <div className="bg-black/90 text-white font-mono text-xs px-6 py-4 sm:px-10 flex justify-between items-center border-b border-white/10 tracking-widest uppercase">
-              <div className="flex items-center gap-3">
-                <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse" />
-                <span className="text-red-500 font-bold">REC</span>
-                <span className="text-gray-400 font-mono hidden sm:inline">
-                  PORTFOLIO_V2.MP4
-                </span>
-              </div>
-              <div className="flex gap-4 sm:gap-8 text-gray-400 text-[11px] sm:text-xs">
-                <span className=" font-semibold">ISO 400</span>
-                <span>24.00 FPS</span>
-                <span className="hidden md:inline">WB 5600K</span>
-                <span className="hidden lg:inline">35MM ANAMORPHIC</span>
-              </div>
-            </div>
-
-            {/* Hero Section */}
-            <div className="h-screen relative flex flex-col">
-              <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                style={{
-                  backgroundImage: `url(${ausImage})`,
-                  backgroundPosition: "center 41%",
-                  transformOrigin: "center",
-                  filter: "brightness(0.7)",
-                }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-900/90" />
-
-              <div className="absolute top-1/2 right-4 sm:right-8 md:right-16 -translate-y-1/2 transform z-10">
-                <p className="text-xl sm:text-3xl md:text-3xl lg:text-4xl font-light text-white tracking-wide text-right leading-tight">
-                  <span className="block lg:inline">
-                    Design · Develop · Create
+          <div className="relative z-10 overflow-y-auto flex-1 flex flex-col">
+            {/* 🎬 HERO SECTION: SEOUL.MOV LOOPING VIDEO BACKGROUND */}
+            <div className="relative w-full h-[720px] sm:h-[800px] lg:h-[850px] flex flex-col justify-between bg-zinc-950">
+              {/* TOP CAMERA HUD METADATA BAR */}
+              <div className="bg-black/90 text-white font-mono text-xs px-6 py-4 sm:px-10 flex justify-between items-center border-b border-white/10 tracking-widest uppercase z-30">
+                <div className="flex items-center gap-3">
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse" />
+                  <span className="text-red-500 font-bold">REC</span>
+                  <span className="text-gray-400 font-mono hidden sm:inline">
+                    TC: 00:01:24:08
                   </span>
+                </div>
+                <div className="flex gap-4 sm:gap-8 text-gray-400 text-[11px] sm:text-xs">
+                  <span className="font-semibold text-[#1E90FF]">ISO 400</span>
+                  <span>24.00 FPS</span>
+                  <span className="hidden md:inline">WB 5600K</span>
+                  <span className="hidden lg:inline text-[#1E90FF]">
+                    SEOUL VLOG 4K
+                  </span>
+                </div>
+              </div>
+              {/* VIDEO BACKGROUND CONTAINER */}
+              <div className="absolute inset-0 z-10 w-full h-full overflow-hidden">
+                <video
+                  src={seoulVideo}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover filter contrast-[1.1] saturate-[1.2]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/30 pointer-events-none" />
+              </div>
+              {/* CENTER HEADLINE OVERLAY */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 text-center pointer-events-none px-4">
+                <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white drop-shadow-2xl">
+                  Teerath Bajaj
+                </h1>
+                <p className="mt-3 text-sm sm:text-lg text-gray-300 font-mono tracking-widest uppercase drop-shadow">
+                  Video Editor • UI/UX Designer • Frontend Developer
                 </p>
               </div>
-
-              <div className="absolute bottom-0 left-0 right-0 z-20 overflow-hidden">
-                <div className="whitespace-nowrap py-4 sm:py-6 md:py-10">
-                  <div
-                    className={`inline-block transition-none ${
-                      scrollDirection === "down"
-                        ? "animate-marquee-left"
-                        : "animate-marquee-right"
-                    }`}
-                    key={scrollDirection}
-                  >
-                    {[...Array(10)].map((_, i) => (
-                      <span
-                        key={i}
-                        className="text-5xl sm:text-7xl md:text-9xl lg:text-[11rem] font-bold tracking-tight text-white px-4 sm:px-8 md:px-16 inline-block"
-                        style={{ fontFamily: "Poppins, sans-serif" }}
-                      >
-                        {name} —
-                      </span>
-                    ))}
-                  </div>
-                </div>
+              {/* BOTTOM HUD TIMELINE BAR */}
+              <div className="absolute bottom-0 left-0 right-0 z-30 px-6 py-4 bg-gradient-to-t from-black via-black/80 to-transparent flex justify-between items-center text-[11px] font-mono text-gray-400">
+                <span className="text-[#1E90FF] font-semibold tracking-wider">
+                  John 3:16
+                </span>
+                <span>STATUS: PLAYING</span>
               </div>
             </div>
 
@@ -498,7 +460,7 @@ const Home = () => {
               <span>FRAME: 01924</span>
               <div className="flex items-center gap-4">
                 <span>AUDIO: 48KHZ STEREO</span>
-                <span className="text-emerald-400 font-semibold">SYNC: OK</span>
+                <span className="text-[#1E90FF] font-semibold">SYNC: OK</span>
               </div>
             </div>
           </div>

@@ -8,8 +8,9 @@ import benWebsiteImg from "../images/ben_website.png";
 import flickFlowImg from "../images/flick_flow.jpg";
 import JenniImg from "../images/jenni.jpg";
 import NKImg from "../images/NK.png";
+import clockedOutImg from "../images/clockedout.png";
 
-// --- Project Card Component (List View) ---
+// --- Design Project Card (List View) ---
 const ProjectCard = ({
   title,
   location,
@@ -37,7 +38,6 @@ const ProjectCard = ({
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
-      {/* Project Title */}
       <div className="md:col-span-1">
         <h3
           className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold transition-all duration-300 ${
@@ -47,8 +47,6 @@ const ProjectCard = ({
           {title}
         </h3>
       </div>
-
-      {/* Location */}
       <div className="md:col-span-1">
         <p
           className={`text-sm sm:text-base md:text-lg transition-colors duration-300 ${
@@ -58,8 +56,6 @@ const ProjectCard = ({
           {location}
         </p>
       </div>
-
-      {/* Services */}
       <div className="md:col-span-1">
         <p
           className={`text-sm sm:text-base md:text-lg transition-colors duration-300 ${
@@ -69,8 +65,6 @@ const ProjectCard = ({
           {services}
         </p>
       </div>
-
-      {/* Year */}
       <div className="md:col-span-1 md:text-right">
         <p
           className={`text-sm sm:text-base md:text-lg transition-colors duration-300 ${
@@ -84,7 +78,7 @@ const ProjectCard = ({
   );
 };
 
-// --- Project Grid Card Component (Grid View) ---
+// --- Design Project Grid Card ---
 const ProjectGridCard = ({
   title,
   services,
@@ -112,7 +106,6 @@ const ProjectGridCard = ({
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
-      {/* Image Container */}
       <div className="relative w-full aspect-[4/3] bg-gray-200 rounded-lg overflow-hidden mb-6">
         <img
           src={image}
@@ -120,8 +113,6 @@ const ProjectGridCard = ({
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </div>
-
-      {/* Project Info */}
       <div className="pt-4">
         <h3
           className={`text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 transition-colors duration-300 ${
@@ -150,6 +141,86 @@ const ProjectGridCard = ({
         </div>
       </div>
     </a>
+  );
+};
+
+// --- YouTube Video Card Component ---
+const VideoCard = ({ video, index }) => {
+  const [hovered, setHovered] = useState(false);
+  const [playing, setPlaying] = useState(false);
+
+  const thumbnailUrl = `https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`;
+  const embedUrl = `https://www.youtube.com/embed/${video.youtubeId}?autoplay=1&rel=0`;
+
+  return (
+    <div
+      className="animate-on-scroll"
+      style={{ transitionDelay: `${index * 0.15}s` }}
+    >
+      <div
+        className="relative w-full aspect-video rounded-2xl overflow-hidden bg-gray-900 cursor-pointer group"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        onClick={() => setPlaying(true)}
+      >
+        {playing ? (
+          <iframe
+            src={embedUrl}
+            title={video.band}
+            className="w-full h-full"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        ) : (
+          <>
+            <img
+              src={thumbnailUrl}
+              alt={video.band}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div
+              className={`absolute inset-0 bg-black transition-opacity duration-300 ${
+                hovered ? "opacity-30" : "opacity-20"
+              }`}
+            />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div
+                className={`w-20 h-20 rounded-full flex items-center justify-center transition-all duration-300 ${
+                  hovered ? "bg-[#1E90FF] scale-110" : "bg-white/20"
+                }`}
+              >
+                <svg
+                  className="w-8 h-8 text-white ml-1"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+
+      <div className="pt-6 border-b border-gray-300 pb-6">
+        <div className="flex justify-between items-end">
+          <div>
+            <h3
+              className={`text-3xl sm:text-4xl font-semibold transition-colors duration-300 ${
+                hovered ? "text-[#1E90FF]" : "text-gray-900"
+              }`}
+            >
+              {video.band}
+            </h3>
+            {video.song && (
+              <p className="text-gray-500 text-base mt-1">{video.song}</p>
+            )}
+          </div>
+          <p className="text-gray-400 text-sm">{video.time}</p>
+        </div>
+      </div>
+    </div>
   );
 };
 
@@ -200,7 +271,7 @@ const FilterButton = ({ text, count, isActive, onClick }) => {
         }}
       />
       <span className="relative z-10">
-        {text} <span className="text-xs">{count}</span>
+        {text} <span className="text-xs">({count})</span>
       </span>
     </button>
   );
@@ -350,14 +421,14 @@ const Work = () => {
     };
   }, []);
 
-  const projects = [
+  const designProjects = [
     {
       id: 0,
       title: "VirtuoGrowth",
       location: "United States",
       services: "Design & Development",
       year: "2026",
-      category: "both",
+      category: "design",
       link: "https://www.virtuogrowth.com/",
       image: VGImg,
     },
@@ -367,7 +438,7 @@ const Work = () => {
       location: "United States",
       services: "Design & Development",
       year: "2025",
-      category: "both",
+      category: "design",
       link: "/ben-studio",
       image: benStudioImg,
     },
@@ -377,7 +448,7 @@ const Work = () => {
       location: "United States",
       services: "Design & Development",
       year: "2025",
-      category: "both",
+      category: "design",
       link: "/ben-website",
       image: benWebsiteImg,
     },
@@ -387,14 +458,14 @@ const Work = () => {
       location: "South Korea",
       services: "Design & Development",
       year: "2023",
-      category: "both",
+      category: "design",
       link: "https://teerath24.github.io/FlickFlow/",
       image: flickFlowImg,
     },
     {
       id: 4,
       title: "JenniAI",
-      location: " South Korea",
+      location: "South Korea",
       services: "Design",
       year: "2023",
       category: "design",
@@ -413,35 +484,60 @@ const Work = () => {
     },
   ];
 
+  const videoProjects = [
+    {
+      id: 101,
+      youtubeId: "RzDWJeEl8-g",
+      band: "MONTREAL Vlog",
+      time: "12:53",
+      category: "video",
+    },
+    {
+      id: 102,
+      youtubeId: "gWJpJ3KstTA",
+      band: "NYC Vlog",
+      time: "13:20",
+      category: "video",
+    },
+    {
+      id: 103,
+      youtubeId: "W042glN63pE",
+      band: "MANILA Vlog",
+      time: "13:31",
+      category: "video",
+    },
+    {
+      id: 104,
+      youtubeId: "zlVTNveri5A",
+      band: "PHILADEPHIA Vlog",
+      time: "07:57",
+      category: "video",
+    },
+    {
+      id: 105,
+      youtubeId: "RMS3RHASDE8",
+      band: "5 STAR HOTEL Vlog",
+      song: "Living in a 5 Star Hotel in Vietnam",
+      time: "19:03",
+      category: "video",
+    },
+    {
+      id: 106,
+      youtubeId: "xpywNV_1w_I",
+      band: "PlanetShakers",
+      song: "Come Right Now",
+      time: "3:27",
+      category: "video",
+    },
+  ];
+
   const filterCounts = {
-    all: projects.length,
-    design: projects.filter(
-      (p) => p.category === "design" || p.category === "both",
-    ).length,
-    development: projects.filter(
-      (p) => p.category === "development" || p.category === "both",
-    ).length,
+    all: designProjects.length + videoProjects.length,
+    design: designProjects.length,
+    video: videoProjects.length,
   };
 
-  const filteredProjects = projects
-    .filter((project) => {
-      if (activeFilter === "all") return true;
-      return project.category === activeFilter || project.category === "both";
-    })
-    .sort((a, b) => {
-      if (activeFilter === "design") {
-        const topPriority = [4, 5];
-        const aPriority = topPriority.indexOf(a.id);
-        const bPriority = topPriority.indexOf(b.id);
-
-        if (aPriority !== -1 && bPriority !== -1) return aPriority - bPriority;
-        if (aPriority !== -1) return -1;
-        if (bPriority !== -1) return 1;
-      }
-      return a.id - b.id;
-    });
-
-  const currentProject = projects.find((p) => p.id === hoveredProject);
+  const currentProject = designProjects.find((p) => p.id === hoveredProject);
 
   return (
     <div className="min-h-screen bg-[#070709] pt-16 md:pt-20 pb-12 px-3 sm:px-6 md:px-10 flex flex-col items-center justify-center text-black">
@@ -451,25 +547,15 @@ const Work = () => {
       <div className="relative w-full max-w-[1600px] rounded-[2.5rem] bg-[#0f0f13] border border-white/15 overflow-hidden shadow-[0_0_90px_rgba(0,0,0,0.95)] flex flex-col md:flex-row items-stretch">
         {/* 🎬 FULL HEIGHT SPROCKET HOLE STRIP */}
         <div className="relative w-full md:w-28 bg-[#0a0a0d] border-b md:border-b-0 md:border-r border-white/20 flex md:flex-col items-center justify-between p-4 md:py-8 z-30 flex-shrink-0">
-          {/* Vertical Kodak Film Stock Stamp */}
           <span className="hidden md:block font-mono text-[11px] font-semibold tracking-[0.35em] text-gray-400 transform -rotate-90 whitespace-nowrap my-auto opacity-80">
             KODAK 7219 · ISO 400
           </span>
-
-          {/* Slow Continuous Animated Sprocket Holes */}
           <div className="w-full h-20 md:h-full flex md:flex-col items-center justify-around overflow-hidden py-2">
             <div className="flex md:flex-col gap-8 items-center animate-[sprocketScroll_25s_linear_infinite]">
               {[...Array(24)].map((_, i) => (
                 <div
                   key={i}
-                  className="
-                    w-8 h-6 md:w-11 md:h-14 
-                    bg-[#050507] 
-                    rounded-xl 
-                    border-2 border-white/30 
-                    shadow-[inset_0_0_10px_rgba(0,0,0,1),0_0_12px_rgba(255,255,255,0.08)] 
-                    flex-shrink-0
-                  "
+                  className="w-8 h-6 md:w-11 md:h-14 bg-[#050507] rounded-xl border-2 border-white/30 shadow-[inset_0_0_10px_rgba(0,0,0,1),0_0_12px_rgba(255,255,255,0.08)] flex-shrink-0"
                 />
               ))}
             </div>
@@ -478,10 +564,7 @@ const Work = () => {
 
         {/* 🎞️ RIGHT MAIN FILM FRAME VIEWPORT */}
         <div className="relative flex-1 bg-[#f5f5f5] overflow-hidden rounded-[2rem] m-2 md:m-3 border border-red-950/20 shadow-[inset_0_0_60px_rgba(180,30,30,0.15)] flex flex-col">
-          {/* Super 8 Lens Halation & Glow Vignette Overlay */}
           <div className="absolute inset-0 pointer-events-none z-20 shadow-[inset_0_0_80px_rgba(40,10,10,0.4)] rounded-[2rem]" />
-
-          {/* Subtle Grain & Halation Effect */}
           <div className="absolute inset-0 pointer-events-none z-20 mix-blend-overlay opacity-25 bg-[radial-gradient(circle_at_center,rgba(255,100,100,0.15)_0%,rgba(0,0,0,0.6)_100%)]" />
 
           {/* 🚀 PAGE CONTENT WRAPPER */}
@@ -492,11 +575,11 @@ const Work = () => {
                 <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse" />
                 <span className="text-red-500 font-bold">REC</span>
                 <span className="text-gray-400 font-mono hidden sm:inline">
-                  PORTFOLIO_V2.MP4
+                  PORTFOLIO_COMPLETE.MP4
                 </span>
               </div>
               <div className="flex gap-4 sm:gap-8 text-gray-400 text-[11px] sm:text-xs">
-                <span className=" font-semibold">ISO 400</span>
+                <span className="font-semibold">ISO 400</span>
                 <span>24.00 FPS</span>
                 <span className="hidden md:inline">WB 5600K</span>
                 <span className="hidden lg:inline">35MM ANAMORPHIC</span>
@@ -516,34 +599,32 @@ const Work = () => {
 
                   {/* Filter and View Controls */}
                   <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-8">
-                    {/* Filter Buttons */}
                     <div className="flex flex-wrap gap-3">
                       <FilterButton
-                        text="All"
+                        text="All Work"
                         count={filterCounts.all}
                         isActive={activeFilter === "all"}
                         onClick={() => setActiveFilter("all")}
                       />
                       <FilterButton
-                        text="Design"
+                        text="Design & Dev"
                         count={filterCounts.design}
                         isActive={activeFilter === "design"}
                         onClick={() => setActiveFilter("design")}
                       />
                       <FilterButton
-                        text="Development"
-                        count={filterCounts.development}
-                        isActive={activeFilter === "development"}
-                        onClick={() => setActiveFilter("development")}
+                        text="Video Editing"
+                        count={filterCounts.video}
+                        isActive={activeFilter === "video"}
+                        onClick={() => setActiveFilter("video")}
                       />
                     </div>
 
-                    {/* View Toggle */}
                     <ViewToggle view={view} onToggle={setView} />
                   </div>
 
-                  {/* Column Headers - Only show in list view */}
-                  {view === "list" && (
+                  {/* Column Headers for Design List View */}
+                  {view === "list" && activeFilter !== "video" && (
                     <div className="hidden md:grid md:grid-cols-4 gap-8 border-b border-gray-300 pb-4 mb-2 animate-on-scroll">
                       <p className="text-xs text-gray-500 uppercase tracking-wider">
                         CLIENT
@@ -561,40 +642,74 @@ const Work = () => {
                   )}
                 </div>
 
-                {/* Projects Display */}
-                {view === "list" ? (
-                  // List View
-                  <div className="animate-on-scroll">
-                    {filteredProjects.map((project) => (
-                      <ProjectCard
-                        key={project.id}
-                        title={project.title}
-                        location={project.location}
-                        services={project.services}
-                        year={project.year}
-                        link={project.link}
-                        isHovered={hoveredProject === project.id}
-                        onHover={() => setHoveredProject(project.id)}
-                        onLeave={() => setHoveredProject(null)}
-                      />
-                    ))}
+                {/* --- DESIGN PROJECTS SECTION --- */}
+                {(activeFilter === "all" || activeFilter === "design") && (
+                  <div className="mb-24">
+                    {activeFilter === "all" && (
+                      <h2 className="text-3xl font-light text-gray-400 uppercase tracking-widest mb-8">
+                        Design & Development
+                      </h2>
+                    )}
+                    {view === "list" ? (
+                      <div className="animate-on-scroll">
+                        {designProjects.map((project) => (
+                          <ProjectCard
+                            key={project.id}
+                            title={project.title}
+                            location={project.location}
+                            services={project.services}
+                            year={project.year}
+                            link={project.link}
+                            isHovered={hoveredProject === project.id}
+                            onHover={() => setHoveredProject(project.id)}
+                            onLeave={() => setHoveredProject(null)}
+                          />
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-20 animate-on-scroll">
+                        {designProjects.map((project) => (
+                          <ProjectGridCard
+                            key={project.id}
+                            title={project.title}
+                            services={project.services}
+                            year={project.year}
+                            link={project.link}
+                            image={project.image}
+                            isHovered={hoveredProject === project.id}
+                            onHover={() => setHoveredProject(project.id)}
+                            onLeave={() => setHoveredProject(null)}
+                          />
+                        ))}
+                      </div>
+                    )}
                   </div>
-                ) : (
-                  // Grid View
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-20 animate-on-scroll">
-                    {filteredProjects.map((project) => (
-                      <ProjectGridCard
-                        key={project.id}
-                        title={project.title}
-                        services={project.services}
-                        year={project.year}
-                        link={project.link}
-                        image={project.image}
-                        isHovered={hoveredProject === project.id}
-                        onHover={() => setHoveredProject(project.id)}
-                        onLeave={() => setHoveredProject(null)}
-                      />
-                    ))}
+                )}
+
+                {/* --- VIDEO EDITING SECTION --- */}
+                {(activeFilter === "all" || activeFilter === "video") && (
+                  <div>
+                    {activeFilter === "all" && (
+                      <div className="flex items-center gap-6 mb-12">
+                        <div className="flex-1 h-px bg-gray-300 relative">
+                          <div className="absolute left-8 top-1/2 -translate-y-1/2 w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden bg-gray-200 flex-shrink-0 z-10">
+                            <img
+                              src={clockedOutImg}
+                              alt="Clocked Out"
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        </div>
+                        <h2 className="text-3xl font-light text-gray-400 uppercase tracking-widest whitespace-nowrap">
+                          Video Editing & Vlogs
+                        </h2>
+                      </div>
+                    )}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16">
+                      {videoProjects.map((video, i) => (
+                        <VideoCard key={video.id} video={video} index={i} />
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
@@ -614,8 +729,8 @@ const Work = () => {
         </div>
       </div>
 
-      {/* Image Preview on Hover - Only in List View */}
-      {view === "list" && currentProject && (
+      {/* Image Preview on Hover - Only in List View & Design Filter */}
+      {view === "list" && activeFilter !== "video" && currentProject && (
         <div
           className="fixed top-0 left-0 w-full h-full z-[9999]"
           style={{ pointerEvents: "none" }}
@@ -627,7 +742,7 @@ const Work = () => {
               top: `${mousePosition.y + 20}px`,
             }}
           >
-            <div className="relative w-64 h-48 sm:w-80 sm:h-64 md:w-96 md:h-72 overflow-hidden rounded-lg shadow-2xl">
+            <div className="relative w-64 h-48 sm:w-80 sm:h-64 md:w-96 md:h-72 overflow-hidden rounded-lg shadow-2xl bg-black">
               <img
                 src={currentProject.image}
                 alt={currentProject.title}
@@ -638,28 +753,30 @@ const Work = () => {
         </div>
       )}
 
-      {/* View Button Circle - Only in Grid View */}
-      {view === "grid" && hoveredProject !== null && (
-        <div
-          className="fixed top-0 left-0 w-full h-full z-[9999]"
-          style={{ pointerEvents: "none" }}
-        >
+      {/* View Button Circle - Only in Grid View & Design Filter */}
+      {view === "grid" &&
+        activeFilter !== "video" &&
+        hoveredProject !== null && (
           <div
-            className="absolute will-change-transform"
-            style={{
-              left: `${mousePosition.x}px`,
-              top: `${mousePosition.y}px`,
-              transform: "translate(-50%, -50%)",
-            }}
+            className="fixed top-0 left-0 w-full h-full z-[9999]"
+            style={{ pointerEvents: "none" }}
           >
-            <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full bg-[#1E90FF] flex items-center justify-center shadow-2xl">
-              <span className="text-white text-lg sm:text-xl md:text-2xl font-medium">
-                View
-              </span>
+            <div
+              className="absolute will-change-transform"
+              style={{
+                left: `${mousePosition.x}px`,
+                top: `${mousePosition.y}px`,
+                transform: "translate(-50%, -50%)",
+              }}
+            >
+              <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full bg-[#1E90FF] flex items-center justify-center shadow-2xl">
+                <span className="text-white text-lg sm:text-xl md:text-2xl font-medium">
+                  View
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
 
       {/* Keyframes for Sprocket Movement */}
       <style>{`

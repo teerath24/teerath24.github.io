@@ -149,9 +149,8 @@ const Header = () => {
 
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "Work", href: "/work" },
+    { name: "My Work", href: "/work" },
     { name: "About", href: "/about" },
-    { name: "Videos", href: "/videos" },
     { name: "Contact", href: "/contact" },
   ];
 
@@ -184,35 +183,37 @@ const Header = () => {
   return (
     <>
       <header
-        className={`py-6 px-6 md:px-16 lg:px-24 w-full fixed top-0 left-0 flex justify-between items-center z-50 transition-all duration-300 ${
+        className={`py-6 px-6 md:px-16 lg:px-24 w-full fixed top-0 left-0 z-50 transition-all duration-300 ${
           isScrolled ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
       >
-        <a
-          href="/"
-          className="logo flex items-center"
-          onClick={handleLogoClick}
-        >
-          <img
-            src={myLogo}
-            alt="Logo"
-            className="w-10 sm:w-12 h-auto object-contain"
-          />
-        </a>
+        <div className="max-w-[1600px] mx-auto flex justify-between items-center">
+          <a
+            href="/"
+            className="logo flex items-center"
+            onClick={handleLogoClick}
+          >
+            <img
+              src={myLogo}
+              alt="Logo"
+              className="w-10 sm:w-12 h-auto object-contain"
+            />
+          </a>
 
-        <nav className="hidden md:flex md:items-center">
-          <ul className="flex flex-row gap-6 lg:gap-10">
-            {navItems.map((item) => (
-              <li key={item.name} className="m-0 text-base font-medium">
-                <NavItemWithHoverEffect
-                  item={item}
-                  activeLink={activeLink}
-                  onClick={handleNavClick}
-                />
-              </li>
-            ))}
-          </ul>
-        </nav>
+          <nav className="hidden md:flex md:items-center">
+            <ul className="flex flex-row gap-6 lg:gap-10">
+              {navItems.map((item) => (
+                <li key={item.name} className="m-0 text-base font-medium">
+                  <NavItemWithHoverEffect
+                    item={item}
+                    activeLink={activeLink}
+                    onClick={handleNavClick}
+                  />
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
       </header>
 
       <HamburgerButton

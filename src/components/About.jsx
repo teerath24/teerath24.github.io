@@ -215,9 +215,9 @@ const About = () => {
                       <div>
                         <p className="text-base sm:text-lg md:text-xl leading-relaxed mb-4 animate-on-scroll">
                           I’m passionate about improving the lives of others by
-                          designing and developing. I am constantly looking to
-                          learn new things daily and be better than I was
-                          yesterday.
+                          video editing designing and developing. I am
+                          constantly looking to learn new things daily and be
+                          better than I was yesterday.
                         </p>
                         <p className="text-sm sm:text-base text-gray-400 italic animate-on-scroll">
                           Always learning
