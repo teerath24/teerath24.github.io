@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import Footer from "./Footer";
 import seoulVideo from "../images/seoul_intro.mp4";
+import manilaVideo from "../images/manilaa.mp4";
+import hanoiVideo from "../images/hanoi.MP4";
+import seoulBg from "../images/seoul.png";
+
 import benStudioImg from "../images/ben_studio.png";
 import VGImg from "../images/vg.png";
 import benWebsiteImg from "../images/ben_website.png";
@@ -170,6 +174,117 @@ const ProjectCard = ({
   );
 };
 
+// --- Parallax Video Showcase Section ---
+const ParallaxVideoShowcase = () => {
+  const [scrollY, setScrollY] = useState(0);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+          setScrollY(window.scrollY - sectionRef.current.offsetTop);
+        }
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const videos = [
+    { title: "SEOUL VLOG", src: seoulVideo },
+    { title: "MANILA VLOG", src: manilaVideo },
+    { title: "HANOI VLOG", src: hanoiVideo },
+  ];
+
+  return (
+    <div
+      ref={sectionRef}
+      className="relative w-full py-28 sm:py-36 overflow-hidden border-none outline-none m-0 p-0"
+    >
+      {/* 🏙️ RESTORED PARALLAX BACKGROUND IMAGE */}
+      <div
+        className="absolute inset-0 bg-cover bg-center -z-10 h-full scale-110 transition-transform duration-75 ease-out"
+        style={{
+          backgroundImage: `url(${seoulBg})`,
+          transform: `translateY(${scrollY * 0.2}px) scale(1.1)`,
+        }}
+      />
+
+      <div className="w-full max-w-[1450px] mx-auto px-6 sm:px-12 relative z-10">
+        {/* Title Block with Black "VIEW ALL WORK →" link */}
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 sm:mb-16 gap-4">
+          <div>
+            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-tight text-black">
+              Video Work
+            </h2>
+          </div>
+          <a
+            href="/work"
+            onClick={(e) => {
+              e.preventDefault();
+              if (window.navigateWithSplash) {
+                window.navigateWithSplash("/work", "Work");
+              }
+            }}
+            className="text-xs sm:text-sm font-mono text-black font-medium uppercase tracking-widest hover:text-[#1E90FF] transition-colors"
+          >
+            VIEW ALL WORK →
+          </a>
+        </div>
+
+        {/* 🎬 3 WIDESCREEN VIDEO SHOWCASE GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10">
+          {videos.map((vid, idx) => (
+            <a
+              key={idx}
+              href="/work"
+              onClick={(e) => {
+                e.preventDefault();
+                if (window.navigateWithSplash) {
+                  window.navigateWithSplash("/work", "Work");
+                }
+              }}
+              className="group relative block rounded-2xl overflow-hidden bg-black border-0 shadow-2xl transition-all duration-500 hover:scale-[1.03]"
+            >
+              <div className="relative w-full aspect-video overflow-hidden bg-black">
+                <video
+                  src={vid.src}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  className="w-full h-full object-cover filter contrast-[1.05] saturate-[1.1] transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
+
+                {/* Video Title Overlay Only */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 flex justify-between items-end">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-wide">
+                    {vid.title}
+                  </h3>
+
+                  <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center transition-all duration-300 group-hover:bg-[#1E90FF] group-hover:scale-110">
+                    <svg
+                      className="w-4 h-4 text-white ml-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // --- Scrolling Gallery ---
 const ScrollingGallery = () => {
   const [scrollOffset, setScrollOffset] = useState(0);
@@ -290,7 +405,6 @@ const Home = () => {
     };
   }, []);
 
-  // Force video playback programmatically on mount for mobile safety
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.play().catch((error) => {
@@ -356,7 +470,7 @@ const Home = () => {
 
           {/* 🚀 PAGE CONTENT WRAPPER */}
           <div className="relative z-10 overflow-y-auto flex-1 flex flex-col">
-            {/* 🎬 HERO SECTION: SEOUL_INTRO VIDEO BACKGROUND */}
+            {/* 🎬 HERO SECTION */}
             <div className="relative w-full h-[720px] sm:h-[800px] lg:h-[850px] flex flex-col justify-between bg-zinc-950">
               {/* TOP CAMERA HUD METADATA BAR */}
               <div className="bg-black/90 text-white font-mono text-xs px-6 py-4 sm:px-10 flex justify-between items-center border-b border-white/10 tracking-widest uppercase z-30">
@@ -463,6 +577,9 @@ const Home = () => {
                 </>
               </div>
             </div>
+
+            {/* 🌇 PARALLAX VIDEO SHOWCASE SECTION */}
+            <ParallaxVideoShowcase />
 
             <ScrollingGallery />
             <Footer />

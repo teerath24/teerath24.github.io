@@ -186,12 +186,12 @@ const VideoCard = ({ video, index }) => {
             />
             <div className="absolute inset-0 flex items-center justify-center">
               <div
-                className={`w-20 h-20 rounded-full flex items-center justify-center transition-all duration-300 ${
+                className={`w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center transition-all duration-300 ${
                   hovered ? "bg-[#1E90FF] scale-110" : "bg-white/20"
                 }`}
               >
                 <svg
-                  className="w-8 h-8 text-white ml-1"
+                  className="w-6 h-6 sm:w-8 sm:h-8 text-white ml-1"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -204,20 +204,22 @@ const VideoCard = ({ video, index }) => {
       </div>
 
       <div className="pt-6 border-b border-gray-300 pb-6">
-        <div className="flex justify-between items-end">
+        <div className="flex justify-between items-end gap-2">
           <div>
             <h3
-              className={`text-3xl sm:text-4xl font-semibold transition-colors duration-300 ${
+              className={`text-2xl sm:text-3xl md:text-4xl font-semibold transition-colors duration-300 ${
                 hovered ? "text-[#1E90FF]" : "text-gray-900"
               }`}
             >
               {video.band}
             </h3>
             {video.song && (
-              <p className="text-gray-500 text-base mt-1">{video.song}</p>
+              <p className="text-gray-500 text-sm sm:text-base mt-1">
+                {video.song}
+              </p>
             )}
           </div>
-          <p className="text-gray-400 text-sm">{video.time}</p>
+          <p className="text-gray-400 text-sm flex-shrink-0">{video.time}</p>
         </div>
       </div>
     </div>
@@ -253,7 +255,7 @@ const FilterButton = ({ text, count, isActive, onClick }) => {
         setXY({ x: 0, y: 0 });
         setIsHovered(false);
       }}
-      className={`relative px-6 py-3 rounded-full text-sm sm:text-base font-medium transition-all duration-300 overflow-hidden focus:outline-none focus:ring-0 focus-visible:ring-0 ${
+      className={`relative px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-sm sm:text-base font-medium transition-all duration-300 overflow-hidden focus:outline-none focus:ring-0 focus-visible:ring-0 ${
         isActive
           ? "bg-black text-white"
           : "bg-white text-gray-700 border border-gray-300"
@@ -322,7 +324,7 @@ const ViewToggle = ({ view, onToggle }) => {
           setListXY({ x: 0, y: 0 });
           setListHovered(false);
         }}
-        className={`relative w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center transition-all duration-300 overflow-hidden focus:outline-none focus:ring-0 focus-visible:ring-0 ${
+        className={`relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center transition-all duration-300 overflow-hidden focus:outline-none focus:ring-0 focus-visible:ring-0 ${
           view === "list"
             ? "bg-black text-white"
             : "bg-white text-gray-700 border border-gray-300"
@@ -342,7 +344,7 @@ const ViewToggle = ({ view, onToggle }) => {
           }}
         />
         <svg
-          className="w-6 h-6 sm:w-8 sm:h-8 relative z-10"
+          className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 relative z-10"
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
@@ -362,7 +364,7 @@ const ViewToggle = ({ view, onToggle }) => {
           setGridXY({ x: 0, y: 0 });
           setGridHovered(false);
         }}
-        className={`relative w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center transition-all duration-300 overflow-hidden focus:outline-none focus:ring-0 focus-visible:ring-0 ${
+        className={`relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center transition-all duration-300 overflow-hidden focus:outline-none focus:ring-0 focus-visible:ring-0 ${
           view === "grid"
             ? "bg-black text-white"
             : "bg-white text-gray-700 border border-gray-300"
@@ -382,7 +384,7 @@ const ViewToggle = ({ view, onToggle }) => {
           }}
         />
         <svg
-          className="w-6 h-6 sm:w-8 sm:h-8 relative z-10"
+          className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 relative z-10"
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
@@ -486,9 +488,18 @@ const Work = () => {
 
   const videoProjects = [
     {
+      id: 100,
+      youtubeId: "npuUYpq2Sew",
+      band: "SEOUL Vlog",
+      song: "I Went Back to Seoul to See the People I Missed",
+      time: "11:10",
+      category: "video",
+    },
+    {
       id: 101,
       youtubeId: "RzDWJeEl8-g",
       band: "MONTREAL Vlog",
+      song: "How French Is Montreal?",
       time: "12:53",
       category: "video",
     },
@@ -496,6 +507,7 @@ const Work = () => {
       id: 102,
       youtubeId: "gWJpJ3KstTA",
       band: "NYC Vlog",
+      song: "My First Time in New York City Was Unforgettable",
       time: "13:20",
       category: "video",
     },
@@ -503,13 +515,15 @@ const Work = () => {
       id: 103,
       youtubeId: "W042glN63pE",
       band: "MANILA Vlog",
+      song: "I Stayed at 3 Five-Star Hotels in Manila – Which One Wins?",
       time: "13:31",
       category: "video",
     },
     {
       id: 104,
       youtubeId: "zlVTNveri5A",
-      band: "PHILADEPHIA Vlog",
+      band: "PHILADELPHIA Vlog",
+      song: "Why Is Everyone Sleepin on Philadelphia?",
       time: "07:57",
       category: "video",
     },
@@ -587,11 +601,11 @@ const Work = () => {
             </div>
 
             {/* Main Content */}
-            <div className="py-16 md:py-20">
+            <div className="py-12 sm:py-16 md:py-20">
               <div className="max-w-[1800px] mx-auto px-4 sm:px-8 md:px-12 lg:px-20">
                 {/* Hero Section */}
                 <div className="mb-16 animate-on-scroll">
-                  <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light leading-tight mb-12">
+                  <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light leading-tight mb-8 md:mb-12">
                     Elevating ideas into
                     <br />
                     digital realities
@@ -646,7 +660,7 @@ const Work = () => {
                 {(activeFilter === "all" || activeFilter === "design") && (
                   <div className="mb-24">
                     {activeFilter === "all" && (
-                      <h2 className="text-3xl font-light text-gray-400 uppercase tracking-widest mb-8">
+                      <h2 className="text-2xl sm:text-3xl font-light text-gray-400 uppercase tracking-widest mb-8">
                         Design & Development
                       </h2>
                     )}
@@ -690,17 +704,19 @@ const Work = () => {
                 {(activeFilter === "all" || activeFilter === "video") && (
                   <div>
                     {activeFilter === "all" && (
-                      <div className="flex items-center gap-6 mb-12">
-                        <div className="flex-1 h-px bg-gray-300 relative">
-                          <div className="absolute left-8 top-1/2 -translate-y-1/2 w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden bg-gray-200 flex-shrink-0 z-10">
+                      <div className="flex flex-col md:flex-row items-start md:items-center gap-6 mb-12">
+                        {/* Responsive Header Row with Thumbnail Image */}
+                        <div className="flex items-center gap-4 w-full md:flex-1">
+                          <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full overflow-hidden bg-gray-200 flex-shrink-0 shadow-md">
                             <img
                               src={clockedOutImg}
                               alt="Clocked Out"
                               className="w-full h-full object-cover"
                             />
                           </div>
+                          <div className="hidden md:block flex-1 h-px bg-gray-300" />
                         </div>
-                        <h2 className="text-3xl font-light text-gray-400 uppercase tracking-widest whitespace-nowrap">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-400 uppercase tracking-wider sm:tracking-widest leading-snug">
                           Video Editing & Vlogs
                         </h2>
                       </div>
