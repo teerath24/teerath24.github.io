@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Footer from "./Footer";
-import seoulVideo from "../images/seoul.mp4";
+import seoulVideo from "../images/seoul_intro.mp4";
 import benStudioImg from "../images/ben_studio.png";
 import VGImg from "../images/vg.png";
 import benWebsiteImg from "../images/ben_website.png";
@@ -273,6 +273,7 @@ const Home = () => {
 
   const [hoveredProject, setHoveredProject] = useState(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const videoRef = useRef(null);
 
   useEffect(() => {
     let rafId;
@@ -287,6 +288,15 @@ const Home = () => {
       window.removeEventListener("mousemove", handleMouse);
       if (rafId) cancelAnimationFrame(rafId);
     };
+  }, []);
+
+  // Force video playback programmatically on mount for mobile safety
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch((error) => {
+        console.log("Autoplay prevented:", error);
+      });
+    }
   }, []);
 
   const projects = [
@@ -346,7 +356,7 @@ const Home = () => {
 
           {/* 🚀 PAGE CONTENT WRAPPER */}
           <div className="relative z-10 overflow-y-auto flex-1 flex flex-col">
-            {/* 🎬 HERO SECTION: SEOUL.MOV LOOPING VIDEO BACKGROUND */}
+            {/* 🎬 HERO SECTION: SEOUL_INTRO VIDEO BACKGROUND */}
             <div className="relative w-full h-[720px] sm:h-[800px] lg:h-[850px] flex flex-col justify-between bg-zinc-950">
               {/* TOP CAMERA HUD METADATA BAR */}
               <div className="bg-black/90 text-white font-mono text-xs px-6 py-4 sm:px-10 flex justify-between items-center border-b border-white/10 tracking-widest uppercase z-30">
@@ -369,11 +379,13 @@ const Home = () => {
               {/* VIDEO BACKGROUND CONTAINER */}
               <div className="absolute inset-0 z-10 w-full h-full overflow-hidden">
                 <video
+                  ref={videoRef}
                   src={seoulVideo}
                   autoPlay
                   loop
                   muted
                   playsInline
+                  preload="auto"
                   className="w-full h-full object-cover filter contrast-[1.1] saturate-[1.2]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/30 pointer-events-none" />
