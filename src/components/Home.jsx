@@ -193,9 +193,9 @@ const ParallaxVideoShowcase = () => {
   }, []);
 
   const videos = [
-    { title: "SEOUL VLOG", src: seoulVideo },
-    { title: "MANILA VLOG", src: manilaVideo },
-    { title: "HANOI VLOG", src: hanoiVideo },
+    { title: "SEOUL, SOUTH KOREA", src: seoulVideo },
+    { title: "MANILA, PHILIPPINES", src: manilaVideo },
+    { title: "HANOI,VIETNAM", src: hanoiVideo },
   ];
 
   return (
@@ -486,7 +486,7 @@ const Home = () => {
                   <span>24.00 FPS</span>
                   <span className="hidden md:inline">WB 5600K</span>
                   <span className="hidden lg:inline text-[#1E90FF]">
-                    SEOUL VLOG 4K
+                    PRORES 422 HQ
                   </span>
                 </div>
               </div>
