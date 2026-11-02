@@ -490,7 +490,7 @@ const Work = () => {
     {
       id: 100,
       youtubeId: "npuUYpq2Sew",
-      band: "SEOUL Vlog",
+      band: "SEOUL",
       song: "I Went Back to Seoul to See the People I Missed",
       time: "11:10",
       category: "video",
@@ -498,7 +498,7 @@ const Work = () => {
     {
       id: 101,
       youtubeId: "RzDWJeEl8-g",
-      band: "MONTREAL Vlog",
+      band: "MONTREAL",
       song: "How French Is Montreal?",
       time: "12:53",
       category: "video",
@@ -506,7 +506,7 @@ const Work = () => {
     {
       id: 102,
       youtubeId: "gWJpJ3KstTA",
-      band: "NYC Vlog",
+      band: "NEW YORK CITY",
       song: "My First Time in New York City Was Unforgettable",
       time: "13:20",
       category: "video",
@@ -514,7 +514,7 @@ const Work = () => {
     {
       id: 103,
       youtubeId: "W042glN63pE",
-      band: "MANILA Vlog",
+      band: "MANILA",
       song: "I Stayed at 3 Five-Star Hotels in Manila – Which One Wins?",
       time: "13:31",
       category: "video",
@@ -522,7 +522,7 @@ const Work = () => {
     {
       id: 104,
       youtubeId: "zlVTNveri5A",
-      band: "PHILADELPHIA Vlog",
+      band: "PHILADELPHIA",
       song: "Why Is Everyone Sleepin on Philadelphia?",
       time: "07:57",
       category: "video",
@@ -530,7 +530,7 @@ const Work = () => {
     {
       id: 105,
       youtubeId: "RMS3RHASDE8",
-      band: "5 STAR HOTEL Vlog",
+      band: "5 STAR HOTEL",
       song: "Living in a 5 Star Hotel in Vietnam",
       time: "19:03",
       category: "video",
