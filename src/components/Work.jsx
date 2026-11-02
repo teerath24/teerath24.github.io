@@ -719,7 +719,7 @@ const Work = () => {
                           <div className="hidden md:block flex-1 h-px bg-gray-300" />
                         </div>
                         <h2 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-400 uppercase tracking-wider sm:tracking-widest leading-snug">
-                          Video Editing & Vlogs
+                          Video Editing
                         </h2>
                       </div>
                     )}
