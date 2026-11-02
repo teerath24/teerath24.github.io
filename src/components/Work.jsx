@@ -426,7 +426,7 @@ const Work = () => {
   const designProjects = [
     {
       id: 0,
-      title: "VirtuoGrowth",
+      title: "Virtuo Growth",
       location: "United States",
       services: "Design & Development",
       year: "2026",
