@@ -481,11 +481,13 @@ const Home = () => {
                     TC: 00:01:24:08
                   </span>
                 </div>
-                <div className="flex gap-4 sm:gap-8 text-gray-400 text-[11px] sm:text-xs">
+                <div className="flex gap-4 sm:gap-8 text-[11px] sm:text-xs">
                   <span className="font-semibold text-[#1E90FF]">ISO 400</span>
-                  <span>24.00 FPS</span>
-                  <span className="hidden md:inline">WB 5600K</span>
-                  <span className="hidden lg:inline text-[#1E90FF]">
+                  <span className="text-gray-400">24.00 FPS</span>
+                  <span className="hidden md:inline text-gray-400">
+                    WB 5600K
+                  </span>
+                  <span className="hidden lg:inline text-gray-400">
                     PRORES 422 HQ
                   </span>
                 </div>

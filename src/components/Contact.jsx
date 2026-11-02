@@ -181,10 +181,14 @@ const Contact = () => {
                   </span>
                 </div>
                 <div className="flex gap-4 sm:gap-8 text-gray-400 text-[11px] sm:text-xs">
-                  <span>ISO 400</span>
-                  <span>24.00 FPS</span>
-                  <span className="hidden md:inline">WB 5600K</span>
-                  <span className="hidden lg:inline">35MM ANAMORPHIC</span>
+                  <span className="text-gray-400">ISO 400</span>
+                  <span className="text-gray-400">24.00 FPS</span>
+                  <span className="hidden md:inline text-gray-400">
+                    WB 5600K
+                  </span>
+                  <span className="hidden lg:inline font-semibold text-[#1E90FF]">
+                    PRORES 422 HQ
+                  </span>
                 </div>
               </div>
 
