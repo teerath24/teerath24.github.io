@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Footer from "./Footer";
-import seoulVideo from "../images/seoul_intro.mp4";
+import heroVideo from "./hero.mp4";
 import manilaVideo from "../images/manilaa.mp4";
 import hanoiVideo from "../images/hanoi.MP4";
 import seoulBg from "../images/seoul.png";
@@ -193,9 +193,9 @@ const ParallaxVideoShowcase = () => {
   }, []);
 
   const videos = [
-    { title: "SEOUL, SOUTH KOREA", src: seoulVideo },
+    { title: "SEOUL, SOUTH KOREA", src: heroVideo },
     { title: "MANILA, PHILIPPINES", src: manilaVideo },
-    { title: "HANOI,VIETNAM", src: hanoiVideo },
+    { title: "HANOI, VIETNAM", src: hanoiVideo },
   ];
 
   return (
@@ -266,7 +266,7 @@ const ParallaxVideoShowcase = () => {
                     {vid.title}
                   </h3>
 
-                  <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center transition-all duration-300 group-hover:bg-[#1E90FF] group-hover:scale-110">
+                  <div className="w-10 h-10 rounded-full bg-white/25 backdrop-blur-md border border-white/30 flex items-center justify-center transition-all duration-300 group-hover:bg-[#1E90FF] group-hover:scale-110">
                     <svg
                       className="w-4 h-4 text-white ml-0.5"
                       fill="currentColor"
@@ -496,7 +496,7 @@ const Home = () => {
               <div className="absolute inset-0 z-10 w-full h-full overflow-hidden">
                 <video
                   ref={videoRef}
-                  src={seoulVideo}
+                  src={heroVideo}
                   autoPlay
                   loop
                   muted
