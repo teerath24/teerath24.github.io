@@ -8,6 +8,7 @@ import WelcomeSplash from "./components/WelcomeSplash";
 import Home from "./components/Home";
 import BenStudio from "./components/BenStudio";
 import BenWebsite from "./components/BenWebsite";
+import CustomCursor from "./components/CustomCursor";
 import "./index.css";
 
 function AppContent() {
@@ -39,6 +40,7 @@ function AppContent() {
 
   return (
     <div className="App bg-gray-900 min-h-screen">
+      <CustomCursor />
       {showSplash ? (
         <WelcomeSplash
           onComplete={handleSplashComplete}
