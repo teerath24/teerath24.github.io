@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Footer from "./Footer";
 import heroVideo from "./hero.mp4";
+import seoulIntroVideo from "../images/seoul_intro.mp4";
 import manilaVideo from "../images/manilaa.mp4";
 import hanoiVideo from "../images/hanoi.MP4";
 import seoulBg from "../images/seoul.png";
@@ -193,7 +194,7 @@ const ParallaxVideoShowcase = () => {
   }, []);
 
   const videos = [
-    { title: "SEOUL, SOUTH KOREA", src: heroVideo },
+    { title: "SEOUL, SOUTH KOREA", src: seoulIntroVideo },
     { title: "MANILA, PHILIPPINES", src: manilaVideo },
     { title: "HANOI, VIETNAM", src: hanoiVideo },
   ];
