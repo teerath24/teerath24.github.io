@@ -596,10 +596,11 @@ const Home = () => {
                     </div>
                     <div className="flex flex-col items-start lg:items-end gap-4 md:gap-6 w-full lg:w-auto">
                       <p className="text-sm sm:text-base text-gray-700 max-w-xs text-left lg:text-right">
-                        I am a versatile individual with a passion for blending
-                        creativity and technology. As a designer and developer.
-                        With a keen eye for design aesthetics and a deep
-                        understanding of development.
+                        I am a versatile creator with a passion for blending
+                        storytelling, design, and technology. As a video editor,
+                        designer, and developer, I bring a keen eye for visual
+                        aesthetics, deep technical understanding, and cinematic
+                        flow to every project.
                       </p>
                       <div className="self-center lg:self-end">
                         <InteractiveCircleButton
@@ -611,7 +612,7 @@ const Home = () => {
                   </div>
 
                   <p className="text-3xl text-gray-500 uppercase tracking-wider mb-4 md:mb-6 animate-on-scroll">
-                    RECENT WORK
+                    WEB & UI WORK
                   </p>
 
                   <div className="mt-12 md:mt-16">
