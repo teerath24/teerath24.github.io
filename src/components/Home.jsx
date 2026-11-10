@@ -188,6 +188,7 @@ const ProjectCard = ({
 // --- Parallax Video Showcase Section ---
 const ParallaxVideoShowcase = () => {
   const [scrollY, setScrollY] = useState(0);
+  const [activeVideo, setActiveVideo] = useState(null); // Lightbox Modal State
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -204,9 +205,22 @@ const ParallaxVideoShowcase = () => {
   }, []);
 
   const videos = [
-    { title: "SEOUL, SOUTH KOREA", src: seoulIntroVideo },
-    { title: "MANILA, PHILIPPINES", src: manilaVideo },
-    { title: "HANOI, VIETNAM", src: hanoiVideo },
+    {
+      title: "SEOUL, SOUTH KOREA",
+      src: seoulIntroVideo,
+      embedUrl: "https://www.youtube.com/embed/npuUYpq2Sew?autoplay=1",
+    },
+    {
+      title: "MANILA, PHILIPPINES",
+      src: manilaVideo,
+      embedUrl:
+        "https://www.youtube.com/embed/W042glN63pE?start=552&autoplay=1",
+    },
+    {
+      title: "HANOI, VIETNAM",
+      src: hanoiVideo,
+      embedUrl: "https://www.youtube.com/embed/fo4qF35U6N0?start=34&autoplay=1",
+    },
   ];
 
   return (
@@ -248,16 +262,10 @@ const ParallaxVideoShowcase = () => {
         {/* 🎬 3 WIDESCREEN VIDEO SHOWCASE GRID */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10">
           {videos.map((vid, idx) => (
-            <a
+            <div
               key={idx}
-              href="/work"
-              onClick={(e) => {
-                e.preventDefault();
-                if (window.navigateWithSplash) {
-                  window.navigateWithSplash("/work", "Work");
-                }
-              }}
-              className="group relative block rounded-2xl overflow-hidden bg-black border-0 shadow-2xl transition-all duration-500 hover:scale-[1.03]"
+              onClick={() => setActiveVideo(vid)}
+              className="group relative block rounded-2xl overflow-hidden bg-black border-0 shadow-2xl transition-all duration-500 hover:scale-[1.03] cursor-pointer"
             >
               <div className="relative w-full aspect-video overflow-hidden bg-black">
                 <video
@@ -288,10 +296,47 @@ const ParallaxVideoShowcase = () => {
                   </div>
                 </div>
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </div>
+
+      {/* 🪟 YOUTUBE EMBED LIGHTBOX MODAL */}
+      {activeVideo && (
+        <div
+          className="fixed inset-0 z-[99999] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8 animate-fadeIn"
+          onClick={() => setActiveVideo(null)}
+        >
+          <div
+            className="relative w-full max-w-5xl bg-zinc-950 rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between px-6 py-4 bg-black/80 border-b border-white/10">
+              <h3 className="text-white font-mono text-sm tracking-wider">
+                {activeVideo.title}
+              </h3>
+              <button
+                onClick={() => setActiveVideo(null)}
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-red-600 text-white flex items-center justify-center transition-colors font-bold text-sm"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* YouTube Full Video Embed */}
+            <div className="relative w-full aspect-video bg-black flex items-center justify-center">
+              <iframe
+                src={activeVideo.embedUrl}
+                title={activeVideo.title}
+                className="w-full h-full border-0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
