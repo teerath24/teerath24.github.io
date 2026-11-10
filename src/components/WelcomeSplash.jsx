@@ -22,7 +22,7 @@ const WelcomeSplash = ({
     "नमस्ते",
     "Bonjour",
     "こんにちは",
-    "สวัสดี",
+    "Здравствуйте",
   ];
 
   useEffect(() => {
