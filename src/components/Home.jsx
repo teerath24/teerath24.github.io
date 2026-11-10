@@ -341,16 +341,56 @@ const ParallaxVideoShowcase = () => {
   );
 };
 
-// --- Toolkit Section with Strictly Equal Sizing & No Click/Hover State ---
+// --- Toolkit Section with Ambient Color Pulse ---
 const toolkitItems = [
-  { name: "DaVinci Resolve", img: davinciImg },
-  { name: "Final Cut Pro", img: finalCutImg },
-  { name: "Canva", img: canvaImg },
-  { name: "Claude", img: claudeImg },
-  { name: "React", img: reactImg },
-  { name: "Tailwind CSS", img: tailwindImg },
-  { name: "Figma", img: figmaImg },
-  { name: "JavaScript", img: jsImg },
+  {
+    name: "DaVinci Resolve",
+    img: davinciImg,
+    accent:
+      "hover:bg-amber-500/10 hover:border-amber-500/30 hover:shadow-amber-500/10",
+  },
+  {
+    name: "Final Cut Pro",
+    img: finalCutImg,
+    accent:
+      "hover:bg-purple-500/10 hover:border-purple-500/30 hover:shadow-purple-500/10",
+  },
+  {
+    name: "Canva",
+    img: canvaImg,
+    accent:
+      "hover:bg-sky-500/10 hover:border-sky-500/30 hover:shadow-sky-500/10",
+  },
+  {
+    name: "Claude",
+    img: claudeImg,
+    accent:
+      "hover:bg-orange-500/10 hover:border-orange-500/30 hover:shadow-orange-500/10",
+  },
+  {
+    name: "React",
+    img: reactImg,
+    accent:
+      "hover:bg-cyan-500/10 hover:border-cyan-500/30 hover:shadow-cyan-500/10",
+  },
+  {
+    name: "Tailwind CSS",
+    img: tailwindImg,
+    accent:
+      "hover:bg-teal-500/10 hover:border-teal-500/30 hover:shadow-teal-500/10",
+  },
+  {
+    name: "Figma",
+    img: figmaImg,
+    accent:
+      "hover:bg-rose-500/10 hover:border-rose-500/30 hover:shadow-rose-500/10",
+  },
+  {
+    name: "JavaScript",
+    img: jsImg,
+    accent:
+      "hover:bg-yellow-500/10 hover:border-yellow-500/30 hover:shadow-yellow-500/10",
+  },
 ];
 
 const MyToolkitSection = () => {
@@ -368,17 +408,21 @@ const MyToolkitSection = () => {
           {toolkitItems.map((tool, idx) => (
             <div
               key={idx}
-              className="flex flex-col items-center justify-center p-6 rounded-2xl bg-gray-50 border border-gray-100"
+              className={`
+                group relative flex flex-col items-center justify-center p-6 rounded-2xl 
+                bg-gray-50 border border-gray-100 overflow-hidden
+                transition-all duration-500 ease-out hover:shadow-xl hover:-translate-y-2
+                ${tool.accent}
+              `}
             >
-              {/* Strictly forced identical box dimensions with object-cover */}
               <div className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center mb-3">
                 <img
                   src={tool.img}
                   alt={tool.name}
-                  className="w-14 h-14 sm:w-16 sm:h-16 object-cover rounded-2xl shadow-sm"
+                  className="w-14 h-14 sm:w-16 sm:h-16 object-cover rounded-2xl shadow-sm transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
-              <span className="text-xs sm:text-sm font-medium text-gray-700 tracking-wide text-center">
+              <span className="text-xs sm:text-sm font-medium text-gray-700 tracking-wide text-center transition-colors duration-300 group-hover:text-gray-900">
                 {tool.name}
               </span>
             </div>
